@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Odd-Even</title>
+  <style>
+    .wrapper {
+      display: grid;
+      gap: 5px;
+      grid-auto-rows: 40px;
+      /* grid-auto-rows: minmax(40px, auto); */
+    }
+
+    .wrapper div {
+      border: 1px solid #ddd;
+      padding: 5px;
+      border-radius: 2px;
+    }
+
+    .wrapper div:nth-child(2n + 1) {
+      grid-row-end: span 1;
+      /*1 is height of div*/
+      background-color: #ddd;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div>One</div>
+    <div>Two</div>
+    <div>Three</div>
+    <div>Four</div>
+    <div>Five</div>
+    <div>Six</div>
+    <div>Seven</div>
+    <div>Eight</div>
+    <div>Nine</div>
+  </div>
+</body>
+
+</html>

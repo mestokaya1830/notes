@@ -1,0 +1,29 @@
+create client folder and add vue project
+create server folder and add nodejs project
+
+1- in the server folder create public folder and then in the server/index.js
+
+if(process.env.NODE_ENV == 'production'){
+  app.use(express.static('public'))
+  //handle spa
+  app.get(/.*/, (req, res) => res.sendFile(path.resolve('/public/index.html')))
+}
+
+2 - in the client folder vite.config.js 
+base: '',
+  root: '',
+  build: {
+    outDir: '../server/public'
+  },
+  server:{
+    proxy:{
+      '/api':{
+        target:'http://localhost:3000'
+      }
+    }
+  }
+  
+then in the client folder run npm run build
+
+then in the server folder run nodemon index.js
+open browser localhost:3000

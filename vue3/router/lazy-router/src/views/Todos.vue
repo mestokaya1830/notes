@@ -1,0 +1,140 @@
+<template>
+  <div>
+    <h2>{{ title }}</h2>
+    <form @submit.prevent="addTodo()" class="container" v-if="todos.filter(item => !item.completed).length">
+      <div class="input">
+        <input type="text" v-model="newTodo">
+        <input type="submit" value="Add">
+      </div>
+      <ul>
+        <li class="head">
+          <span>ID</span>
+          <span class="name">Name</span>
+          <span class="completed">Pending</span>
+        </li>
+        <li class="list" v-for="item in todos.filter(item => !item.completed)" :key="item.id">
+          <span>{{ item.id }}</span>
+          <span class="name">{{ item.name }}</span>
+          <span class="completed"><input type="checkbox" v-model="item.completed"></span>
+        </li>
+      </ul>
+    </form>
+    <div class="container" v-if="todos.filter(item => item.completed).length">
+      <h3>Completed</h3>
+      <ul>
+        <li class="head">
+          <span>ID</span>
+          <span class="name">Name</span>
+          <span class="completed">Completed</span>
+        </li>
+        <li class="list" v-for="item in todos.filter(item => item.completed)" :key="item.id">
+          <span>{{ item.id }}</span>
+          <span class="name">{{ item.name }}</span>
+          <span class="completed"><input type="checkbox" v-model="item.completed"></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>
+
+<script>
+
+export default {
+  name: "Todos",
+  data() {
+    return {
+      title: 'Todos',
+      isActive: false,
+      todos: [
+        { id: 1, name: 'Read a book', completed: false },
+        { id: 2, name: 'Review readed episode', completed: false },
+        { id: 3, name: 'Take summary', completed: false },
+        { id: 4, name: 'Watch TV', completed: false },
+        { id: 5, name: 'Brush theet', completed: false },
+        { id: 6, name: 'Go to bed', completed: false }
+      ],
+      newTodo: ''
+    }
+  },
+  methods: {
+    addTodo() {
+      this.todos.push({
+        id: this.todos.length + 1,
+        name: this.newTodo,
+        completed: false
+      })
+      this.newTodo = ''
+    }
+  }
+};
+</script>
+<style scoped>
+.container {
+  width: 500px;
+  margin: 20px auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.input {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  width: 84%;
+  min-height: 30px;
+  padding-left: 10px;
+}
+
+input[type="submit"] {
+  width: 15%;
+  max-height: 30px;
+  margin-left: 5px;
+}
+
+ul {
+  list-style: none;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+ul li {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.head {
+  min-height: 40px;
+  font-weight: bold;
+}
+
+.list {
+  min-height: 30px;
+}
+
+.head span,
+.list span {
+  width: 15%;
+}
+
+.name {
+  min-width: 55%;
+}
+
+.completed {
+  display: flex;
+  justify-content: center;
+}
+
+h3 {
+  text-align: center;
+  margin: 10px 0;
+  color: red;
+}
+</style>

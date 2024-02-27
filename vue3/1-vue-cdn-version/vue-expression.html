@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./vue3.js"></script>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .title{
+      text-align: center;
+      font-weight: bold;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body class="h-full grid place-items-center">
+  <div id="app">
+    <h2 class="title">{{ title }}</h2>
+  </div>
+
+  <script>
+   const app = {
+    data() {
+        return {
+          title: 'Vue Expression'
+        }
+      },
+      
+      mounted(){
+        console.log(this)
+      },
+
+      methods: {
+        
+      },
+   }
+   Vue.createApp(app).mount('#app')
+  </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+import express from 'express'
+import cors from 'cors'
+import helmet from 'helmet'
+const app = express()
+import fs from 'fs'
+import dotenv from 'dotenv'
+
+
+dotenv.config()
+app.use(cors())
+app.use(helmet())
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+app.use(express.static('static'))
+
+app.get('/', (req, res) => {
+  res.sendFile('index.html')
+})
+app.get('/rangemovie', (req, res) => {
+  let range = req.headers.range
+  if(!range){
+    range = 'bytes=0-'
+  }
+  const path = './1.mp4'
+  const size = fs.statSync(path).size
+  const chunk_size = 5*10**5 //500 kb
+  const start = Number(range.replace(/\D/g, ""))
+  const end = Math.min(start + chunk_size, size-1)
+  const content_length = end - start + 1
+  console.log(content_length)
+
+  const headers = {
+    "Content-Range":`bytes ${start}-${end}/${size}`,
+    "Accept-Ranges":'bytes',
+    "Content-Length":content_length,
+    "Content-Type":'video/mp4'
+  }
+  res.writeHead(206, headers)
+  const video_stream = fs.createReadStream(path, {start, end})
+  video_stream.pipe(res)
+})
+
+app.get('/flatmovie', (req, res) => {
+  const path = './1.mp4'
+  res.set("Content-Type","video/mp4")
+  res.set("Content-Length", fs.statSync(path).size)
+  fs.createReadStream(path).pipe(res)
+})
+
+app.get('/downloadmovie', (req, res) => {
+  res.setHeader('Content-disposition', 'attachment; filename=' + 'test.mp4');
+  res.setHeader('Content-type', 'video/mp4');
+  const path = './1.mp4'
+  fs.createReadStream(path).pipe(res)
+})
+
+app.get('/writemovie', (req, res) => {
+  const path = './1.mp4'
+  fs.createReadStream(path).pipe(fs.createWriteStream('./test.mp4'))
+})
+
+app.use((err, req, res, next) => {
+  console.log(err)
+  next()
+})
+app.listen(process.env.PORT, () => {
+  console.log('Server is running...')
+})

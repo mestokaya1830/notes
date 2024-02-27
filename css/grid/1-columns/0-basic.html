@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Columns</title>
+  <style>
+    .wrapper {
+      display: grid;
+      grid-auto-flow: column;
+      gap: 5px;
+      grid-auto-rows: 40px;
+      /* grid-template-columns: repeat(3, 1fr); */
+      /* grid-template-columns: repeat(3, 240px); */
+    }
+
+    .wrapper div {
+      border: 1px solid #ccc;
+      padding: 5px;
+      border-radius: 2px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div>One</div>
+    <div>Two</div>
+    <div>Three</div>
+    <div>Four</div>
+    <div>Five</div>
+    <div>Six</div>
+    <div>Seven</div>
+    <div>Eight</div>
+    <div>Nine</div>
+  </div>
+</body>
+
+</html>

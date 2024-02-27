@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./vue3.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .title {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 40px;
+    }
+    .wrapper{
+      text-align: center;
+    }
+    .wrapper button{
+      padding: 5px 15px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body class="h-full grid place-items-center">
+  <div id="app">
+    <h2 class="title">{{ title }}</h2>
+    <app-button></app-button>
+  </div>
+
+  <script>
+    Vue.createApp({
+      components: {
+        'app-button': {
+          template: `
+            <div class="wrapper">
+              <button @click="showMessage()">{{ btnText }}</button>
+            </div>
+          `,
+          data () {
+            return {
+              btnText:'Clik Me'
+            }
+          },
+          methods:{
+            showMessage(){
+              alert('Component')
+            }
+          }
+        }
+      },
+      data() {
+        return {
+          title: 'Local Component'
+        }
+      },
+      methods: {
+
+      },
+    })
+      .mount('#app')
+  </script>
+</body>
+
+</html>

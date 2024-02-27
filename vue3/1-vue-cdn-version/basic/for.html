@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./vue3.js"></script>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .title{
+      text-align: center;
+      font-weight: bold;
+      margin-top: 40px;
+    }
+    .container{
+      width: 500px;
+      margin: 20px auto;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 20px;
+    }
+    .input{
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    input[type="text"]{
+      width: 84%;
+      min-height: 30px;
+      padding-left: 10px;
+    }
+    input[type="button"]{
+      width: 15%;
+      max-height: 30px;
+      margin-left: 5px;
+    }
+    ul{
+      list-style: none;
+      width: 100%;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 15px;
+    }
+    ul li{
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .head{
+      min-height: 40px;
+      font-weight: bold;
+    }
+    .list{
+      min-height: 30px;
+    }
+    .head span, .list span{
+      width: 15%;
+    }
+    .name{
+      min-width: 55%;
+    }
+    .completed{
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body class="h-full grid place-items-center">
+  <div id="app">
+    <h2 class="title">Todos</h2>
+    <div class="container">
+      <div class="input">
+        <input type="text" name="" id="">
+        <input type="button" value="Add">
+      </div>
+      <ul>
+        <li class="head">
+          <span>ID</span>
+          <span class="name">Name</span>
+          <span class="completed">Completed</span>
+        </li>
+        <li class="list" v-for="item in todos" :key="item.id">
+          <span>{{item.id}}</span>
+          <span class="name">{{item.name}}</span>
+          <span class="completed"><input type="checkbox" v-model="item.completed"></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+   Vue.createApp({
+      data() {
+        return {
+          title: 'For Loop',
+          isActive: false,
+          todos: [
+            {id: 1, name: 'Read a book', completed: true},
+            {id: 2, name: 'Review readed episode', completed: true},
+            {id: 3, name: 'Take summary', completed: false},
+            {id: 4, name: 'Watch TV', completed: false},
+            {id: 5, name: 'Brush theet', completed: false},
+            {id: 6, name: 'Go to bed', completed: false}
+          ]
+        }
+      },
+      methods: {
+
+      },
+   })
+   .mount('#app')
+   //open terminal and npx serve
+  </script>
+</body>
+</html>

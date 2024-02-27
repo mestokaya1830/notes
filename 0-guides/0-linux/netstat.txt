@@ -1,0 +1,10 @@
+sudo apt install net-tools
+sudo netstat -nptl or 
+
+netstat -h see more
+netstat -i
+netstat -nr
+netstat -ta //connected device
+netstat -tan //connected device ip address
+
+

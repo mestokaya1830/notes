@@ -1,0 +1,29 @@
+1 state                       holds data
+2 mutations 		      triggers method = in html @click="$store.commit('getUsers')" -> run as sync dont use with httprequest or api od db
+3 actions 		      async operations = in html @click="$store.dispatch('getUsers')" this triggers 'the getUsers' method in	mutations -> run as async use it for httprequest or api or db
+4 getters                     filter and manupilate state data
+5 ...mapGetters               return all getters function in computed. Look at the my-works/vue/vuex/mapGetters												
+
+
+persist vuex---------------
+npm install --save vuex-persist
+npm install --save localforage
+
+in store/index.js
+
+import VuexPersistence from 'vuex-persist'
+import localForage from 'localforage'
+const vuexLocal = new VuexPersistence({
+  storage: localForage,
+  asyncStorage: true,
+})
+//after modules or mutations
+plugins: [vuexLocal.plugin]
+
+
+in router/index.js
+import { store } from '@/store';
+router.beforeEach(async (to, from, next) => {
+  await store.restored;
+  next();
+});

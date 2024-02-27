@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order</title>
+  <style>
+    .wrapper {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      /* grid-template-columns: repeat(3, 200px); */
+      gap: 5px;
+
+      /*rows*/
+      grid-auto-rows: minmax(50px, auto);
+      grid-auto-rows: 20px 40px 60px;
+    }
+
+
+    .wrapper div:nth-child(5) {
+      grid-column: 1 / 3;
+      /*1 is column position 3 is column width*/
+      grid-row: 1 / 3;
+      /*1 is row position 3 is row height*/
+    }
+
+    .wrapper div {
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div>One</div>
+    <div>Two</div>
+    <div>Three</div>
+    <div>Four</div>
+    <div>Five</div>
+    <div>Six</div>
+    <div>Seven</div>
+    <div>Eight</div>
+    <div>Nine</div>
+  </div>
+</body>
+
+</html>

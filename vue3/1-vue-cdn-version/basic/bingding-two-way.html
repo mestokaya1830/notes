@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./vue3.js"></script>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .wrapper{
+      text-align: center;
+      margin-top: 40px;
+    }
+    .title{
+      text-align: center;
+      font-weight: bold;
+    }
+    input{
+      margin-top: 10px;
+      min-height: 30px;
+      padding-left: 10px;
+    }
+  </style>
+</head>
+<body class="h-full grid place-items-center">
+  <div id="app">
+    <div class="wrapper">
+      <h2 class="title">{{ title }}</h2>
+      <input type="text" v-model="title">
+    </div>
+  </div>
+
+  <script>
+   Vue.createApp({
+      data() {
+        return {
+          title: 'Two Way Data Binding'
+        }
+      },
+      methods: {
+        
+      },
+   })
+   .mount('#app')
+   //open terminal and npx serve
+  </script>
+</body>
+</html>

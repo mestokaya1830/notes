@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./vue3.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .title {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 40px;
+    }
+    .wrapper{
+      text-align: center;
+    }
+    .wrapper button{
+      padding: 5px 15px;
+      margin-top: 20px;
+    }
+    p{
+      text-align: center;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+
+<body class="h-full grid place-items-center">
+  <div id="app">
+    <h2 class="title">{{ title }}</h2>
+    <p>Slot mean is set text of component from html <br> example  (Click Me) (Submit)</p>
+    <app-button>Click Me</app-button>
+    <app-button>Submit</app-button>
+  </div>
+
+  <script>
+    Vue.createApp({
+      components: {
+        'app-button': {
+          template: `
+            <div class="wrapper">
+              <button @click="showMessage()">
+                <slot />
+              </button>
+            </div>
+          `,
+          data () {
+            return {
+              btnText:'Clik Me'
+            }
+          },
+          methods:{
+            showMessage(){
+              alert('Component Slot')
+            }
+          }
+        }
+      },
+      data() {
+        return {
+          title: 'Local Component Slot'
+        }
+      },
+      methods: {
+
+      },
+    })
+      .mount('#app')
+  </script>
+</body>
+
+</html>

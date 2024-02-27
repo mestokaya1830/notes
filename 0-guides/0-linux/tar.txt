@@ -1,0 +1,11 @@
+//arhcive and zip all files----------------------------------
+tar -czvf all.tar --wildcards * or file-directory name
+
+//extract zip file-------------------------------------------
+tar -xzvf all.tar
+
+//extract zip file another path-------------------------------------------
+tar -xzvf all.tar -c /home/mesto/Documents/
+
+//list all file in archive-----------------------------------
+tar tvf all.tar

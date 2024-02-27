@@ -1,0 +1,106 @@
+if you want to be sure page still re-rendering use key word for RouterView-----------
+<RouterView :key="$route.path" />
+
+if you wont to make historyback use replace ,ethod instead of push-----------------
+this.$router.replace('/dashboard')
+
+if you want redirect '/home' to '/' route use alias in route declaration-------------------------------------
+under the home route declear this
+{
+  path:'/',
+  name: 'home',
+  component: () => import('./views/home.vue'),
+  alias: '/home'
+}
+
+
+//this is a navigation guard to set document title
+set page title from router----------------------------in router/index.js
+router.beforeEach((to, from, next) => {
+  document.title = to.name;
+  next()
+})
+
+
+
+set active link---------------------------------------in router/index.js/router section and create .active class in stye.css
+ linkActiveClass: 'active',
+ linkExactActiveClass: 'active'
+ 
+ 
+ 
+set notfound page-------------------------------------in router/index/js
+{
+   path: "/:pathName(.*)*",
+   name: "NotFound",
+   component: NotFound,
+},
+
+
+
+lazy loading -----------------------------------------in router/index.js
+{
+   path: "/users",
+   name: "Users",
+   component: () => import('../views/Users.vue')
+},
+
+
+prop -----------------------------------------in router/index.js
+{
+   path: "/users",
+   name: "Users",
+   component: () => import('../views/Users.vue'),
+   prop: true //catch this in the vue file like component prop
+},
+
+
+go direction----------------------------------------------------------
+this.$router.go(-1) //go back or (1) forward
+this.$router.back()
+window.history.back()
+
+
+router declare----------------------------------------in navbar.vue
+<template>
+  <div>
+    <!-- you can call router as name  -->
+    <!-- <router-link class="links" :to="{name: 'About'}">About</router-link> -->
+    
+    <!-- you can call router as name and param  -->
+    <!-- <router-link class="links" :to="{name: 'UserDetails', params:{id:user.id, slug:user.slug}}">User Details</router-link> -->
+    
+    <!-- you can call router as path  -->
+    <!-- <router-link class="links" :to="{path: '/about'}">About</router-link> -->
+    
+    <!-- standart way -->
+    <ul>
+      <li><router-link class="links router-link-active router-link-exact-active" to="/">Home</router-link></li>
+      <li><router-link class="links router-link-active router-link-exact-active" to="/about">About</router-link></li>
+      <li><router-link class="links router-link-active router-link-exact-active" to="/contact">Contact</router-link></li>
+    </ul>
+
+    <!-- or dynamic -->
+    <!-- <ul>
+      <li v-for="item, index in links" :key="item.name">
+        <router-link class="links" :to="item.link">{{ item.name }}</router-link>
+      </li>
+    </ul> -->
+  </div>
+</template>
+
+<script>
+ export default {
+  name:'',
+  data () {
+    return {
+      links: [
+        {name:'Home', link: '/'},
+        {name:'About', link: '/about'},
+        {name:'Contact', link: '/contact'}
+      ]
+    }
+  }
+ }
+</script>
+

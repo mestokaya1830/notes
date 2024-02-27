@@ -1,0 +1,24 @@
+<template>
+  <div>
+    <h1>{{ title }}</h1>
+    <input type="button" value="Open Message Component" @click="handle=true">
+    <msg-component v-if="handle" @close="handle=false"/>
+  </div>
+</template>
+
+<script>
+import MsgComponent from '../components/MsgComponent.vue'
+
+export default {
+  name:'AboutPage',
+  components:{
+    'msg-component' : MsgComponent
+  },
+  data(){
+    return {
+      title:'About Page',
+      handle:false
+    }
+  }
+}
+</script>

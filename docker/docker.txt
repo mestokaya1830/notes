@@ -1,0 +1,52 @@
+sudo apt install docker
+sudo apt install docker.io
+sudo systemctl enable docker
+sudo systemctl status docker
+sudo systemctl start docker
+sudo docker run hello                   //test
+
+GET DOCKER INFO----------------------------------
+docker images                          //get created images
+docker ps                              //get running docker container
+docker ps -a                           //get all container
+docker search app-name example nodejs
+sudo docker inspect image
+sudo docker inspect container
+
+
+
+CREATE IMAGE AND RUN IT AS CONTAINER--------------------------
+sudo docker build -t app1 .            //build image
+sudo docker run -p 3000:3000 app1 //create container
+
+
+
+DELETE IMAGE------------------------------------------
+sudo docker images                          //list images
+sudo docker rmi imageid -f                  //delete image
+docker system prune -a                      //remove all images
+sudo docker system prune -a --volumes       //remove all images with volumes
+
+
+STOP CONTAINER-----------------------------------------
+sudo docker container ls  then get id //list of container
+sudo docker container stop id
+
+DELETE CONTAINER
+docker container prune  //delete all
+docker container prune id or name //by id or name
+
+
+SHORTHAND FOR STOP, START AND REMOVE-------------------------------
+sudo docker stop container_name
+sudo docker start container_name
+sudo docker rm container_name
+
+
+------------------------------------------------------------------------
+
+
+//docker compose
+create yaml file
+sudo docker compose up
+sudo docker compose down

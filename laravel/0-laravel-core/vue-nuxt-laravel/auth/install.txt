@@ -1,0 +1,52 @@
+composer require laravel/sanctum
+php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+php artisan migrate
+create AuthController
+
+.env ->
+SANCTUM_STATEFUL_DOMAINS=localhost:3000
+SESSION_DOMAIN=localhost
+cosr.php -> 
+'paths' => ['api/*', 'sanctum/csrf-cookie','login','register','logout'],
+'allowed_origins' => ['http://localhost:3000'],
+'supports_credentials' => true,
+
+
+
+nuxt----------------------------
+npm install --save-exact @nuxtjs/auth-next
+npm install @nuxtjs/axios
+nuxt.config.js ->
+modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/auth-next'
+  ],
+
+auth: {
+    strategies: {
+      laravelSanctum: {
+        provider: 'laravel/sanctum',
+        url: 'http://localhost:8000',
+        endpoints:{
+          login:{
+            url:'/login'
+          }
+        }
+      },
+    }
+  },
+  
+ axios: {
+    baseURL: '/',
+    credentials:true
+  },
+  
+ router:{
+    middleware:['auth']
+  }
+  
+  
+  
+  
+  
+  

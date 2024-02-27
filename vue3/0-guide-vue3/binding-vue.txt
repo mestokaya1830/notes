@@ -1,0 +1,12 @@
+
+<p v-text="myText"></p>
+<p v-html="myHtml"></p>
+    
+<!-- binding class -->
+<p :class="{ panel: isAdmin }">Binding Class With If</p>
+<p class="{{ panel }}">Binding Class</p>
+<p :class="['new', 'font']">Binding Multi Classes</p>
+<p :class="role=='Admin' ? 'admin-class' : 'user-class'">Binding Class With Ternary</p>
+    
+<!-- binding id -->
+<p :id="id">Binding ID</p>

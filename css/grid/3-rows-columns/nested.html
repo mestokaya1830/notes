@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nested</title>
+  <style>
+    .wrapper {
+      display: grid;
+      gap: 3px;
+      grid-template-columns: repeat(3, 1fr);
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      grid-auto-rows: 60px;
+
+    }
+
+    .box-1 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-column: 1 / 4;
+      gap: 10px;
+      padding: 10px;
+    }
+
+    .wrapper div {
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="box-1">
+      <div>2</div>
+      <div>1</div>
+      <div>3</div>
+    </div>
+    <div>Two</div>
+    <div>Three</div>
+    <div>Four</div>
+    <div>Five</div>
+  </div>
+</body>
+
+</html>

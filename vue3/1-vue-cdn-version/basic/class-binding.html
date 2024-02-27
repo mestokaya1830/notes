@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./vue3.js"></script>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .title{
+      text-align: center;
+      font-weight: bold;
+      margin-top: 40px;
+    }
+    .title-color{
+      color: red;
+      text-align: center;
+      font-weight: bold;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body class="h-full grid place-items-center">
+  <div id="app">
+    <h2 :class="newStyle">{{ title }}</h2>
+  </div>
+
+  <script>
+   Vue.createApp({
+      data() {
+        return {
+          title: 'Class Binding',
+          newStyle: 'title-color'
+        }
+      },
+      methods: {
+        
+      },
+   })
+   .mount('#app')
+   //open terminal and npx serve
+  </script>
+</body>
+</html>
