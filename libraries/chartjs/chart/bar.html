@@ -5,46 +5,65 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    body{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .canvas-con{
+      width: 700px;
+      height: 400px;
+      margin-top: 50px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 0 10px;
+    }
+  </style>
 </head>
 <body>
-  <div style="width: 600px; height: 400px;">
+  <div class="canvas-con">
     <canvas id="myChart"></canvas>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-  // Chart.defaults.elements.bar.borderWidth = 10
-  // const plugin = {
-  //   id: 'custom_canvas_background_color',
-  //   beforeDraw: (chart) => {
-  //     const ctx = chart.canvas.getContext('2d');
-  //     ctx.save();
-  //     ctx.globalCompositeOperation = 'destination-over';
-  //     ctx.fillStyle = 'lightGreen';
-  //     ctx.fillRect(0, 0, chart.width, chart.height);
-  //     ctx.restore();
-  //   }
-  // }
-  // Chart.defaults.scales.linear.max = 15;
+  Chart.defaults.elements.bar.borderWidth = 10
+  const plugin = {
+    id: 'custom_canvas_background_color',
+    beforeDraw: (chart) => {
+      const ctx = chart.canvas.getContext('2d');
+      ctx.save();
+      ctx.globalCompositeOperation = 'destination-over';
+      ctx.fillStyle = 'lightGreen';
+      ctx.fillRect(0, 0, chart.width, chart.height);
+      ctx.restore();
+    }
+  }
+
+  const label = ['Javascript','C#','Php','Python','Go','Ruby','Java','C++']
+  const color = ['#f0db4f','#903ba7','#8993be','#4584b6','#00aed9','darkred','#f58312','#00589d']
+  const data = [8, 6, 3, 7, 2, 5,8,3]
   let myChart = new Chart(document.getElementById('myChart'), {
     type: 'bar',
     data: {
-      labels: ['Javascript','Python','Java','Go','C++','C#','test'],
+      labels: label,
       datasets: [{
-        label: 'Pie Chart',
-        backgroundColor: 'lightblue',
-        borderColor: '#999',
-        borderWidth: 1,
-        data: [80, 90, 70, 60, 20, 30,-2],
+        label: 'Bar Chart',
+        data: data,
+        backgroundColor: color,
+        barPercentage: 0.5,
+        categoryPercentage: 1,
+        borderRadius:5
       }]
     },
-    // plugins:[plugin],
+    scales:{
+      yAxis:{
+        min:0,
+        stepSize: 1
+      }
+    },
     options: {
-      scales:{
-        yAxis:{
-          max:15
-        }
-      },
       plugins: {
         title: {
           display: true,

@@ -33,6 +33,7 @@ app.post('/', (req, res) => {
   }))
   res.status(200).json('Saved')
 })
+
 app.put('/:id', (req, res) => {
   let id = req.params.id
   const findIdndex = person.findIndex(item => item.id == id)
