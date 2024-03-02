@@ -13,6 +13,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(express.static('static'))
 
+const path = './video.mp4'
 app.get('/', (req, res) => {
   res.sendFile('index.html')
 })
@@ -21,7 +22,7 @@ app.get('/rangemovie', (req, res) => {
   if(!range){
     range = 'bytes=0-'
   }
-  const path = './1.mp4'
+  
   const size = fs.statSync(path).size
   const chunk_size = 5*10**5 //500 kb
   const start = Number(range.replace(/\D/g, ""))
@@ -41,7 +42,6 @@ app.get('/rangemovie', (req, res) => {
 })
 
 app.get('/flatmovie', (req, res) => {
-  const path = './1.mp4'
   res.set("Content-Type","video/mp4")
   res.set("Content-Length", fs.statSync(path).size)
   fs.createReadStream(path).pipe(res)
@@ -50,12 +50,10 @@ app.get('/flatmovie', (req, res) => {
 app.get('/downloadmovie', (req, res) => {
   res.setHeader('Content-disposition', 'attachment; filename=' + 'test.mp4');
   res.setHeader('Content-type', 'video/mp4');
-  const path = './1.mp4'
   fs.createReadStream(path).pipe(res)
 })
 
 app.get('/writemovie', (req, res) => {
-  const path = './1.mp4'
   fs.createReadStream(path).pipe(fs.createWriteStream('./test.mp4'))
 })
 
