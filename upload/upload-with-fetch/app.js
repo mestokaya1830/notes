@@ -10,8 +10,10 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(fileUpload())
 
+
 app.post('/upload', async (req, res, ) => {
   const files = req.files.file
+  console.log(files)
  if(files.length > 1){
    const imageList = files.map(item => {
      return item.mv(path.resolve('static/uploads', item.name))
