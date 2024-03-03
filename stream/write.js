@@ -13,6 +13,7 @@ readStream.on('data', (chunk) => {
 })
 
 readStream.on('end', () => {
+  writeStream.end()
   const size = fs.statSync('./movie.mp4').size
   console.log('Strem is finished KB', Math.floor(size / (1204)).toFixed(0))
 })
