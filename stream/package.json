@@ -12,6 +12,7 @@
   "dependencies": {
     "csvtojson": "^2.0.10",
     "express-zip": "^3.0.0",
+    "mongoose": "^8.2.0",
     "zlib": "^1.0.5"
   }
 }
