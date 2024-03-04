@@ -1,17 +1,22 @@
 //native mode---------------------------------
-const http = require('http')
+import http from 'http'
 http.createServer(function (req, res) {
-    res.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8' })
-    res.end('<h2>Welcome To NodeJs Server Native Version</h2>')
+    //send html
+    //res.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8' })
+    // res.end('<h2>Welcome To NodeJs Server Native Version</h2>')
 
-    //or json
-    // const users = [
-    //     {name:'mesto', age:60},
-    //     {name:'deniz',age:54},
-    //     {name:'faruk',age:45}
-    // ]
-    // res.end(JSON.stringify(users))
-}).listen(3000)
+    //send json
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' })
+    const users = [
+        {name:'mesto', age:60},
+        {name:'deniz',age:54},
+        {name:'faruk',age:45}
+    ]
+    res.end(JSON.stringify(users))
+}).listen(3000, () => {
+    console.log('Server is running...')
+})
 
 //native mode-------------------------------------
 // const http = require('http');
