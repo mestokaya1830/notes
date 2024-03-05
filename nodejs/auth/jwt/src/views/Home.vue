@@ -29,9 +29,7 @@ export default {
         const result = await fetch('/api/users', {
         method: 'Post',
         headers: {
-          Authorization: "Bearer " + token,
-          "x-access-token": token
-        },
+          Authorization: "Bearer " + token, "x-access-token": token}
       })
       const final = await result.json()
         this.users = final.users

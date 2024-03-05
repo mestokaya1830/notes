@@ -9,7 +9,7 @@ const cryptr = new Cryptr('secret')
 
 Router.post('/users', checkToken,(req, res) => {
   //get req.token from localstorage
-  jwt.verify(req.token, 'secret', async function(err, data) {
+  jwt.verify(req.token, 'secret', async function(err) {
     if(err){
       res.sendStatus(403)
     } else {

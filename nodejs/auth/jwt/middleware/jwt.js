@@ -1,10 +1,6 @@
 const checkToken = (req, res, next) => {
-  console.log(req.headers['authorization'])
-  const bearerHeader = req.headers['authorization']
-  if(typeof bearerHeader != 'undefined'){
-    const bearer = bearerHeader.split(' ')
-    const bearerToken = bearer[1]
-    req.token = bearerToken
+  if(typeof req.headers['authorization'] != 'undefined'){
+    req.token = req.headers['authorization'].split(' ')[1]
     next()
   } else {
     res.sendStatus(403)

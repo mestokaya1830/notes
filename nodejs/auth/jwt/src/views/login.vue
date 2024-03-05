@@ -30,12 +30,15 @@ export default {
       })
 
       const final = await result.json()
-      this.message = final.error
-      console.log(final)
-      localStorage.setItem('token', JSON.stringify(final.token))
-      setTimeout(() => {
-        this.$router.push('/')
-      }, 2000)
+      if(final.error){
+        this.message = final.error
+        return false
+      } else {
+        localStorage.setItem('token', JSON.stringify(final.token))
+        setTimeout(() => {
+          this.$router.push('/')
+        }, 2000)
+      }
     },
   }
 }
