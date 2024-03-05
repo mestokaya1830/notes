@@ -1,12 +1,14 @@
-const Router = require('express').Router()
-const Users =  require('../modules/usersSchema.js')
-const wrapAsync = require('../middleware/wrapasync.js')
-const Cryptr = require('cryptr')
+import express from 'express'
+const Router = express.Router()
+import Users from '../modules/usersSchema.js'
+import wrapAsync from '../middleware/wrapasync.js'
+import Cryptr from 'cryptr'
 const cryptr = new Cryptr('secret')
-const formValidate = require('../middleware/formValidation')
-const jwt = require('jsonwebtoken')
+import formValidate from '../middleware/formValidation.js'
+import jwt from 'jsonwebtoken'
 
 Router.post('/register', wrapAsync(async(req, res) => {
+  console.log(req.body.name)
   const errors = formValidate(req.body.name, req.body.password)
   if(errors.length > 0){
     res.status(401).json({error:errors[0].message})
@@ -47,4 +49,4 @@ Router.get('/logout',  wrapAsync(async(req, res) => {
     res.json({message:'Logout'})
   })
 }))
-module.exports = Router
+export default Router

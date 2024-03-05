@@ -1,6 +1,6 @@
-import mongoose from 'mongoose'
+import Mongoose from 'mongoose'
 
-const usersSC = new mongoose.Schema({
+const usersSC = new Mongoose.Schema({
   user:{type: String, required: true},
   email:{type: String, required: true, unique: true},
   pass:{type: String, required: true},
@@ -17,7 +17,7 @@ const usersSC = new mongoose.Schema({
   customercomission:{type: Number, default: 5},
   usercancelbet:{type: Number, default: 15},
   settings:{type: Object},
-  token: {type: String}
+  otp: {type: String}
 })
 
-export default mongoose.model('users', usersSC)
+export default Mongoose.model('users', usersSC)

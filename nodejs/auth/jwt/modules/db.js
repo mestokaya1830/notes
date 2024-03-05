@@ -1,10 +1,10 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
-const db = mongoose.connect('mongodb://localhost:27017/works',{
-  useNewUrlParser:true,
-  useUnifiedTopology: true
-}).then(() => {
+const db = mongoose.connect('mongodb://mesto:MK1972mk11130113@localhost:27017/works?authSource=works')
+.then(() => {
   console.log('Connected')
-}).catch((err) => {console.log(err)})
+}).catch(() => {
+  console.log("error")
+})
 
-module.exports = db
+export default db

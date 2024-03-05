@@ -1,8 +1,9 @@
 //set try catch block
-const wrapAsync = (fn) => {
-  return (req, res, next) => {
-    fn(req, res, next).catch(next)
+const tryCatch = (controller) => async(req, res, next) => {
+  try {
+    await controller(req, res)
+  } catch (error) {
+    return next(error.message)
   }
 }
-
-module.exports =  wrapAsync
+export default  tryCatch

@@ -1,22 +1,18 @@
-const express = require('express')
+import express from 'express'
 const app = express()
-const db = require('./modules/db')
-const path = require('path')
-const cors = require('cors')
-const helmet = require('helmet')
-const dotenv = require('dotenv')
+import db from './modules/db.js'
+import helmet from 'helmet'
+import dotenv from 'dotenv'
+import authRouter from './routers/authRouter.js'
+import usersRouter from './routers/usersRouter.js'
+
 dotenv.config()
-
-const authRouter = require('./routers/authRouter.js')
-const usersRouter = require('./routers/usersRouter.js')
-
 app.use(helmet())
-app.use(cors())
 app.use(express.json())
-app.use(express.urlencoded({extended: false}))
-app.use(express.static(path.join(__dirname, 'static')))
+app.use(express.urlencoded({extended: true}))
+app.use(express.static('static'))
 
-app.use('/', authRouter)
+app.use('/api', authRouter)
 app.use('/api', usersRouter)
 
 app.use((error, req, res, next) => {

@@ -1,4 +1,5 @@
 const checkToken = (req, res, next) => {
+  console.log(req.headers['authorization'])
   const bearerHeader = req.headers['authorization']
   if(typeof bearerHeader != 'undefined'){
     const bearer = bearerHeader.split(' ')
@@ -10,4 +11,4 @@ const checkToken = (req, res, next) => {
   }
 }
 
-module.exports = checkToken
+export default checkToken

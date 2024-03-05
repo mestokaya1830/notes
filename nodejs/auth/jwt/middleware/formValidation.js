@@ -1,6 +1,6 @@
 const formValidate = (name ='', password ='') => {
   const errors = []
-  if(name === '' || password === ''){
+  if(name == '' || password == ''){
     errors.push({message:'Please fill all field'})
   }else if(name.length < 3){
     errors.push({message:'Name must be less 4 charecters!'})
@@ -10,4 +10,4 @@ const formValidate = (name ='', password ='') => {
   return errors
 }
 
-module.exports = formValidate
+export default formValidate
