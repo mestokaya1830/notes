@@ -7,10 +7,33 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="">
+    <style>
+      div{
+        margin: 40px auto;
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+      }
+    </style>
   </head>
   <body>
-    <a href="/">Home</a>
-    <a href="/logout">Logout</a>
-    <h2>Admin Page</h2>
+    <div>
+      <section>
+        <a href="/">Home</a>
+        <a href="/logout" onclick="getHeader()">Logout</a>
+      </section>
+      <h2>Admin Page</h2>
+    </div>
+
+    <script>
+      const getHeader = async() => {
+        const result = await fetch('http://localhost:3000/logout')
+        const final = await result.json()
+        console.log(final)
+      }
+    </script>
   </body>
 </html>

@@ -40,17 +40,22 @@ app.use(cookieParser());
 //check admin
   app.get('/admin',(req, res) => {
     console.log(req.cookies['user'])
-    res.json('Hello')
-    // if(req.session.auth){
-    //   res.sendFile(path.join(__dirname, '/admin.html'))
-    // }else{
-    //   res.redirect('/login')
-    // }
+    if(req.cookies['user']){
+      res.sendFile(path.resolve('./admin.html'))
+    }else{
+      res.redirect('/login')
+    }
   })
 //logout
   app.get('/logout',  (req, res) => {
-    // req.session.destroy((err) => {
-    //   res.redirect('/')
-    // })
+    res.setHeader('set-cookie', 'user=; max-age=0')
+    res.redirect('/')
   })
-app.listen(process.env.PORT || 3000)
+
+  app.use(function(req, res, next) {
+    res.setHeader('Content-Type', 'text/event-stream');
+    next();
+  });
+app.listen(process.env.PORT || 3000, () => {
+  console.log('Server is running...')
+})
