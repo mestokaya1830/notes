@@ -1,11 +1,9 @@
 const express = require('express')
 const app = express()
 const path = require('path')
-const cors = require('cors')
 const session = require('express-session')
 const MemoryStore = require('memorystore')(session)
 
-app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
@@ -58,4 +56,6 @@ app.use(session({
       res.redirect('/')
     })
   })
-app.listen(process.env.PORT || 3000)
+app.listen(process.env.PORT || 3000, () => {
+  console.log('Server is running...')
+})
