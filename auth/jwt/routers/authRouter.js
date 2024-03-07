@@ -8,7 +8,6 @@ import formValidate from '../middleware/formValidation.js'
 import jwt from 'jsonwebtoken'
 
 Router.post('/register', wrapAsync(async(req, res) => {
-  console.log(req.body.name)
   const errors = formValidate(req.body.name, req.body.password)
   if(errors.length > 0){
     res.status(401).json({error:errors[0].message})

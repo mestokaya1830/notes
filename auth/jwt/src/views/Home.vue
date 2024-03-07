@@ -27,7 +27,7 @@ export default {
         this.$router.push('/login')
       } else {
         const result = await fetch('/api/users', {
-        method: 'Post',
+        method: 'get',
         headers: {
           Authorization: "Bearer " + token, "x-access-token": token}
       })

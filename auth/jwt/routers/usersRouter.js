@@ -7,7 +7,7 @@ import checkToken from '../middleware/jwt.js'
 import Cryptr from 'cryptr'
 const cryptr = new Cryptr('secret')
 
-Router.post('/users', checkToken,(req, res) => {
+Router.get('/users', checkToken,(req, res) => {
   //get req.token from localstorage
   jwt.verify(req.token, 'secret', async function(err) {
     if(err){
