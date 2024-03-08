@@ -1,5 +1,5 @@
 import { createWebHistory, createRouter } from "vue-router";
-import Home from "../views/Home.vue";
+import Home from "@/views/Home.vue";
 
 const routes = [
   {
@@ -9,20 +9,20 @@ const routes = [
     meta:{title:'Home'}
   },
   {
-    path: "/login",
-    name:'Login',
-    component: () => import('../views/Login.vue'),
-    meta:{title:'Login'}
+    path: "/githubdashboard",
+    name:'Github Dashboard',
+    component: () => import('@/views/GithubDashboard.vue'),
+    meta:{title:'Github Dashboard'}
   },
   {
-    path: "/admin",
-    name:'Admin',
-    component: () => import('../views/Admin.vue'),
-    meta:{title:'Admin'}
+    path: "/googledashboard",
+    name:'Google Dashboard',
+    component: () => import('@/views/GoogleDashboard.vue'),
+    meta:{title:'Google Dashboard'}
   },
   {
     path: "/:catchAll(.*)",
-    component: () => import('../views/NotFound.vue')
+    component: () => import('@/views/NotFound.vue')
   }
 ];
 

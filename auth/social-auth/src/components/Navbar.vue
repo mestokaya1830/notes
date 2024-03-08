@@ -3,7 +3,7 @@
     <nav>
       <router-link to="/" class="links">Home</router-link>
       <router-link to="/login" class="links">Login</router-link>
-      <router-link to="/admin" class="links">Admin</router-link>
+      <router-link to="/dashboard" class="links">Dashboard</router-link>
     </nav>
   </div>
 </template>
