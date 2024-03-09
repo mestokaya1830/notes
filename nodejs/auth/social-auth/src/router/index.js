@@ -9,16 +9,16 @@ const routes = [
     meta:{title:'Home'}
   },
   {
-    path: "/githubdashboard",
-    name:'Github Dashboard',
-    component: () => import('@/views/GithubDashboard.vue'),
-    meta:{title:'Github Dashboard'}
+    path: "/githubprofile",
+    name:'Github Profile',
+    component: () => import('@/views/GithubProfile.vue'),
+    meta:{title:'Github Profile'}
   },
   {
-    path: "/googledashboard",
-    name:'Google Dashboard',
-    component: () => import('@/views/GoogleDashboard.vue'),
-    meta:{title:'Google Dashboard'}
+    path: "/googleprofile",
+    name:'Google Profile',
+    component: () => import('@/views/GoogleProfile.vue'),
+    meta:{title:'Google Profile'}
   },
   {
     path: "/:catchAll(.*)",

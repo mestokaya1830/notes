@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     async getUserInfo(){
-      const result = await fetch('/api/github/githubdashboard')
+      const result = await fetch('/api/google/user-profile')
       const final = await result.json()
       this.userInfo = final
     }

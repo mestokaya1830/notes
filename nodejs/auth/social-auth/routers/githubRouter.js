@@ -17,21 +17,21 @@ Router.get('/auth', tryCatch(async(req, res) => {//redirected from github
     headers: {
       accept: 'application/json'
     }
-  }).then((response) => {
-    access_token = response.data.access_token
-    res.redirect('/githubdashboard');
+  }).then((result) => {
+    access_token = result.data.access_token
+    res.redirect('/githubprofile');
   })
 }))
 
-Router.get('/githubdashboard', tryCatch(async(req, res) =>{
+Router.get('/user-profile', tryCatch(async(req, res) =>{
   axios({
     method: 'get',
     url: `https://api.github.com/user`,
     headers: {
       Authorization: 'token ' + access_token
     }
-  }).then((response) => {
-    res.json({ userData: response.data });
+  }).then((result) => {
+    res.json({ userData: result.data });
   })
 }))
 
