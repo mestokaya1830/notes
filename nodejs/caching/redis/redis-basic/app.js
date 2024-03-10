@@ -1,13 +1,9 @@
 import express from 'express'
 const app = express()
-import cors from 'cors'
 import helmet from 'helmet'
-import dotenv from 'dotenv'
 import redis from 'redis'
 
-dotenv.config()
 app.use(helmet())
-app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(express.static('static'))
@@ -18,12 +14,21 @@ client.on('connect', () => {
   console.log('Connected to redis...')
 })
 
-app.get('/', async(get, res) => {
+app.post('/setredis', async(req, res) => {
+  //create redis client
+
   try {
-    client.setEx('users', 3600, 'Mustafa Kaya')
+    client.setEx('users', 3600, req.body.name)
+    res.json({message: 'Form is stored in redis'})
+  } catch (error) {
+    console.error(error)
+  }
+})
+
+app.get('/getredis', async(req, res) => {
+  try {
     const users = await client.get('users')
- 
-    res.send(users)
+    res.json({message: users})
   } catch (error) {
     console.error(error)
   }
