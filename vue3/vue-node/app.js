@@ -13,20 +13,19 @@ app.use(express.urlencoded({ extended: true, limit: '3mb' }))
 app.use(express.static('dist'))
 
 
-app.get('/', Wrap(async(req, res) => {
-  // const nested = await Nested.find()
-  // res.json(nested)
+app.get('/api', Wrap(async(req, res) => {
+  console.log(req.headers)
+  res.json('Home Page')
 }))
-app.post('/limitsettings', Wrap(async(req, res) => {
-  console.log(req.body.limitsettings)
-  res.json('saved')
+app.post('/api/limitsettings', Wrap(async(req, res) => {
+  console.log(req.headers)
+  res.json(req.body.limitsettings)
 }))
-app.post('/creditlogs', Wrap(async(req, res) => {
-  console.log(req.body.creditlogs)
-  res.json('saved')
+app.post('/api/creditlogs', Wrap(async(req, res) => {
+  res.json(req.body.creditlogs)
 }))
-app.get('/api/gamelogs', Wrap(async(req, res) => {
-  res.json('saved')
+app.post('/api/gamelogs', Wrap(async(req, res) => {
+  res.json(req.body.gamelogs)
 }))
 
 if(process.env.NODE_ENV == 'production'){

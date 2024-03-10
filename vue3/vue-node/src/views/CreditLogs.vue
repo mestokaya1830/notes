@@ -1,9 +1,9 @@
 <template>
   <div>
     <h2>{{ title }}</h2>
-    <form @click.prevent="setCreditLogs()">
+    <form @click.prevent>
       <input type="text" v-model="creditLogs.name">
-      <input type="submit" value="Send">
+      <input type="submit" value="Send" @click="setCreditLogs()">
     </form>
   </div>
 </template>
@@ -22,9 +22,9 @@ export default {
   },
   methods:{
     async setCreditLogs(){
-      await axios.post('/creditlogs', {creditlogs: this.creditLogs}).then(result => {
+      await axios.post('/api/creditlogs', {creditlogs: this.creditLogs}).then(result => {
         if(result.data){
-          console.log('Saved')
+          console.log(result.data)
         }
       })
     }

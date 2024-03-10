@@ -1,9 +1,9 @@
 <template>
   <div>
     <h2>{{ title }}</h2>
-    <form @click.prevent="setGameLogs()">
-      <h2 ref="title"></h2>
-      <input type="submit" value="Send">
+    <form @click.prevent>
+      <input type="text" v-model="gameLogs">
+      <input type="submit" value="Send" @click="setGameLogs()">
     </form>
   </div>
 </template>
@@ -15,18 +15,13 @@ export default {
   data () {
     return {
       title:'GameLogs Page',
-      gameLogs: {
-        name:''
-      }
+      gameLogs:''
     }
   },
   methods:{
     async setGameLogs(){
-      await axios.get('/api/gamelogs').then(result => {
-        if(result.data){
-          this.$refs.title.innerText = result.data
-          console.log(result.data)
-        }
+      await axios.post('/api/gamelogs', {gamelogs: this.gameLogs}).then(result => {
+        console.log(result.data)
       })
     }
   }
