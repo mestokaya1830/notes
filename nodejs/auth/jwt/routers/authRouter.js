@@ -1,7 +1,7 @@
 import express from 'express'
 const Router = express.Router()
 import Users from '../modules/usersSchema.js'
-import wrapAsync from '../middleware/wrapasync.js'
+import wrapAsync from '../middleware/tryCatch.js'
 import Cryptr from 'cryptr'
 const cryptr = new Cryptr('secret')
 import formValidate from '../middleware/formValidation.js'

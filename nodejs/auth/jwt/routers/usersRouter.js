@@ -1,13 +1,11 @@
 import express from 'express'
 const Router = express.Router()
 import Users  from '../modules/usersSchema.js'
-import wrapAsync from '../middleware/wrapasync.js'
+import wrapAsync from '../middleware/tryCatch.js'
 import jwt from 'jsonwebtoken'
 import checkToken from '../middleware/jwt.js'
-import Cryptr from 'cryptr'
-const cryptr = new Cryptr('secret')
 
-Router.get('/users', checkToken,(req, res) => {
+Router.get('/users', checkToken, (req, res) => {
   //get req.token from localstorage
   jwt.verify(req.token, 'secret', async function(err) {
     if(err){
