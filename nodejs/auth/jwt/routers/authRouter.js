@@ -32,7 +32,7 @@ Router.post('/login', wrapAsync(async(req, res) => {
   if(loginUser.length > 0){
     let dePass = cryptr.decrypt(loginUser[0].password)
     if(req.body.password == dePass){
-      const token = jwt.sign({dePass}, 'secret')
+      const token = jwt.sign({dePass}, process.env.access_token)
       res.json({token:token})//save this token on localstorage
     }else{
       res.json({error:'Password not match'})

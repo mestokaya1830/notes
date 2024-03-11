@@ -7,7 +7,7 @@ import checkToken from '../middleware/jwt.js'
 
 Router.get('/users', checkToken, (req, res) => {
   //get req.token from localstorage
-  jwt.verify(req.token, 'secret', async function(err) {
+  jwt.verify(req.token, process.env.access_token, async (err) => {
     if(err){
       res.sendStatus(403)
     } else {

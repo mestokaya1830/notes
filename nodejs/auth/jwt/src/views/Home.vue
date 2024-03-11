@@ -35,6 +35,7 @@ export default {
         this.users = final.users
         this.token = token
       }
+      console.log(token)
     }
   }
 };
