@@ -16,7 +16,6 @@ client.on('connect', () => {
 
 app.post('/setredis', async(req, res) => {
   //create redis client
-
   try {
     client.setEx('users', 3600, req.body.name)
     res.json({message: 'Form is stored in redis'})

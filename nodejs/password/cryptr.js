@@ -1,20 +1,27 @@
-const express = require('express')
+import express from 'express'
 const app = express()
-const cryptr = require('cryptr')
+import cryptr from 'cryptr'
 const CRYPTR = new cryptr('secret')
 
-app.get('/', (req, res) => {
-  const pass = '9090'
-  const encryptPass = CRYPTR.encrypt(pass)//encrypt and saved in db  
-  const decryptPass = CRYPTR.decrypt(encryptPass)//get from db and decrypt
+app.use(express.json())
 
-  if(pass === decryptPass){ 
-    res.status(200).json('Passed')
+const users = []
+
+app.post('/senduser', (req, res) => {
+  const encryptPass = CRYPTR.encrypt(req.body.pass)  
+  users.push({name: req.body.name, pass: encryptPass})
+  res.json(users)
+})
+
+app.get('/getuser', (req, res) => {
+  const decryptPass = CRYPTR.decrypt(users[0].pass)//get from db and decrypt
+  console.log(decryptPass)
+  if(decryptPass == '9090'){ 
+    res.status(200).json(users)
   } else {
     res.status(400).json('Wrong Password!')
   }
 })
-
 
 app.listen(3000 || process.env.PORT, () => {
   console.log('Server is running...')

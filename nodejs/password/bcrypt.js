@@ -1,14 +1,23 @@
-const express = require('express')
+import express from 'express'
 const app = express()
-const cors = require('cors')
-const bcrypt = require('bcrypt')
+import bcrypt from 'bcrypt'
 
-app.get('/', async (req, res) => {
-  const pass = '9990'//user password
-  const passHashed = bcrypt.hash(pass, 10)//hash user password and saved in db
-  const match = await bcrypt.compare(pass, passHashed)//get passHased from db
-  !match && res.status(400).json('Wrong password!')
-  res.status(200).send('Passed')
+app.use(express.json())
+
+let users = []
+
+app.post('/senduser', async(req, res) => {
+  const passHashed = await bcrypt.hash(req.body.pass, 10)
+  users.push({name: req.body.name, pass: passHashed})
+  res.json(users)
+})
+
+app.get('/getuser', async(req, res) => {
+  if(await bcrypt.compare('9090', users[0].pass)){
+    res.json(users)
+  } else {
+    res.json({message:'Wrong pass!'})
+  }
 })
 
 app.listen(3000 || process.env.PORT, () => {
