@@ -8,6 +8,7 @@
     <button onclick="getAllCookie()">Get All Cookie</button>
     <button onclick="getCookieNames()">Get Cookie Names</button>
     <button onclick="getCookieValues()">Get Cookie Values</button>
+    <button onclick="filterCookie('auth')">Filter Cookie</button>
     <button onclick="deleteAllCookies()">Delete All Cookies</button>
   </head>
   <body>
@@ -36,6 +37,13 @@
         for (const item of allCookies) {
           let values = item.split('=').pop()
           console.log(values.trim())
+        }
+      }
+      const filterCookie = (name) => {
+        const allCookies = document.cookie.split(";")
+        for (const item of allCookies) {
+          let values = item.split('=')[0]
+          values == name ? alert('Welcome ' + name) : alert('Please login!')
         }
       }
       const deleteAllCookies = () => {
