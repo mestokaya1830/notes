@@ -13,14 +13,17 @@
 <!-- script side----------------------------- -->
   <script>
     document.getElementById('set').addEventListener('click', () => {
-      document.cookie = "auth = Mesto; expires=Mon, 27 May 2024 03:5:00 UTC";
+      document.cookie = "auth = Mesto; expires=Mon, 12 March 2024 18:10:00 UTC";
+      //or this format
+      // document.cookie = "auth = Mesto; expires=" + new Date(2024, 0, 1).toUTCString();
     })
-    document.getElementById('get').addEventListener('click',()=>{
+    document.getElementById('get').addEventListener('click',() => {
+      console.log(document.cookie)
       let result = document.cookie.split('=')
-      alert(result[1])
+      console.log(result[1])
     })
-    document.getElementById('del').addEventListener('click',()=>{
-      document.cookie = "auth=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=http://127.0.0.1:5500/javascript/cookie.html;";
+    document.getElementById('del').addEventListener('click',() => {
+      document.cookie = "auth=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     })
   </script>
 </body>

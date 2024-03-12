@@ -6,6 +6,7 @@
   <title>Document</title>
 </head>
 <body>
+  <p>Session storage temp data, that mean it is removing when browser is closed</p>
   <h2 id="title">Sessionstorage</h2>
   <button id="set">Set SessionStorage</button>
   <button id="get">Get SessionStorage</button>
@@ -16,16 +17,20 @@
   <button id="getJson">Get SessionStorage With Json Data</button>
 <!-- script side----------------------------- -->
   <script>
-    document.getElementById('set').addEventListener('click',()=>{
-      sessionStorage.setItem('auth','mesto')
+     const user = {
+      name:'mesto',
+      salary: 5000
+    }
+    document.getElementById('set').addEventListener('click',() => {
+      sessionStorage.setItem('auth',JSON.stringify(user))
     })
-    document.getElementById('get').addEventListener('click',()=>{
-      alert(sessionStorage.getItem('auth'))
+    document.getElementById('get').addEventListener('click',() => {
+      console.log(JSON.parse(sessionStorage.getItem('auth')))
     })
-    document.getElementById('del').addEventListener('click',()=>{
+    document.getElementById('del').addEventListener('click',() => {
       sessionStorage.removeItem('auth')
     })
-    document.getElementById('delAll').addEventListener('click',()=>{
+    document.getElementById('delAll').addEventListener('click',() => {
       sessionStorage.clear()
     })
 
