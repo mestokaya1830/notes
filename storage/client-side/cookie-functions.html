@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <button onclick="setCookie('auth','mesto', 2)">Set Cookie</button>
+    <button onclick="getAllCookie()">Get All Cookie</button>
+    <button onclick="getCookieNames()">Get Cookie Names</button>
+    <button onclick="getCookieValues()">Get Cookie Values</button>
+    <button onclick="deleteAllCookies()">Delete All Cookies</button>
+  </head>
+  <body>
+    <script>
+      //set cookie function
+      const setCookie = (name, value, days) => {
+        const d = new Date();
+        d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
+        let expires = "expires=" + d.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
+      }
+
+      //get all cookies (first set many cookies)
+      const getAllCookie = () => {
+        console.log(document.cookie.split(";"))
+      }
+      const getCookieNames = () => {
+        const allCookies = document.cookie.split(";")
+        for (const item of allCookies) {
+          let names = item.split('=')[0]
+          console.log(names.trim())
+        }
+      }
+      const getCookieValues = () => {
+        const allCookies = document.cookie.split(";")
+        for (const item of allCookies) {
+          let values = item.split('=').pop()
+          console.log(values.trim())
+        }
+      }
+      const deleteAllCookies = () => {
+        const allCookies = document.cookie.split(";")
+        for (const item of allCookies) {
+          let values = item.split('=')[0]
+          document.cookie = `${values}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+        }
+      }
+    </script>
+  </body>
+</html>
