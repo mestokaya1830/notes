@@ -3,11 +3,9 @@ const app = express()
 import path from 'path'
 import session from 'express-session';
 import RedisStore from "connect-redis"
-import {createClient} from "redis"
+import { createClient } from "redis"
 let redisClient = createClient()
 redisClient.connect().catch(console.error)
-// import Redis from 'ioredis'
-// const redisClient = new Redis()
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
