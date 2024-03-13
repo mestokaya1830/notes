@@ -15,7 +15,7 @@ app.use(session({
   saveUninitialized: false,//delete cookie on browser when expired
   rolling: true,//refresh cookie-time when user reactivate with server
   cookie: { 
-    maxAge: 1 * 60000,
+    // maxAge: 1 * 60000,
     httpOnly: true,//prevents client side js reading the cookies,
     secure: false,//only transmit cookie over https
   },//1 minute
@@ -56,7 +56,7 @@ app.use(session({
 //logout
   app.get('/logout',  (req, res) => {
     req.session.destroy((err) => {
-      res.redirect('/')
+      res.redirect('/login')
     })
   })
 app.listen(process.env.PORT || 3000, () => {
