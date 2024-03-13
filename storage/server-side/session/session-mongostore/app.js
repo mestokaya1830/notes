@@ -13,13 +13,15 @@ app.use(session({
   secret: 'admin',
   resave: true,
   saveUninitialized: false,//delete cookie on browser when expired
-  cookie: { maxAge: 1 * 60000},//1 minute
+  rolling: true,//refresh cookie-time when user reactivate with server
+  cookie: { 
+    maxAge: 1 * 60000,
+    httpOnly: true,//prevents client side js reading the cookies,
+    secure: false,//only transmit cookie over https
+  },//1 minute
   //cookie: { maxAge: 1 * 3600000},//1 hour
   // cookie: { maxAge: 24 * 3600000},//1 day
-  rolling: true,//refresh cookie-time when user reactivate with server
-  httpOnly: true,//only transmit cookie over https
-  secure: true,//prevents client side js reading the cookies
-  store: MongoStore.create({
+  store: MongoStore.create({//resave the session when server restart
     mongoUrl: 'mongodb://mesto:MK1972mk11130113@localhost:27017/works?authSource=works',
     autoRemove: 'native'
   })
