@@ -1,11 +1,8 @@
-const express = require('express')
+import express from 'express'
 const app = express()
-const path = require('path')
-const cors = require('cors')
+import path from 'path'
 
-app.use(cors())
 app.use(express.json())
-app.use(express.urlencoded({extended: true}))
 
 let langs = [
   {id:1,name:'Html'},
@@ -13,18 +10,13 @@ let langs = [
   {id:3,name:'Java'},
   {id:3,name:'Javascript'},
   {id:4,name:'VueJS'},
-  {id:5,name:'NuxtJS'},
   {id:6,name:'NodeJS'},
-  {id:7,name:'Python'},
-  {id:8,name:'C'},
-  {id:9,name:'C++'},
-  {id:10,name:'C#'},
   {id:11,name:'Mysql'},
   {id:12,name:'Mongodb'}
 ]
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, './index.html'))
+  res.sendFile(path.resolve('./index.html'))
 })
 
 app.get('/langs', (req, res) => {
@@ -32,6 +24,7 @@ app.get('/langs', (req, res) => {
 })
 
 app.post('/addlang', (req, res) => {
+  console.log(req.headers)
   let addlang = {
     id:langs.length + 1,
     name:req.body.name
