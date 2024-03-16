@@ -3,6 +3,7 @@ const app = express()
 import path from 'path'
 
 app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 
 let langs = [
   {id:1,name:'Html'},
@@ -42,8 +43,8 @@ app.put('/updatelang', (req, res) => {
 })
 
 app.delete('/deletelang', (req, res) => {
-  let index = langs.findIndex(item => item.id === parseInt(req.body.id))
-  if (req.body.id) {
+  let index = langs.findIndex(item => item.id == parseInt(req.body.id))
+  if (index) {
     langs.splice(index, 1)
     res.json(langs)
   }
