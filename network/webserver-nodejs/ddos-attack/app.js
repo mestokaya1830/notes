@@ -29,6 +29,9 @@ const adminLimit = limiter({
   max: 2, // limit
   message:'Stop'
 })
+
+app.set('trust proxy', '1')
+
 app.get('/', homeLimit, (req, res) => {
   res.send('Home')
 })
