@@ -1,7 +1,0 @@
-version: "1.0"
-services:
-  node-server:
-    container_name: my-server
-    build: . #this calls dockerfile
-    ports:
-      - 3000:3000
