@@ -23,6 +23,7 @@ app.get('/users', tryCatch(async(req, res) => {
 }))
 
 app.post('/register', tryCatch(async(req, res) => {
+  //user will be come from client form
   const errors = formValidate(user.name, user.email, user.password)
   if(errors.length > 0){
     res.json({errors:errors[0].message})
@@ -32,22 +33,16 @@ app.post('/register', tryCatch(async(req, res) => {
   }
 }))
 
-// app.post('/login', tryCatch(async(req, res) => {
-//   const loginUser = await Users.find({name: req.body.name})
-//   if(loginUser.length > 0){
-//     let dePass = cryptr.decrypt(loginUser[0].password)
-//     if(req.body.password == dePass){
-//       req.session.admin = loginUser[0].name
-//       res.redirect('/admin/users')
-//     } else{
-//       req.flash('danger','Password not match')
-//       res.render('login', {name:req.body.name,password: req.body.password})
-//     }
-//   } else {
-//     req.flash('danger','User not found')
-//     res.redirect('/login')
-//   }
-// }))
+app.post('/login', tryCatch(async(req, res) => {
+  if(user){
+    let dePass = cryptr.decrypt(user.password)
+    if(user.name == 'mesto' && dePass == '9090'){
+      res.json('Invalid user!')
+    } else{
+      res.json({error:'Please register!'})
+    }
+  }
+}))
 
 app.use((error, req, res, next) => {
   console.log('error', {error})
