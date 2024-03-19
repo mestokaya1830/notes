@@ -1,7 +1,6 @@
 
 import express from 'express'
 const app = express()
-import path from 'path'
 import tryCatch from './tryCatch.js'
 import Cryptr from 'cryptr'
 const cryptr = new Cryptr('secret')
@@ -12,20 +11,23 @@ app.use(helmet())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
+const user = {
+  name: 'mesto',
+  email: 'mesto@outlook.com',
+  password: '9090'
+}
+
 app.get('/users', tryCatch(async(req, res) => {
-  res.json({user:'Mesto'})
+  user.password = cryptr.decrypt(user.password)
+  res.json(user)
 }))
 
 app.post('/register', tryCatch(async(req, res) => {
-  const user = {
-    name: 'mesto',
-    email: 'mesto@outlook.com',
-    password: '9090'
-  }
   const errors = formValidate(user.name, user.email, user.password)
   if(errors.length > 0){
     res.json({errors:errors[0].message})
   } else{
+    user.password = cryptr.encrypt(user.password)
     res.json(user)
   }
 }))
