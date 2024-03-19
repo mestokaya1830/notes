@@ -1,54 +1,55 @@
 
-const express = require('express')
+import express from 'express'
 const app = express()
-const path = require('path')
-const cors = require('cors')
-const wrapAsync = require('./wrapasync.js')
-const Cryptr = require('cryptr')
+import path from 'path'
+import tryCatch from './tryCatch.js'
+import Cryptr from 'cryptr'
 const cryptr = new Cryptr('secret')
-const formValidate = require('./formValidation')
-const isAdmin = require('./isAdmin')
+import formValidate  from './formValidation.js'
+import helmet from 'helmet'
 
-app.use(cors())
+app.use(helmet())
 app.use(express.json())
-app.use(express.urlencoded({extended: false}))
+app.use(express.urlencoded({extended: true}))
 
-Router.get('/users', isAdmin, wrapAsync(async(req, res) => {
+app.get('/users', tryCatch(async(req, res) => {
   res.json({user:'Mesto'})
 }))
 
-Router.post('/register', wrapAsync(async(req, res) => {
-  const errors = formValidate(req.body.name, req.body.password)
+app.post('/register', tryCatch(async(req, res) => {
+  const user = {
+    name: 'mesto',
+    email: 'mesto@outlook.com',
+    password: '9090'
+  }
+  const errors = formValidate(user.name, user.email, user.password)
   if(errors.length > 0){
-    req.json({errors:errors[0].message})
-  }else{
-    const newUser =  new Users({
-      name: req.body.name, 
-      password: cryptr.encrypt(req.body.password)
-    })
-    res.json({newUser})
+    res.json({errors:errors[0].message})
+  } else{
+    res.json(user)
   }
 }))
 
-Router.post('/login', wrapAsync(async(req, res) => {
-  const loginUser = await Users.find({name: req.body.name})
-  if(loginUser.length > 0){
-    let dePass = cryptr.decrypt(loginUser[0].password)
-    if(req.body.password == dePass){
-      req.session.admin = loginUser[0].name
-      res.redirect('/admin/users')
-    }else{
-      req.flash('danger','Password not match')
-      res.render('login', {name:req.body.name,password: req.body.password})
-    }
-  }else{
-    req.flash('danger','User not found')
-    res.redirect('/login')
-  }
-}))
+// app.post('/login', tryCatch(async(req, res) => {
+//   const loginUser = await Users.find({name: req.body.name})
+//   if(loginUser.length > 0){
+//     let dePass = cryptr.decrypt(loginUser[0].password)
+//     if(req.body.password == dePass){
+//       req.session.admin = loginUser[0].name
+//       res.redirect('/admin/users')
+//     } else{
+//       req.flash('danger','Password not match')
+//       res.render('login', {name:req.body.name,password: req.body.password})
+//     }
+//   } else {
+//     req.flash('danger','User not found')
+//     res.redirect('/login')
+//   }
+// }))
 
 app.use((error, req, res, next) => {
-  res.render('error', {error})
+  console.log('error', {error})
+  next(error)
 })
 
 //listen server
