@@ -22,10 +22,10 @@ const embed = new EmbedBuilder()
 	.setColor(0x00FFFF);
 
   webhook.send({
-	content: 'Webhook test',
-	username: 'some-username',
-	avatarURL: 'https://i.imgur.com/AfFp7pu.png',
-	embeds: [embed],
-});
+		content: 'Webhook test',
+		username: 'some-username',
+		avatarURL: 'https://i.imgur.com/AfFp7pu.png',
+		embeds: [embed],
+	});
 
 app.listen(3000, () => console.log('Server is running...'))
