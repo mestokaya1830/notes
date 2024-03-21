@@ -1,15 +1,16 @@
 javascript native-----------------------------------------------------
 npm install typescript -g
-create index.ts file
-create index.js file
+mkdir project-name
+mkdir src
+mkdir dist
+touch /src/index.ts
 write code in index.ts file
-complie index.ts like so tsc index.ts
-
-with config.json------------------------------------------------
 tsc --init
-"rootDir": "./api",
-"outDir": "./dist"
-tsc //run
+in tsconfig.json file update rootDir and outDir 
+"rootDir": "./src"
+npx tsc ./src/index.ts --outDir ./dist
+node ./dist/index.js
+
 
 
 nodejs-vuejs-----------------------------------------------------
@@ -20,11 +21,6 @@ npm i -D @types/node
 npx tsc --init
 for express npm i -D @types/express
 
-tsconfig.json --------------------------------------------------
-add this 
-"module": "NodeNext",
-"rootDir": "./src",
-"outDir": "./dist"
 
 package.json----------------------------------------------------
 npm run build in package.json "build":"npx tsc" 
