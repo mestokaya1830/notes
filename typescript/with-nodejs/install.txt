@@ -1,0 +1,3 @@
+npm init -y
+npm i express helmet
+npm i -D  typescript ts-node @types/node @types/express
