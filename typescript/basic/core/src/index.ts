@@ -1,2 +1,2 @@
-const fullName: string = 'Mustafa Kaya'
-console.log(fullName)
+let age: number = 40
+console.log(age)

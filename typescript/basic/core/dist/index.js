@@ -1,2 +1,2 @@
-var fullName = 'Mustafa Kaya';
-console.log(fullName);
+var age = 40;
+console.log(age);
