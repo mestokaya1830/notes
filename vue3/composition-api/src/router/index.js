@@ -59,6 +59,11 @@ const routes = [
     component: () => import('@/views/Component.vue'),
   },
   {
+    path: "/lazyloading",
+    name: "Lazy-Loading",
+    component: () => import('@/views/LazyLoading.vue'),
+  },
+  {
     path: "/nexttick",
     name: "NextTick",
     component: () => import('@/views/NextTick.vue'),

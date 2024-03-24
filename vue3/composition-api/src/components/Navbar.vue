@@ -7,6 +7,7 @@
       <router-link to="/fetch" class="links">Fetch</router-link>
       <router-link to="/fetchasync" class="links">Fetch Async</router-link>
       <router-link to="/component" class="links">Component</router-link>
+      <router-link to="/lazyloading" class="links">Lazy Loading</router-link>
       <router-link to="/reactivity" class="links">Reactivity</router-link>
       <router-link to="/computed" class="links">Computed</router-link>
       <router-link to="/watch" class="links">Watch</router-link>
