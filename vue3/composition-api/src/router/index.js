@@ -29,9 +29,9 @@ const routes = [
     component: () => import('@/views/FetchAsync.vue'),
   },
   {
-    path: "/reactive",
-    name: "Reactive",
-    component: () => import('@/views/Reactive.vue'),
+    path: "/reactivity",
+    name: "Reactivity",
+    component: () => import('@/views/Reactivity.vue'),
   },
   {
     path: "/computed",

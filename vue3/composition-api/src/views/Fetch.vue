@@ -10,10 +10,10 @@
       </div>
     </template> -->
 
-    <template v-for="item in photos" :key="item.id">
+    <template v-for="item in users" :key="item.id">
       <div>
         <span>{{ item.id }}</span>
-        <a :href="item.url" target="_blank" >{{ item.url }}</a>
+        <a :href="item.name" target="_blank" >{{ item.name }}</a>
       </div>
     </template>
   </div>
@@ -28,13 +28,13 @@ import axios from 'axios'
   //   {id:2, name:'Ali', age: 40},
   //   {id:3, name:'Deniz', age: 30}
   // ])
-  let photos = ref(null)
-  fetch('https://jsonplaceholder.typicode.com/photos')
+  let users = ref(null)
+  fetch('https://jsonplaceholder.typicode.com/users')
   .then(data => data.json())
-  .then(data => photos.value = data)
+  .then(data => users.value = data)
 
-  // axios.get('https://jsonplaceholder.typicode.com/photos').then(result => {
-  //   photos.value = result.data
+  // axios.get('https://jsonplaceholder.typicode.com/users').then(result => {
+  //   users.value = result.data
   // })
 
  onMounted(() => {

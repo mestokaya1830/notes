@@ -7,9 +7,9 @@
       <input type="button" value="Decrease" @click="decrease()">
     </div>
    <select v-model="allData.title">
-    <option value="Vue3 Reactive">Vue3 Reactive</option>
-    <option value="Reactive">Reactive</option>
-    <option value="Non Reactive">Non Reactive</option>
+    <option value="Vue3 Reactivity">Vue3 Reactivity</option>
+    <option value="Reactivity">Reactivity</option>
+    <option value="Non Reactivity">Non Reactivity</option>
   </select>
   </div>
 </template>
@@ -18,7 +18,7 @@
 //composition api
   import {ref, onMounted, reactive} from 'vue'
   const allData = reactive({
-    title: ref('Reactive'),
+    title: ref('Reactivity'),
     counter: 0,
   })
   const increase = () => allData.counter++

@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <script src="./vue3.js"></script>
+  <script src="../vue3.js"></script>
   <style>
     * {
       margin: 0;
@@ -25,19 +25,13 @@
       padding: 5px 15px;
       margin-top: 20px;
     }
-    p{
-      text-align: center;
-      margin: 20px 0;
-    }
   </style>
 </head>
 
 <body class="h-full grid place-items-center">
   <div id="app">
     <h2 class="title">{{ title }}</h2>
-    <p>Slot mean is set text of component from html <br> example  (Click Me) (Submit)</p>
-    <app-button>Click Me</app-button>
-    <app-button>Submit</app-button>
+    <app-button></app-button>
   </div>
 
   <script>
@@ -46,9 +40,7 @@
         'app-button': {
           template: `
             <div class="wrapper">
-              <button @click="showMessage()">
-                <slot />
-              </button>
+              <button @click="showMessage()">{{ btnText }}</button>
             </div>
           `,
           data () {
@@ -58,21 +50,21 @@
           },
           methods:{
             showMessage(){
-              alert('Component Slot')
+              alert('Component')
             }
           }
         }
       },
       data() {
         return {
-          title: 'Local Component Slot'
+          title: 'Local Component'
         }
       },
       methods: {
 
       },
     })
-      .mount('#app')
+    .mount('#app')
   </script>
 </body>
 

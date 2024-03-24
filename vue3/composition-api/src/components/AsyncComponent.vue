@@ -1,10 +1,10 @@
 <template>
   <div>
     <h2>Async Fetch</h2>
-  <template v-for="item in photos" :key="item.id">
+  <template v-for="item in users" :key="item.id">
     <div>
       <span>{{ item.id }}</span>
-      <span :href="item.url">{{ item.url }}</span>
+      <span :href="item.name">{{ item.name }}</span>
     </div>
   </template>
   </div>
@@ -16,12 +16,12 @@ import { ref } from 'vue'
 export default {
   async setup() {
     let result = ref(null)
-    let photos = ref(null)
-    result = await fetch('https://jsonplaceholder.typicode.com/photos')
-    photos.value = await result.json()
+    let users = ref(null)
+    result = await fetch('https://jsonplaceholder.typicode.com/users')
+    users.value = await result.json()
 
     return {
-      photos
+      users
     }
   }
 
