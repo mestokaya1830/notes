@@ -12,4 +12,4 @@ const usersSchema = new mongoose.Schema({
   isAdmin:{type: Boolean, default: false}
 })
 
-export default new mongoose.model('users', usersSchema)
+export default mongoose.model('users', usersSchema)

@@ -7,7 +7,7 @@ SELECT db, host, user FROM mysql.db;
 SELECT db, host, user FROM mysql.db WHERE db = 'db';
 SELECT * FROM mysql.db WHERE Db = 'db'\G;
 
-CREATE USER 'mesto'@'localhost' IDENTIFIED BY '123';
+CREATE USER 'mesto'@'localhost' IDENTIFIED BY 'MK1972mk111301132';
 GRANT ALL ON *.* TO 'mesto'@'localhost';//for all database
 GRANT ALL PRIVILEGES ON gasvet.* TO 'mesto'@'localhost';
 ALTER USER 'mesto'@'localhost' IDENTIFIED WITH mysql_native_password BY '123';

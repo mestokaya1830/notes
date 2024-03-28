@@ -32,7 +32,6 @@ class QuizesController extends Controller
             return redirect()->route('quizes.index')->withErrors('This quiz is already exists!');
         } else {
             Quizes::create($request->post());
-
             return redirect()->route('quizes.index')->withSuccess('Quiz Created Successfully!');
         }
     }
