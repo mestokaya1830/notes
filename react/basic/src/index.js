@@ -11,8 +11,13 @@ import ClassPropComponent from './components/ClassPropComponent'
 import StateComponent from './components/StateComponent'
 import CounterComponent from './components/CounterCompoent'
 import Events from './components/EventComponent';
-import ParentComponent
- from './components/parent-child/ParentComponent';
+import ParentComponent from './components/parent-child/ParentComponent';
+import ConditionsComponent from './components/ConditionsComponent';
+import List from './components/List';
+import StyleComponent from './components/StyleComponent';
+import FormComponent from './components/FormComponent';
+import FragmentComponent
+ from './components/FragmentComponent';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 
@@ -28,6 +33,11 @@ root.render(
     <CounterComponent />
     <Events />
     <ParentComponent />
+    <ConditionsComponent />
+    <List />
+    <StyleComponent />
+    <FormComponent />
+    <FragmentComponent />
   </React.StrictMode>
 );
 
