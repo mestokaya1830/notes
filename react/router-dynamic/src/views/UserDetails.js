@@ -6,7 +6,7 @@ export const UserDetails = () => {
   const back = useNavigate()
   return (
     <div>
-      <h1>User Details {id}</h1>
+      <h2>User Details {id}</h2>
       <button onClick={() => back('/users')}>Back</button>
     </div>
   )

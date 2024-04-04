@@ -1,7 +1,7 @@
 export const Users = () => {
   return (
     <div>
-      Users Page
+      <h2>Users Page</h2>
     </div>
   )
 }

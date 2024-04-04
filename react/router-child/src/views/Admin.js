@@ -4,7 +4,7 @@ export const Admin = () => {
   return (
     <>
     <div>
-      Admin Page
+      <h2>Admin Page</h2>
     </div>
     <nav>
       <Link to = "users">Users</Link>
