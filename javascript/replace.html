@@ -16,7 +16,7 @@
     //basic literal
     let lang = ['Html', 'Css', 'Javascript', 'Nodejs', 'Mongodb', 'Mysql']
     let flat_array = [[1, 2, 3], ['a', 'b', 'c'], ['a1', 'b2', 'b3']]
-    let numbers = [1,2,3,4,5,6,7,8,9,10]
+    let mix = [1,2,3,'a','b','c']
 
 
     //replace with array index----------------------------------------------------
@@ -28,14 +28,21 @@
     // console.log(lang)
 
     //replace with replace----------------------------------------------------
-    // const firstDigit = (param) => param.replace(/[0-9]/, '$')
-    // console.log(firstDigit(lang))
+    // mix.forEach((item, index) => {
+    //   if(!isNaN(item)){
+    //     mix[index] = 'A'
+    //   }
+    // })
+    // console.log(mix)
 
-    // const firstLetter = (param) => param.replace(/[a-z]/, '$')
+  
+    //replace first letter with charAt
+    // const firstLetter = (param) => param.map(item => item.replace(item.charAt(0), '$'))
     // console.log(firstLetter(lang))
 
-    // const firstLetter2 = (param) => param.replace(param.charAt(0), '$')
-    // console.log(firstLetter2(lang))
+    // //replace first letter with regex
+    // const firstLetter = (param) => param.map(item => item.replace(/[a-z]/, '$'))
+    // console.log(firstLetter(lang))
 
     //replace with foreach----------------------------------------------------
     // lang.forEach((item, index) => {
