@@ -1,7 +1,7 @@
 import { Routes, Route} from 'react-router-dom'
 import { Home } from '../views/Home';
 import { Admin } from '../views/Admin';
-import { Users } from '../views/admin/Users';
+import { Users } from '../views/admin/Index';
 import { Settings } from '../views/admin/Settings';
 import { NotFound } from '../views/NotFound';
 
@@ -10,6 +10,7 @@ export const Router = () => {
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='admin' element={<Admin />}>
+        <Route index element={<Users />} />
         <Route path='users' element={<Users />} />
         <Route path='settings' element={<Settings />} />
       </Route>
