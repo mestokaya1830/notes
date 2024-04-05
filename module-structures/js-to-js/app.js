@@ -1,8 +1,11 @@
 import { testFunction, User, Admin, Person, UserClass, RegularFunction } from "./module.js";
-import ff from './module.js'
+// import ff from './module.js'
 
-//or call User class as UserClass
-// import { User as UserClass } from './module.js'
+//or call together
+// import ff, { testFunction, User, Admin, Person, UserClass, RegularFunction } from "./module.js";
+
+//call User class as UserClass
+// import { User as UserClass, Admin as AdminClass } from './module.js'
 
 //or collect all in myClass
 // import * as Myclass from "./module.js";
