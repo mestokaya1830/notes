@@ -1,0 +1,27 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.App{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+nav{
+  display: flex;
+  width: 100vw;
+  margin: 20px;
+}
+.navlink {
+  margin: 0 10px;
+  font-size: 18px;
+  padding: 5px 15px;
+}
+a.active{
+  color: #fff;
+  background-color: #444;
+  border-radius: 5px;
+}
