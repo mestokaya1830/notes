@@ -1,3 +1,0 @@
-npm i typescript -g
-tsc --init --rootDir src --outDir dist
-tsc ./src/app.ts --outDir dist --watch
