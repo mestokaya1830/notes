@@ -1,0 +1,42 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+body{
+  padding: 30px;
+}
+.router{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+}
+.navbar{
+  display: flex;
+  margin: 20px;
+}
+a{
+  margin: 0 15px;
+  font-size: 18px;
+}
+a.active{color: red;}
+
+.user-list-con, .profile{
+  margin-top: 40px;
+}
+.user-list{
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  margin: 5px 0;
+}
+.back-btn {
+  height: 34px;
+  width: 120px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: 30px;
+}
