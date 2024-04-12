@@ -17,7 +17,9 @@ function Index() {
     {
       path: "/",
       element: <MasterLayout />,
-      errorElement: <NotFound />,
+      errorElement:<React.Suspense fallback="Loading...">
+        <NotFound />
+      </React.Suspense>,
       children: [
         {
           path: "/",
