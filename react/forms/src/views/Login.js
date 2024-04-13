@@ -1,18 +1,8 @@
 import React from 'react'
-import { Form, redirect } from 'react-router-dom'
-
-export const loginFunction = async({request}) => {
-  console.log(request)
-  const data = await request.formData()
-  const postData = {
-    name: data.get('name'),
-    password: data.get('password')
-  }
-  console.log(postData)
-  return redirect('/')
-}
+import { Form, redirect, useActionData } from 'react-router-dom'
 
 function Login() {
+  const validate = useActionData()
   return (
     <div>
       <h2>Login</h2>
@@ -21,6 +11,7 @@ function Login() {
           <input type='text' name="name" placeholder='Name...'/>
           <input type='password' name="password" placeholder='Password...'/>
           <input type="submit" className="login-btn" value="Login"/>
+          {validate && validate.error && <p>{validate.error}</p>}
         </Form>
       </div>
     </div>
@@ -30,3 +21,17 @@ function Login() {
 
 export default Login
 
+export const loginFunction = async({request}) => {
+  console.log(request)
+  const data = await request.formData()
+  const postData = {
+    name: data.get('name'),
+    password: data.get('password')
+  }
+  console.log(postData)
+
+  if(postData.name.length < 3){
+    return {error: 'Name must lass 4 length!'}
+  }
+  return redirect('/')
+}
