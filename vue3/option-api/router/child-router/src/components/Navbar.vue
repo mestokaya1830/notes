@@ -1,10 +1,10 @@
 <template>
   <div>
-    <nav>
+    <nav class="navbar">
       <router-link  to="/" class="links">Home</router-link>
       <router-link  to="/about" class="links">About</router-link>
       <router-link  to="/contact" class="links">Contact</router-link>
-      <router-link  to="/account" class="links">Account</router-link>
+      <router-link  to="/admin" class="links">Admin</router-link>
     </nav>
   </div>
 </template>
@@ -21,14 +21,12 @@
 </script>
 
 <style scoped>
-  nav{
-    display: flex;
+  .navbar{
+    margin: 20px;
   }
   .links{
-    margin: 10px;
-  }
-  .links{
-    text-decoration: none;
+    margin: 0 15px;
+    font-size: 18px;
   }
   .active{
     color: green;

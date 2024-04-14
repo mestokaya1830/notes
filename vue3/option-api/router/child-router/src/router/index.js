@@ -19,44 +19,32 @@ const routes = [
     component: () => import('../views/Contact.vue')
   },
   {
-    path: "/:pathName(.*)*",
-    name: "NotFound",
-    component: () => import('../views/NotFound.vue'),
-  },
-  {
-    path: "/account",
-    name: "Account",
-    component: () => import('../views/Account.vue'),
+    path: "/admin",
+    name: "Admin",
+    component: () => import('../views/Admin.vue'),
     children:[
       {
-        path:'/account',
-        name:'Bets',
-        component: () => import('../views/Account/Bets.vue')
+        path:'/admin',
+        name:'Users',
+        component: () => import('../views/admin/Users.vue')
       },
       {
-        path:'/users',
-        name:'Users',
-        component: () => import('../views/Account/Users.vue')
+        path:'/settings',
+        name:'Settings',
+        component: () => import('../views/admin/Settings.vue')
       },
       {
         path:'/users/:id',
-        name:'UserDetails',
-        component: () => import('../views/Account/UserDetails.vue')
-      },
-      {
-        path:'/profile',
-        name:'Profile',
-        component: () => import('../views/Account/Profile.vue')
-      },
-      {
-        path:'/balance',
-        name:'Balance',
-        component: () => import('../views/Account/Balance.vue')
+        name:'profile',
+        component: () => import('../views/admin/Profile.vue')
       }
     ]
   },
-  
-  
+  {
+    path: "/:pathName(.*)*",
+    name: "NotFound",
+    component: () => import('../views/NotFound.vue'),
+  }
 ];
 
 const router = createRouter({
