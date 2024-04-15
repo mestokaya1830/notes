@@ -1,0 +1,37 @@
+###
+GET http://localhost:3000/products
+
+###
+POST http://localhost:3000/products
+Content-Type:  application/json
+
+{
+  "id": 1,
+  "name":"Laptop",
+  "price": 30
+}
+
+###
+GET http://localhost:3000/products/1
+Content-Type: application/json
+
+{
+  "id": 1
+}
+
+###
+Put http://localhost:3000/products/1
+Content-Type: application/json
+
+{
+  "id": 2,
+  "name":"Laptop"
+}
+
+###
+Delete http://localhost:3000/products/1
+Content-Type: application/json
+
+{
+  "id": 2
+}

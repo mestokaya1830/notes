@@ -9,6 +9,21 @@ const router = createRouter({
       name: 'home',
       component: Home
     },
+    {
+      path: '/components',
+      name: 'components',
+      component: (() => import('@/views/Components.vue'))
+    },
+    {
+      path: '/computed',
+      name: 'computed',
+      component: (() => import('@/views/Computed.vue'))
+    },
+    {
+      path: '/:catchAll(.*)*',
+      name: 'notfound',
+      component: (() => import('@/views/NotFound.vue'))
+    },
   ]
 })
 
