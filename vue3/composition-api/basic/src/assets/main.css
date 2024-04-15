@@ -1,0 +1,40 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+body{
+  padding: 30px;
+}
+.links{
+  margin: 0 15px;
+  font-size: 18px;
+}
+.router{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.active{color: red;}
+
+.input-text{
+  height: 34px;
+  border: 1px solid #ccc;
+  padding-left: 7px;
+  border-radius: 5px;
+  font-size: 17px;
+}
+.input-btn{
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 18px;
+  padding: 7px 20px;
+  cursor: pointer;
+}
+.test-class{color: red;}
+.list{margin-top: 50px;}
+.list-item{
+  margin: 0 10px;
+}
