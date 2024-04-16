@@ -3,7 +3,7 @@
     <h1>{{ title }}</h1>
     <div class="list-con">
       <template v-for="(item, index) in filterUsers" :key="item.id">
-        <div class="list">
+        <div class="list" :class="{'active': item.name=='Mesto'}">
           <span class="list-items">{{ item.id }}</span>
           <span class="list-items">{{ item.name }}</span>
           <span class="list-items">{{ item.salary }}</span>

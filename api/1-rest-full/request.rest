@@ -6,32 +6,23 @@ POST http://localhost:3000/products
 Content-Type:  application/json
 
 {
-  "id": 1,
-  "name":"Laptop",
-  "price": 30
+  "name":"Test3",
+  "price": 20
 }
 
 ###
-GET http://localhost:3000/products/1
+GET http://localhost:3000/products/661e898cfea23e5a20fe331b
+Content-Type: application/json
+
+
+###
+Put http://localhost:3000/products/661e898cfea23e5a20fe331b
 Content-Type: application/json
 
 {
-  "id": 1
+  "price":23
 }
 
 ###
-Put http://localhost:3000/products/1
-Content-Type: application/json
+Delete http://localhost:3000/products/661e8983fea23e5a20fe3317
 
-{
-  "id": 2,
-  "name":"Laptop"
-}
-
-###
-Delete http://localhost:3000/products/1
-Content-Type: application/json
-
-{
-  "id": 2
-}
