@@ -4,6 +4,7 @@ import helmet from 'helmet'
 import 'dotenv/config'
 import db from './models/db.js'
 import productsRouter from './routes/productsRouter.js'
+import ordersRouter from './routes/ordersRouter.js'
 
 app.use(helmet())
 app.use(express.json())
@@ -14,10 +15,11 @@ app.get('/', (req, res) => {
 })
 
 app.use('/products',  productsRouter)
+app.use('/orders',  ordersRouter)
 
 
 app.use((error, req, res, next) => {
-  console.log(error)
+  res.json(error)
   next(error)
 })
 

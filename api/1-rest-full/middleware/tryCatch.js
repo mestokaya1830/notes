@@ -6,4 +6,4 @@ const tryCatch = (controller) => async(req, res, next) => {
   }
 }
 
-export default tryCatch
+export default  tryCatch

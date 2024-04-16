@@ -1,3 +1,4 @@
+//products
 ###
 GET http://localhost:3000/products
 
@@ -6,8 +7,8 @@ POST http://localhost:3000/products
 Content-Type:  application/json
 
 {
-  "name":"Test3",
-  "price": 20
+  "name":"Test",
+  "price": 60
 }
 
 ###
@@ -16,13 +17,43 @@ Content-Type: application/json
 
 
 ###
-Put http://localhost:3000/products/661e898cfea23e5a20fe331b
+Put http://localhost:3000/products/661e88cdd4d96b1fa04697f8
 Content-Type: application/json
 
 {
-  "price":23
+  "price":50
 }
 
 ###
 Delete http://localhost:3000/products/661e8983fea23e5a20fe3317
 
+
+//orders----------------------------------
+
+###
+GET http://localhost:3000/orders
+
+###
+POST http://localhost:3000/orders
+Content-Type:  application/json
+
+{
+  "productId":"661e88cdd4d96b1fa04697f8",
+  "quantity": 3
+}
+
+###
+GET http://localhost:3000/orders/661e898cfea23e5a20fe331b
+Content-Type: application/json
+
+
+###
+Put http://localhost:3000/orders/661e88cdd4d96b1fa04697f8
+Content-Type: application/json
+
+{
+  "price":50
+}
+
+###
+Delete http://localhost:3000/orders/661eeb23864e1da7c06a9aa6

@@ -1,8 +1,12 @@
-import Mongoose from 'mongoose'
+import mongoose from 'mongoose'
 
-const productsSC = new Mongoose.Schema({
-  name:{type: String, required: true},
-  price:{type: Number, required: true}
+const productsSC = new mongoose.Schema({
+  name:{
+    type: String,
+    required: [true, 'Product-Name can\'t be null!'],
+    minlength: [3, 'Product-Name must be greater then 2']
+  },
+  price:{type: Number, required: [true, 'Price can\t be null!!']}
 })
 
-export default Mongoose.model('products', productsSC)
+export default mongoose.model('products', productsSC)

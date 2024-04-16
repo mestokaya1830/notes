@@ -29,7 +29,7 @@ Router.put('/:id', tryCatch(async(req, res) => {
 
 Router.delete('/:id', tryCatch(async(req, res) => {
   await Products.deleteOne({_id: req.params.id})
-  res.status(200).json({message:'Prodcut Deleted'})
+  res.status(200).json({message:'Product Deleted'})
 }))
 
 
