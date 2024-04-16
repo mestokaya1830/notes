@@ -13,6 +13,7 @@ Router.post('/', tryCatch(async(req, res) => {
     name: req.body.name,
     price: req.body.price
   })
+  console.log(newProduct)
   await newProduct.save()
   res.status(200).json({message:'New Product Added'})
 }))
