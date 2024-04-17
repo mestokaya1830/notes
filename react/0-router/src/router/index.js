@@ -8,6 +8,7 @@ const Contact = React.lazy(() => import('../views/Contact'))
 const Admin = React.lazy(() => import('../views/Admin'))
 const Users = React.lazy(() => import('../views/admin/Users'))
 const Settings = React.lazy(() => import('../views/admin/Settings'))
+const Profile = React.lazy(() => import('../views/admin/Profile'))
 const NotFound = React.lazy(() => import('../views/NotFound'))
 
 function index() {
@@ -51,6 +52,12 @@ function index() {
               path: 'admin',
               element: <React.Suspense fallback="Loading...">
                 <Users />
+              </React.Suspense>
+            },
+            {
+              path: 'users/:id',
+              element: <React.Suspense fallback="Loading...">
+                <Profile />
               </React.Suspense>
             },
             {

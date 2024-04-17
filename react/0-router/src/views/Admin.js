@@ -6,10 +6,10 @@ function Admin() {
     <div>
       <h1>Dashboard</h1>
       <nav className='navbar'>
-        <Link to="admin" className='links'>Users</Link>
+        <Link to="/admin" className='links'>Users</Link>
         <Link to="settings" className='links'>Settings</Link>
       </nav>
-      <main className='router'>
+      <main>
         <Outlet />
       </main>
     </div>
