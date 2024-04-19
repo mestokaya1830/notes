@@ -24,3 +24,10 @@ h1, h2{
   flex-direction: column;
   align-items: center;
 }
+.input-btn{
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 7px 15px;
+  cursor: pointer;
+}

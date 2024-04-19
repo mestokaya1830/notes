@@ -2,8 +2,10 @@ import React from 'react'
 
 function Alert(props) {
   return (
-    <div>
+    <div className='router'>
       <h2>{props.title}</h2>
+      <br/>
+      <input type='button' value="Event Props" onClick={props.parentEvent} className='input-btn'/>
     </div>
   )
 }
