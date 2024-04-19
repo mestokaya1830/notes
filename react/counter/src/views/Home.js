@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function Home() {
   const title = 'Home'
-  let counter = 0
+
+  let [counter, setCounter] = useState(0)
 
   const inCreament = () => {
-    counter += 1
+    setCounter(counter + 1)
   }
   const deCreament = () => {
-    counter -= 1
+    setCounter(counter - 1)
   }
   return (
     <div className='router'>
@@ -16,8 +17,8 @@ function Home() {
       <br/>
       <h1>{counter}</h1>
       <div>
-        <input type='button' className='input-btn' value="Increament" onClick={() => inCreament()} />
-        <input type='button' className='input-btn' value="Decreament" onClick={() => deCreament()} />
+        <input type='button' className='input-btn' value="Increament" onClick={inCreament} />
+        <input type='button' className='input-btn' value="Decreament" onClick={deCreament} />
       </div>
     </div>
   )
