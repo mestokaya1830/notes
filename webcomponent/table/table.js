@@ -6,7 +6,6 @@ export default class Table extends HTMLElement{
   connectedCallback() {//connectedCallback() => element dom üzerinde yerleştirildiği anda çağrılır.
     const headers = this.dataset.headers.split(',').map(item => item.trim())
     this.shadowRoot.innerHTML = `
-    // <link rel="stylesheet" href="./main.css">//external css
       <style>
         table{
           border-collapse: collapse;

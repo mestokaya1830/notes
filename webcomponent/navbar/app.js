@@ -1,7 +1,5 @@
-class Navbar extends HTMLElement {
-  constructor() {
-    super()
-    this.innerHTML = `
+const template = document.createElement('template')
+template.innerHTML = `
     <nav class="navbar">
       <a href="./index.html">Home</a>
       <a href="./about.html">About</a>
@@ -23,7 +21,12 @@ class Navbar extends HTMLElement {
         font-size:20px;
       }
     </style>
-    `
+  `
+class Navbar extends HTMLElement {
+  constructor() {
+    super()
+    this.attachShadow({mode:"open"})
+    this.shadowRoot.appendChild(template.content.cloneNode(true))
   }
 }
 
