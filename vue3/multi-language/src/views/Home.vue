@@ -33,8 +33,7 @@ export default {
           localTransation: 'Yerel Ceviri',
           english:'Ingilizce',
           turkish:'Turkce',
-        },
-
+        }
       }
     }
   },
@@ -56,3 +55,43 @@ export default {
   padding: 3px 10px;
 }
 </style>
+
+
+
+<!-- javascript version
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2 id="title"></h2>
+  <p id="message"></p>
+  
+  <div class="wrapper">
+   <button onclick="loadLanguage('en')">English</button>
+   <button onclick="loadLanguage('tr')">Turkce</button>
+  </div>
+  
+  <script>
+    const languages = {
+      en:{
+        title:'Home',
+        hello:'Hello'
+      },
+      tr:{
+        title:'Ana Sayfa',
+        hello:'Merhaba'
+      }
+    }
+    
+    const loadLanguage = (key) => {
+      document.getElementById('title').innerText = languages[key]['title']
+      document.getElementById('message').innerText = languages[key]['hello']
+    }
+    loadLanguage('en')
+  </script>
+</body>
+</html> -->

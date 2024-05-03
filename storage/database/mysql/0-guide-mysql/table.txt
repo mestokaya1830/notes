@@ -12,7 +12,7 @@ drop table test;
 ALTER TABLE test ADD COLUMN phone VARCHAR(15) AFTER state;
 ALTER TABLE basketfixtures ENGINE = MyISAM;
 ALTER TABLE basketfixtures ROW_FORMAT=fixed;
-ALTER TABLE betsummaryALTER COLUMN woncount SET DEFAULT '0';
+ALTER TABLE betsummary ALTER COLUMN woncount SET DEFAULT '0';
 
 SHOW TABLES;
 DESCRIBE  users;
