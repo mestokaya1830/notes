@@ -1,0 +1,6 @@
+npm init -y
+npm i webpack webpack-cli --dev
+touch webpack.config.js
+in package.json
+"build": "webpack"
+"start": "nodemon ./src/app.js"
