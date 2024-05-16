@@ -5,6 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Copy Text</title>
+  <style>
+    textarea{
+      height: 100px;
+    }
+  </style>
 </head>
 
 <body>
@@ -12,21 +17,20 @@
   <h4 style="margin:5px;text-align: center;">Paste anywhere</h4>
 
   <div
-    style="display: flex;flex-direction: column;justify-content: space-between;  height:70px;width:400px;margin: 20px auto;">
+    style="display: flex;flex-direction: column;justify-content: space-between;  height:auto;width:400px;margin: 20px auto;">
     <input type="text" name="" id="text" placeholder="Enter text..." style="height: 30px;padding-left: 5px;">
+    <br/>
     <button id="copyText" style="height: 30px;">Copy Input Value</button>
+    <textarea rows="10" cols="30" id="area"></textarea>
   </div>
   <script>
     document.getElementById('copyText').addEventListener('click', () => {
-      const textarea = document.createElement('textarea')
-      const txt = document.getElementById('text').value
-      if (!txt) { return }
-      textarea.value = txt
-      document.body.appendChild(textarea)
-      textarea.select()
+      document.getElementById('text').select()
       document.execCommand('copy')
-      textarea.remove()
       alert('Password copied to clipboard!')
+      navigator.clipboard.readText().then((item) => {
+        document.getElementById('area').innerText = item
+      });
     })
   </script>
 </body>
