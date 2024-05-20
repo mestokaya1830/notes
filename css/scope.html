@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    h2{
+      color: green;
+    }
+    @scope (.card) {
+    h2 {
+      color: red;
+    }
+}
+  </style>
+</head>
+<body>
+  
+  <h2>Title Outside Of Div</h2>
+  <div class="card">
+    <h2>New Css</h2>
+    <h2>Old Css</h2>
+  </div>
+</body>
+</html>
