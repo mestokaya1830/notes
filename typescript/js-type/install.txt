@@ -1,6 +1,0 @@
-mkdir dist
-mkdir src
-touch app.ts in src folder
-touch index.html in dist folder and call <script src="app.js"></script>
-on terminal tsc -w
-and open index.html file in dist folder
