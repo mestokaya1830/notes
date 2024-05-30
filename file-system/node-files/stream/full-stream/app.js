@@ -10,7 +10,7 @@ app.use(helmet())
 app.use(express.json())
 app.use(express.static('static'))
 
-const path = './video.mp4'
+const videoPath = './video.mp4'
 app.get('/', (req, res) => {
   res.sendFile('index.html')
 })
@@ -20,7 +20,6 @@ app.get('/rangemovie', tryCatch((req, res) => {
     range = 'bytes=0-'
   }
   
-  const videoPath = './1.mp4'
   const size = fs.statSync(videoPath).size
   const chunk_size = 5*10**5 //500 kb
   const start = Number(range.replace(/\D/g, ""))
@@ -42,18 +41,18 @@ app.get('/rangemovie', tryCatch((req, res) => {
 //with flat you cant move video stream forward or back
 app.get('/flatmovie', tryCatch((req, res) => {
   res.set("Content-Type","video/mp4")
-  res.set("Content-Length", fs.statSync(path).size)
-  fs.createReadStream(path).pipe(res)
+  res.set("Content-Length", fs.statSync(videoPath).size)
+  fs.createReadStream(videoPath).pipe(res)
 }))
 
 app.get('/downloadmovie', tryCatch((req, res) => {
   res.setHeader('Content-disposition', 'attachment; filename=' + 'test.mp4');
   res.setHeader('Content-type', 'video/mp4');
-  fs.createReadStream(path).pipe(res)
+  fs.createReadStream(videoPath).pipe(res)
 }))
 
 app.get('/writemovie', tryCatch((req, res) => {
-  fs.createReadStream(path).pipe(fs.createWriteStream('./test.mp4')).on('finish', () => {
+  fs.createReadStream(videoPath).pipe(fs.createWriteStream('./test.mp4')).on('finish', () => {
     res.status(200).send('Saved')
   })
 }))
