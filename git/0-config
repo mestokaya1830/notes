@@ -1,0 +1,11 @@
+mestokaya1830
+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
+
+add user--------------------------------------------------------
+git config --global user.name "mestokaya1830"
+git config --global user.email "mesto1830@outllok.com"
+
+clone----------------------------------------------------------
+git clone http://www.github.com/mestokaya1830/test
+enter username 
+enter password

@@ -1,29 +1,27 @@
 import express from 'express'
-import cors from 'cors'
 import helmet from 'helmet'
-const app = express()
 import fs from 'fs'
-import dotenv from 'dotenv'
+import 'dotenv/config'
+import tryCatch from './tryCatch.js'
+const app = express()
 
 
-dotenv.config()
-app.use(cors())
 app.use(helmet())
 app.use(express.json())
-app.use(express.urlencoded({extended: true}))
 app.use(express.static('static'))
 
 const path = './video.mp4'
 app.get('/', (req, res) => {
   res.sendFile('index.html')
 })
-app.get('/rangemovie', (req, res) => {
+app.get('/rangemovie', tryCatch((req, res) => {
   let range = req.headers.range
   if(!range){
     range = 'bytes=0-'
   }
   
-  const size = fs.statSync(path).size
+  const videoPath = './1.mp4'
+  const size = fs.statSync(videoPath).size
   const chunk_size = 5*10**5 //500 kb
   const start = Number(range.replace(/\D/g, ""))
   const end = Math.min(start + chunk_size, size-1)
@@ -37,25 +35,28 @@ app.get('/rangemovie', (req, res) => {
     "Content-Type":'video/mp4'
   }
   res.writeHead(206, headers)
-  const video_stream = fs.createReadStream(path, {start, end})
+  const video_stream = fs.createReadStream(videoPath, {start, end})
   video_stream.pipe(res)
-})
+}))
 
-app.get('/flatmovie', (req, res) => {
+//with flat you cant move video stream forward or back
+app.get('/flatmovie', tryCatch((req, res) => {
   res.set("Content-Type","video/mp4")
   res.set("Content-Length", fs.statSync(path).size)
   fs.createReadStream(path).pipe(res)
-})
+}))
 
-app.get('/downloadmovie', (req, res) => {
+app.get('/downloadmovie', tryCatch((req, res) => {
   res.setHeader('Content-disposition', 'attachment; filename=' + 'test.mp4');
   res.setHeader('Content-type', 'video/mp4');
   fs.createReadStream(path).pipe(res)
-})
+}))
 
-app.get('/writemovie', (req, res) => {
-  fs.createReadStream(path).pipe(fs.createWriteStream('./test.mp4'))
-})
+app.get('/writemovie', tryCatch((req, res) => {
+  fs.createReadStream(path).pipe(fs.createWriteStream('./test.mp4')).on('finish', () => {
+    res.status(200).send('Saved')
+  })
+}))
 
 app.use((err, req, res, next) => {
   console.log(err)
