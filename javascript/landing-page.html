@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        width: 100%;
+      }
+
+      .navbar {
+        display: flex;
+        align-items: center;
+        position: fixed;
+        height: 60px;
+        width: 100%;
+        background-color: #222;
+        color: #fff;
+        padding: 0 20px;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+        background-color: #ccc;
+        padding-top: 80px;
+      }
+      .go-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        cursor: pointer;
+      }
+
+      a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 18px;
+        margin: 0 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav id="navbar" class="navbar">
+      <a href="#con1">Con 1</a>
+      <a href="#con2">Con 2</a>
+      <a href="#con3">Con 3</a>
+    </nav>
+    <div id="con1" class="container">Container 1</div>
+    <div id="con2" class="container">Container 2</div>
+    <div id="con3" class="container">Container 3</div>
+
+    <span id="go-top" class="go-top">Go Top</span>
+    
+    <script>
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+          document.getElementById('topbar').style.display = 'none'
+        } else {
+          document.getElementById('topbar').style.display = 'flex'
+          document.getElementById('navbar').style.position = 'static'
+        }
+        if (window.scrollY > 120) {
+          document.getElementById('navbar').style.position = 'fixed'
+          document.getElementById('navbar').style.top = 0
+        }
+      })
+      
+      document.getElementById('go-top').addEventListener('click', (e) => {
+        window.scrollTo(0, 0)
+      })
+    </script>
+  </body>
+</html>
