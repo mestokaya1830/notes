@@ -1,5 +1,0 @@
-mkdir src
-mkdir dist
-touch src/app.ts
-touch src/index.html
-tsc -w ./src/app.ts

@@ -15,9 +15,9 @@
     <h2>Event Target</h2>
     <hr>
     <input type="text" placeholder="Type & Enter">
-    <h2 onclick="getText(event)" class="old-class">Target 1</h2>
-    <h2 onclick="getText(event)" class="old-class">Target 2</h2>
-    <h2 onclick="getText(event)" class="old-class">Target 3</h2>
+    <h2 onclick="getText(event)" class="list">Target 1</h2>
+    <h2 onclick="getText(event)" class="list">Target 2</h2>
+    <h2 onclick="getText(event)" class="list">Target 3</h2>
   </div>
 <!-- script side----------------------------- -->
   <script>
@@ -27,12 +27,10 @@
       }
     })
     let getText = (event) => {
-      let oldclass = document.querySelectorAll('.old-class')
-      oldclass.forEach(item => {
+      document.querySelectorAll('.list').forEach(item => {
         item.classList.remove('new-class')
       })
       event.target.classList.add('new-class')
-      alert(event.target.innerText)
     }
   </script>
 </body>
