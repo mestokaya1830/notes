@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
     <style>
       * {
         margin: 0;
@@ -16,6 +20,13 @@
       }
       body {
         width: 100%;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 
+        "FILL" 1,
+        "wght" 400,
+        "GRAD" 0,
+        "opsz" 24;
       }
 
       .navbar {
@@ -32,7 +43,7 @@
         display: flex;
         justify-content: center;
         height: 100vh;
-        background-color: #ccc;
+        background-color: #fff;
         padding-top: 80px;
       }
       .go-top {
@@ -40,8 +51,8 @@
         bottom: 30px;
         right: 30px;
         cursor: pointer;
+        font-size: 60px;
       }
-
       a {
         color: #fff;
         text-decoration: none;
@@ -51,34 +62,34 @@
     </style>
   </head>
   <body>
+    <!-- navbar -->
     <nav id="navbar" class="navbar">
-      <a href="#con1">Con 1</a>
-      <a href="#con2">Con 2</a>
-      <a href="#con3">Con 3</a>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#admin">Admin</a>
     </nav>
-    <div id="con1" class="container">Container 1</div>
-    <div id="con2" class="container">Container 2</div>
-    <div id="con3" class="container">Container 3</div>
 
-    <span id="go-top" class="go-top">Go Top</span>
-    
+    <!-- pages -->
+    <div id="home" class="container">
+      <h1>Home</h1>
+    </div>
+    <div id="about" class="container">
+      <h1>About</h1>
+    </div>
+    <div id="contact" class="container">
+      <h1>Contact</h1>
+    </div>
+    <div id="admin" class="container">
+      <h1>Admin</h1>
+    </div>
+
+    <span class="material-symbols-outlined go-top" id="go-top" class="go-top">arrow_circle_up</span>
+
     <script>
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-          document.getElementById('topbar').style.display = 'none'
-        } else {
-          document.getElementById('topbar').style.display = 'flex'
-          document.getElementById('navbar').style.position = 'static'
-        }
-        if (window.scrollY > 120) {
-          document.getElementById('navbar').style.position = 'fixed'
-          document.getElementById('navbar').style.top = 0
-        }
-      })
-      
-      document.getElementById('go-top').addEventListener('click', (e) => {
-        window.scrollTo(0, 0)
-      })
+      document.getElementById("go-top").addEventListener("click", (e) => {
+        window.scrollTo(0, 0);
+      });
     </script>
   </body>
 </html>
