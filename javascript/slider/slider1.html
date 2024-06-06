@@ -8,6 +8,14 @@
         padding: 0;
         box-sizing: border-box;
       }
+      body{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      h1{
+        margin: 30px 0;
+      }
       #container {
         display: flex;
         justify-content: center;
@@ -18,20 +26,9 @@
         border-radius: 5px;
         margin: 50px auto;
         object-fit: cover;
-        padding: 5px;
       }
-      #wrapper {
-        display: flex;
-        align-items: center;
-        min-width: 100%;
-        width: auto;
-        height: 100%;
-        overflow: hidden;
-        position: relative;
-        scroll-behavior: smooth;
-      }
-      .img {
-        min-width: 828px;
+      #img {
+        width: 100%;
         height: 100%;
       }
       .prev,
@@ -53,18 +50,13 @@
       .next:hover {
         transform: scale(1.2);
       }
-      .active {
-        transform: scale(1.2);
-        transition: all 1s linear;
-        transition-delay: 1s;
-        border-radius: 10px;
-      }
     </style>
   </head>
   <body>
+    <h1>Javascript Blink Slider</h1>
     <div id="container">
       <a class="prev" id="prev">❮</a>
-      <div id="wrapper"></div>
+      <img src="" alt="" id="img"/>
       <a class="next" id="next">❯</a>
     </div>
     <div>
@@ -78,32 +70,24 @@
         "./images/img4.jpg",
       ];
 
+      
       const setSlider = (param) => {
-        param.forEach((item, index) => {
-          document.getElementById('wrapper').innerHTML += `
-          <img src="${item}" alt="" id="${index}" class="img"/>
-          `
-        });
-        const imageWidht = document.getElementsByClassName('img')[0].width
-        const imageInterval = setInterval(() => {
-          document.getElementById('wrapper').scrollLeft += Number(imageWidht)
-          document.getElementById('wrapper').classList.remove('active')
-          if(document.getElementById('wrapper').scrollLeft == 3*Number(imageWidht)){
-            document.getElementById('wrapper').scrollLeft = 0
-          }
-          document.getElementById('wrapper').classList.add('active')
-        }, 3000);
+        let imageIndex = 0;
         document.getElementById('next').addEventListener('click', () => {
-          document.getElementById('wrapper').scrollLeft += Number(imageWidht)
-          stopInetval()
+          imageIndex++
+          if (imageIndex >= param.length-1) imageIndex = 0
+          setImage(imageIndex)
         })
         document.getElementById('prev').addEventListener('click', () => {
-          document.getElementById('wrapper').scrollLeft -= Number(imageWidht)
-          stopInetval()
+          imageIndex--
+          if (imageIndex == -1) imageIndex = param.length-1
+          setImage(imageIndex)
         })
-        const stopInetval = () => {
-          clearInterval(imageInterval)
-        }
+  
+        function setImage(index) {
+          document.getElementById("img").src = param[index];
+        };
+        setImage(imageIndex);
       }
       setSlider(images)
     </script>
