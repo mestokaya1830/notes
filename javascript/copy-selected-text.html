@@ -40,9 +40,9 @@
       alert('Password copied to clipboard!')
 
       //if you need paste on any area
-      // navigator.clipboard.readText().then((item) => {
-      //   document.getElementById('area').innerText = item
-      // });
+      navigator.clipboard.readText().then((item) => {
+        document.getElementById('area').innerText = item
+      });
     })
   </script>
 </body>
