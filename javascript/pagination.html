@@ -55,6 +55,9 @@
     <span class="pages">7</span>
     <span class="pages">8</span>
     <span class="pages">9</span>
+    <span class="pages">10</span>
+    <span class="pages">11</span>
+    <span class="pages">12</span>
     <span class="btn" id="next">></span>
     <span class="btn" id="end">>></span>
   </div>
@@ -85,13 +88,15 @@
     start.addEventListener('click', (e) => {
       removeSelected()
       pages[0].classList.add('active')
+      selected = 0
     })
 
     end.addEventListener('click', (e) => {
       removeSelected()
       pages[pages.length-1].classList.add('active')
+      selected = pages.length-1
     })
-    
+
     prev.addEventListener('click', (e) => {
       removeSelected()
       if(selected == 0){
