@@ -24,7 +24,7 @@
       border: 1px solid #ccc;
       border-radius: 8px;
     }
-    .left, .right{
+    .sortList{
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -48,52 +48,44 @@
       cursor: grab;
       background-color: #f1f1f1;
     }
+   
+    .dragging{opacity: 0;}
   </style>
 </head>
 <body>
-  <h1>Javascript Drag-Drop List</h1>
+  <h1>Javascript Drag-Drop List Sortable</h1>
   <div class="container">
-    <div class="left">
-      <div class="list" draggable="true">Html5</div>
-      <div class="list" draggable="true">Css3</div>
-      <div class="list" draggable="true">Javascript</div>
-      <div class="list" draggable="true">Vue3</div>
-      <div class="list" draggable="true">NodeJS</div>
-      <div class="list" draggable="true">Mongodb</div>
-      <div class="list" draggable="true">Mysql</div>
-    </div>
-    <div class="right"></div>
+    <ul class="sortList">
+      <li class="list" draggable="true">Html5</li>
+      <li class="list" draggable="true">Css3</li>
+      <li class="list" draggable="true">Javascript</li>
+      <li class="list" draggable="true">Vue3</li>
+      <li class="list" draggable="true">NodeJS</li>
+      <li class="list" draggable="true">Mongodb</li>
+      <li class="list" draggable="true">Mysql</li>
+    </ul>
   </div>
 
   <script>
-    const $ = (par) => document.querySelector(par)
-    const list = document.querySelectorAll('.list')
-    const leftBox = $('.left')
-    const rightBox = $('.right')
+    const sortList = document.querySelector('.sortList')
+    const list = sortList.querySelectorAll('.list')
 
     list.forEach(item => {
       item.addEventListener('dragstart', (e) => {
-        let selected = item
-
-        //left-to-right
-        rightBox.addEventListener('dragover', (e) => {
-          e.preventDefault();
-        })
-        rightBox.addEventListener('drop', (e) => {
-          rightBox.appendChild(selected)
-          selected = null
-        })
-
-        //right-to-left
-        leftBox.addEventListener('dragover', (e) => {
-          e.preventDefault();
-        })
-        leftBox.addEventListener('drop', (e) => {
-          leftBox.appendChild(selected)
-          selected = null
-        })
+        setTimeout(() => item.classList.add('dragging'), 0)
+      })
+      item.addEventListener('dragend', (e) => {
+        item.classList.remove('dragging')
       })
     });
+
+    const sortTable = (e) => {
+      const siblings = [...sortList.querySelectorAll(".list:not(.dragging)")]
+      const nextSibling = siblings.find(item => e.clientY <= item.offsetTop + item.offsetHeight / 2)
+      sortList.insertBefore(sortList.querySelector('.dragging'), nextSibling)
+    }
+    sortList.addEventListener('dragover', sortTable)
+    sortList.addEventListener('dragenter', (e) => e.preventDefault())
   </script>
 </body>
 </html>
