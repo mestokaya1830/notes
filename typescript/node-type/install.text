@@ -1,0 +1,16 @@
+npm i express @types/express @types/node
+---------------------------------------------
+mkdir src
+mkdir dist
+touch ./dist/index.html
+touch ./src/app.ts
+--------------------------------------------
+tsconfig.json
+rootDir './src
+outDir './dist
+--------------------------------------------
+package.json
+"scripts": {
+  "build": "tsc",
+  "start": "nodemon ./src/app.ts"
+},
