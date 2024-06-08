@@ -6,8 +6,6 @@ import 'dotenv/config'
 app.use(express.json())
 app.use(express.static('dist'))
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello')
-})
+console.log('Hello Typescript')
 
 app.listen(process.env.PORT, () => console.log('Server is running...'))

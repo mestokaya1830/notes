@@ -5,5 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const app = (0, express_1.default)();
+require("dotenv/config");
 app.use(express_1.default.json());
-app.listen(process.env.PORTsss, () => console.log('Server is running...'));
+app.use(express_1.default.static('dist'));
+console.log('Hello Typescript');
+app.listen(process.env.PORT, () => console.log('Server is running...'));

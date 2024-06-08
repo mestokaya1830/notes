@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "tsc",
-    "start": "nodemon ./src/app.ts"
+    "build" : "tsc -w",
+    "start": "nodemon ./dist/app.js"
   },
   "keywords": [],
   "author": "",

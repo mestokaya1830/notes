@@ -11,6 +11,6 @@ outDir './dist
 --------------------------------------------
 package.json
 "scripts": {
-  "build": "tsc",
-  "start": "nodemon ./src/app.ts"
-},
+  "build": "tsc -w",
+  "start": "nodemon ./src/app.js"
+}
