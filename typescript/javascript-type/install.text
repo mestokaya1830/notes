@@ -1,6 +1,0 @@
-mkdir src
-mkdir dist
-touch ./dist/index.html
-touch ./src/app.ts
-
-open terminal tsc -w .src/app.ts --ourDir ./dist/
