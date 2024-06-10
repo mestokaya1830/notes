@@ -33,7 +33,7 @@
 <body>
   <h2 style="margin: 20px; text-align: center;">Duration</h2>
   <div id="container">
-    <label>Select Date</label>
+    <label>Select Date Look at the Console</label>
     <!-- use this to format = required pattern="\d{4}-\d{2}-\d{2}" -->
     <input type="date" id="user-date">
     <ul id="list">
@@ -54,11 +54,11 @@
       const birthDay = new Date(event.target.value)
       let current = new Date()
       const years = current.getFullYear() - birthDay.getFullYear() +' '+ 'Years'
-      const months = Math.abs(((current - birthDay.getTime())) / 60000 / 60 / 24 / 30).toFixed(0) + ' Months'
-      const days = Math.abs(((current - birthDay.getTime())) / 60000 / 60 / 24).toFixed(0) + ' Days'
-      const hours = Math.abs(((current - birthDay.getTime())) / 60000 / 60).toFixed(0) + ' Hours'
-      const minutes = Math.abs(((current - birthDay.getTime())) / 60000).toFixed(0) + ' Minutes'
-      const seconds = Math.abs(((current - birthDay.getTime())) / 1000).toFixed(0) + ' Seconds'
+      const months = Math.abs((current - birthDay.getTime()) / 60000 / 60 / 24 / 30).toFixed(0) + ' Months'
+      const days = Math.abs((current - birthDay.getTime()) / 60000 / 60 / 24).toFixed(0) + ' Days'
+      const hours = Math.abs((current - birthDay.getTime()) / 60000 / 60).toFixed(0) + ' Hours'
+      const minutes = Math.abs((current - birthDay.getTime()) / 60000).toFixed(0) + ' Minutes'
+      const seconds = Math.abs((current - birthDay.getTime()) / 1000).toFixed(0) + ' Seconds'
 
       document.getElementById('years').innerText = years
       document.getElementById('months').innerText = months
@@ -70,7 +70,7 @@
 
       // after year and months
       const y = current.getFullYear() - birthDay.getFullYear()
-      const m = current.getMonth() - birthDay.getMonth()+1
+      const m = current.getMonth() - birthDay.getMonth()
       const d = current.getDate() - birthDay.getDate()
       console.log(`${y} years ${m} months ${d} days`)
     })
