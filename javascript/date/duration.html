@@ -51,16 +51,28 @@
   <script>
 
     document.getElementById('user-date').addEventListener('change', (event) => {
-      const olddate = new Date(event.target.value)
-      let current = Date.now()
-      let timeOver = 'Elipsed '
-      if(olddate > current) timeOver = 'Remaind '
-      document.getElementById('years').innerText = timeOver + Math.abs(((current - olddate.getTime())) / 60000 / 60 / 24 / 365).toFixed(0) + ' Years'
-      document.getElementById('months').innerText = timeOver + Math.abs(((current - olddate.getTime())) / 60000 / 60 / 24 / 30).toFixed(0) + ' Months'
-      document.getElementById('days').innerText = timeOver + Math.abs(((current - olddate.getTime())) / 60000 / 60 / 24).toFixed(0) + ' Days'
-      document.getElementById('hours').innerText = timeOver + Math.abs(((current - olddate.getTime())) / 60000 / 60).toFixed(0) + ' Hours'
-      document.getElementById('minutes').innerText = timeOver + Math.abs(((current - olddate.getTime())) / 60000).toFixed(0) + ' Minutes'
-      document.getElementById('seconds').innerText = timeOver + Math.abs(((current - olddate.getTime())) / 1000).toFixed(0) + ' Seconds'
+      const birthDay = new Date(event.target.value)
+      let current = new Date()
+      const years = current.getFullYear() - birthDay.getFullYear() +' '+ 'Years'
+      const months = Math.abs(((current - birthDay.getTime())) / 60000 / 60 / 24 / 30).toFixed(0) + ' Months'
+      const days = Math.abs(((current - birthDay.getTime())) / 60000 / 60 / 24).toFixed(0) + ' Days'
+      const hours = Math.abs(((current - birthDay.getTime())) / 60000 / 60).toFixed(0) + ' Hours'
+      const minutes = Math.abs(((current - birthDay.getTime())) / 60000).toFixed(0) + ' Minutes'
+      const seconds = Math.abs(((current - birthDay.getTime())) / 1000).toFixed(0) + ' Seconds'
+
+      document.getElementById('years').innerText = years
+      document.getElementById('months').innerText = months
+      document.getElementById('days').innerText = days
+      document.getElementById('hours').innerText = hours
+      document.getElementById('minutes').innerText = minutes
+      document.getElementById('seconds').innerText = seconds
+
+
+      // after year and months
+      const y = current.getFullYear() - birthDay.getFullYear()
+      const m = current.getMonth() - birthDay.getMonth()+1
+      const d = current.getDate() - birthDay.getDate()
+      console.log(`${y} years ${m} months ${d} days`)
     })
   </script>
 </body>
