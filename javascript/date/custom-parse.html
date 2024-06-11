@@ -17,7 +17,9 @@
     console.log('Days-------------------- ', d.getDate())
     console.log('DayOfWeek--------------- ', d.getDay());
     console.log('firstDayOfMonth--------- ', new Date(d.getFullYear(), d.getMonth(), 1)) 
-    console.log('daysInMonth------------- ', new Date(d.getFullYear(), d.getMonth()+1, 0).getDate())
+    console.log('lastDayOfMonth--------- ', new Date(d.getFullYear(), d.getMonth() + 1, 0)) 
+    console.log('lastDateOfLastMonth--------- ', new Date(d.getFullYear(), d.getMonth(), 0)) 
+    console.log('daysInMonth------------- ', new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate())
     console.log('Current Week of Year----- ', Math.abs(new Date(d.getFullYear(), 0, 0) - d.getTime()) / 60000 / 
     60 / 24 / 7)
 
