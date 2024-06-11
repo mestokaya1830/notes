@@ -20,11 +20,6 @@ const router = createRouter({
       component: () => import('@/views/Json-Excel.vue')
     },
     {
-      path: '/text-to-speech',
-      name: 'text-to-speech',
-      component: () => import('@/views/Text-To-Speech.vue')
-    },
-    {
       path: '/:catchAll(.*)',
       name: 'notfound',
       component: () => import('@/views/NotFound.vue')

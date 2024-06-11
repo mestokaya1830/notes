@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "swiper": "^11.1.4",
     "vue": "^3.4.21",
     "vue-excel-export": "^0.1.3",
     "vue-json-csv": "^2.1.0",

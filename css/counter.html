@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .container{
+        counter-reset: heading;
+        margin-top: 50px;
+        & h2{
+          color: cadetblue;
+          &::before{
+            content: counters(heading) ". ";
+            counter-increment: heading;
+            color: #333;
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Frist</h2>
+      <h2>Second</h2>
+      <h2>Third</h2>
+      <h2>Fourth</h2>
+      <h2>Fifth</h2>
+    </div>
+  </body>
+</html>
