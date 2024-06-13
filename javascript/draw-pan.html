@@ -75,8 +75,17 @@
         border-radius: 5px;
         padding: 0 10px;
       }
-      .range {
-        margin: 20px 0;
+      .range-con{
+        display: flex;
+        align-items: center;
+        & .brush-range {
+          margin: 20px 0;
+          width: 90%;
+        }
+        & span{
+          font-size: 18px;
+          margin-left: 10px;
+        }
       }
       .radio-con {
         display: flex;
@@ -95,7 +104,6 @@
         border-radius: 50%;
         border: 1px solid #ccc;
         cursor: pointer;
-        outline: 1px solid #444;
       }
       .radio-con label:hover {
         transform: scale(1.07);
@@ -114,6 +122,11 @@
       }
       .radio-con #red {
         background-color: red;
+      }
+      .color-picker{
+        width: 100%;
+        margin-top: 10px;
+        cursor: pointer;
       }
       .clear-btn,
       .save-btn {
@@ -141,8 +154,17 @@
       .fill-color{
         border: 1px solid #ddd;
       }
-
-      
+      canvas{
+        width: 100%;
+        height: 100%;
+      }
+      #fill{
+        width: 20px;
+        height: 18px;
+        margin-right: 10px;
+      }
+      .active{outline: 1px solid #444;}
+      .fill-color{width: 100%; border: none; cursor: pointer;}
     </style>
   </head>
   <body>
@@ -151,39 +173,169 @@
       <div class="left">
         <label class="left-titles">Shapes</label>
         <ul class="shapes-con">
-          <li><span class="material-symbols-outlined">check_box_outline_blank</span>Rectangle</li>
-          <li><span class="material-symbols-outlined">circle</span>Circle</li>
-          <li><span class="material-symbols-outlined">change_history</span>Triangle</li>
-          <li><span class="material-symbols-outlined fill-color">check_box_outline_blank</span>Fill Color</li>
+          <li class="tools" id="rectangle"><span class="material-symbols-outlined">check_box_outline_blank</span>Rectangle</li>
+          <li class="tools" id="circle"><span class="material-symbols-outlined">circle</span>Circle</li>
+          <li class="tools" id="triangle"><span class="material-symbols-outlined">change_history</span>Triangle</li>
+          <li><input type="checkbox" id="fill"><label for="fill" class="fill-color">Fill Color</label></li>
         </ul>
         <label class="left-titles">Options</label>
         <ul class="shapes-con">
-          <li><span class="material-symbols-outlined">brush</span>Brush</li>
-          <li><span class="material-symbols-outlined">ink_eraser</span>Eraser</li>
+          <li class="tools" id="brush"><span class="material-symbols-outlined">brush</span>Brush</li>
+          <li class="tools" id="eraser"><span class="material-symbols-outlined">ink_eraser</span>Eraser</li>
         </ul>
-        <input type="range" class="range" id="range" />
+        <div class="range-con">
+          <input type="range" value="2" step="2" class="brush-range" id="brushRange" />
+          <span id="rangeValue"></span>
+        </div>
         <label class="left-titles">Colors</label>
         <div class="radio-con">
           <label for="white" id="white"
-            ><input type="radio" class="radio-inputs" id="white"
+            class="colors"><input type="radio" name="colors" id="white"
           /></label>
           <label for="white" id="black"
-            ><input type="radio" class="radio-inputs" id="black"
+          class="colors"><input type="radio" name="colors" id="black"
           /></label>
           <label for="white" id="blue"
-            ><input type="radio" class="radio-inputs" id="blue"
+          class="colors"><input type="radio" name="colors" id="blue"
           /></label>
           <label for="white" id="green"
-            ><input type="radio" class="radio-inputs" id="green"
+          class="colors"><input type="radio" name="colors" id="green"
           /></label>
           <label for="white" id="red"
-            ><input type="radio" class="radio-inputs" id="red"
+          class="colors" ><input type="radio" name="colors" id="red"
           /></label>
         </div>
-        <button class="clear-btn">Clear Canvas</button>
-        <button class="save-btn">Save</button>
+        <input type="color" class="color-picker colors" id="colorPicker">
+        <button class="clear-btn" id='clearBtn'>Clear Canvas</button>
+        <button class="save-btn" id="saveBtn">Save</button>
       </div>
-      <div class="right"></div>
+      <div class="right">
+        <canvas></canvas>
+      </div>
     </div>
+
+    <script>
+      const $ = (par) => document.querySelector(par)
+      const canvas = document.querySelector('canvas')
+      const ctx = canvas.getContext('2d', { willReadFrequently: true })
+      const tools = document.querySelectorAll('.tools')
+      const colors = document.querySelectorAll('.colors')
+      let isDrawing = false
+      let selectedTool = 'brush'
+      let selectedColor = 'black'
+      let prevX, prevY, snapShot
+
+      const canvasBackground = () => {
+        ctx.fillStyle = '#fff'
+        ctx.fillRect(0,0,canvas.width, canvas.height)
+        ctx.fillStyle = selectedColor
+      }
+      //set canvas dimention
+      window.addEventListener('load', () => {
+        canvas.width = canvas.offsetWidth
+        canvas.height = canvas.offsetHeight
+        canvasBackground()
+      })
+
+
+      //get all tools
+      tools.forEach(item => {
+        item.addEventListener('click', () => {
+          Array.from(tools).map(item => item.classList.remove('active'))
+          selectedTool = item.id
+          item.classList.add('active')
+        })
+      })
+
+      //get all colors
+      colors.forEach(item => {
+        item.addEventListener('click', () => {
+          Array.from(colors).map(item => item.classList.remove('active'))
+          selectedColor = item.id
+          item.classList.add('active')
+        })
+      })
+
+      $('#colorPicker').addEventListener('change', (e) => {
+        selectedColor = e.target.value
+      })
+      //brush
+      const drawBrush = (e) => {
+        ctx.lineTo(e.offsetX, e.offsetY)
+        if(selectedTool == 'brush' || selectedTool == 'eraser'){
+          ctx.strokeStyle = selectedTool == 'eraser' ? "#fff" : selectedColor
+          ctx.stroke()
+        }
+      }
+
+      //rect
+      const drawRect = (e) => {
+        if(!$('#fill').checked){
+          return ctx.strokeRect(e.offsetX, e.offsetY, prevX - e.offsetX, prevY - e.offsetY)
+        }
+        ctx.fillRect(e.offsetX, e.offsetY, prevX - e.offsetX, prevY - e.offsetY)
+      }
+
+      //draw circle
+      const drawCircle = (e) => {
+        ctx.beginPath()
+        let radius = Math.sqrt(Math.pow((prevX - e.offsetX), 2) + Math.pow((prevY - e.offsetY), 2))
+        ctx.arc(prevX, prevY, radius, 0, 2 * Math.PI)
+        $('#fill').checked ? ctx.fill() : ctx.stroke()
+      }
+
+      //draw triangle
+      const drawTriangle = (e) => {
+        ctx.beginPath()
+        ctx.moveTo(prevX, prevY)
+        ctx.lineTo(e.offsetX, e.offsetY)
+        ctx.lineTo(prevX * 2 - e.offsetX, e.offsetY)
+        ctx.closePath()
+        $('#fill').checked ? ctx.fill() : ctx.stroke()
+      }
+      //start draw
+      const startDraw = (e) => {
+        isDrawing = true
+        prevX = e.offsetX
+        prevY = e.offsetY
+        ctx.beginPath()
+        ctx.strokeStyle = selectedColor
+        ctx.fillStyle = selectedColor
+        ctx.lineWidth = $('#brushRange').value
+        $('#rangeValue').innerText = $('#brushRange').value
+        snapShot = ctx.getImageData(0,0,canvas.width, canvas.height)
+      }
+      
+      //draw
+      const drawing = (e) => {
+        if(!isDrawing) return
+        ctx.putImageData(snapShot, 0, 0)
+        if(selectedTool == 'rectangle'){
+          drawRect(e)
+        } else if(selectedTool === 'circle'){
+          drawCircle(e)
+        } else if (selectedTool === 'triangle'){
+          drawTriangle(e)
+        } else  {
+          drawBrush(e)
+        }
+      }
+
+      $('#clearBtn').addEventListener('click', () => {
+        ctx.clearRect(0,0, canvas.width, canvas.height)
+        canvasBackground()//reload background
+      })
+
+      $('#saveBtn').addEventListener('click', () => {
+        const link = document.createElement('a')
+        link.download = Date.now() + '.jpg'
+        link.href = canvas.toDataURL()
+        link.click()
+      })
+
+      canvas.addEventListener('mousedown', startDraw)
+      canvas.addEventListener('mousemove', drawing)
+      canvas.addEventListener('mouseup', () => isDrawing = false)
+    </script>
   </body>
 </html>
