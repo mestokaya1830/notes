@@ -1,3 +1,19 @@
+netstat--------------------------------------------
+sudo apt install net-tools
+sudo netstat -nptl or 
+
+netstat -h see more
+netstat -i
+netstat -nr
+netstat -ta //connected device
+netstat -tan //connected device ip address
+
+//track tcp package-------------------------------------------------
+tcpdump -h
+sudo tcpdump
+sudo tcpdump -c 10 //only 10 package
+
+
 
 sudo ls -l | grep filename
 sudo ls -l | grep partof-filename(no test1.txt like test)
@@ -20,5 +36,3 @@ sudo pgrep mongod
 
 grap proccess with pid
 sudo netstat -nlpt | grep 3306
-
-

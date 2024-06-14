@@ -9,3 +9,11 @@ tar -xzvf all.tar -c /home/mesto/Documents/
 
 //list all file in archive-----------------------------------
 tar tvf all.tar
+
+
+//install local app-----------------------------------------
+sudo dpkg -i ./appname
+
+//install run extention-------------------------------------
+sudo chmod 755 appname
+sudo ./appname

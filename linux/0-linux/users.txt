@@ -1,5 +1,11 @@
-ADD NEW USER-------------------------------------------
+USER INFO--------------------------------------------
+w                          // current user loign etc info
+who                        // current user
 whoami                     // current user
+uptime                     // all user info
+cat /etc/passwd            // all user info
+
+ADD NEW USER-------------------------------------------
 sudo su                    // switch to root user  (super user start with #) than
 adduser username           // add new user
 usermod -aG sudo username  // add existing user to sudo group

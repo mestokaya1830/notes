@@ -1,7 +1,0 @@
-
-//track tcp package-------------------------------------------------
-tcpdump -h
-sudo tcpdump
-sudo tcpdump -c 10 //only 10 package
-
-

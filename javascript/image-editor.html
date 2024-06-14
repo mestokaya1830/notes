@@ -29,10 +29,9 @@
       display: flex;
       flex-direction: column;
       width: 900px;
-      height: 550px;
+      height: auto;
       border-radius: 5px;
       background-color: #f1f1f1;
-      margin-top: 50px;
       padding: 30px;
     }
     .top{
@@ -46,19 +45,30 @@
       border: 1px solid #ddd;
       border-radius: 5px;
       padding: 10px;
+      opacity: 0.4;
+      cursor: not-allowed;
     }
     .right{
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: 60%;
-      height: 100%;
+      max-height: 500px;
       border: 1px solid #ddd;
       border-radius: 5px;
       padding: 10px;
+      background-image: url('./images/upload.png');
+      background-position: center;
+      background-size: 200px 200px;
+      background-repeat: no-repeat;
+      cursor: pointer;
     }
     footer{
       display: flex;
       justify-content: space-between;
       height: 20%;
       align-items: center;
+      margin-top: 30px;
     }
     .footer-btn{
       width: 140px;
@@ -92,12 +102,12 @@
       justify-content: space-between;
       align-items: center;
       width: 100%;
-      height: 60px;
+      height: 40px;
       font-size: 18px;
       color: #222;
       padding: 0 10px;
     }
-    .brightness-text{
+    .range-text{
       width: 90%;
     }
     input[type="range"]{
@@ -105,16 +115,23 @@
     }
     .trans-btn{
       width: 25%;
-      border-radius: 4px;
-      border: 1px solid #ccc;
       margin: 0 5px;
       height: 46px;
       line-height: 46px;
       text-align: center;
       cursor: pointer;
     }
-    #rotateLeft, #flipLeft{
+    #rotateLeft{
       transform: rotateY(180deg);
+    }
+    #flipVertical{
+      transform: rotateZ(90deg);
+    }
+    #fileInput{display: none;}
+    #selectedImg{
+      width: 100%;
+      height: 100%;
+      display: none;
     }
   </style>
 </head>
@@ -122,41 +139,155 @@
   <h1>Javascript Image Editor</h1>
   <div class="container">
     <div class="top">
-      <div class="left">
+      <div class="left" id="left">
         <h2>Filters</h2>
-        <div class="con">
-          <button>Brightness</button>
-          <button>Saturation</button>
+        <div class="con range-info">
+          <div class="range-text">Brightness</div><span id="brightness">0</span>%
         </div>
         <div class="con">
-          <button>Inversion</button>
-          <button>Grayscale</button>
+          <input type="range" step="10" min="0" max="200" class="slider" id="brightnessRange">
         </div>
         <div class="con range-info">
-          <div class="brightness-text">Brightness</div><span>%</span>
+          <div class="range-text">Saturation</div><span id="saturate">0</span>%
         </div>
         <div class="con">
-          <input type="range" name="" id="">
+          <input type="range" min="0" max="200" class="slider" id="saturateRange">
         </div>
         <div class="con range-info">
-          <div class="brightness-text">Rotate & Flip</div>
+          <div class="range-text">Grayscale</div><span id="grayscale">0</span>%
+        </div>
+        <div class="con">
+          <input type="range" min="0" max="100" class="slider" id="grayscaleRange">
+        </div>
+        <div class="con range-info">
+          <div class="range-text">Invert</div><span id="invert">0</span>%
+        </div>
+        <div class="con">
+          <input type="range" min="0" max="100" class="slider" id="invertRange">
+        </div>
+        <br/>
+       
+        <div class="con range-info">
+          <div class="range-text">Rotate & Flip</div>
         </div>
         <div class="con">
           <span class="material-symbols-outlined trans-btn" id="rotateRight">rotate_right</span>
           <span class="material-symbols-outlined trans-btn" id="rotateLeft">rotate_right</span>
-          <span class="material-symbols-outlined trans-btn" id="flipRight">flip</span>
-          <span class="material-symbols-outlined trans-btn" id="flipLeft">flip</span>
+          <span class="material-symbols-outlined trans-btn" id="flipHorizontal">flip</span>
+          <span class="material-symbols-outlined trans-btn" id="flipVertical">flip</span>
         </div>
       </div>
-      <div class="right"></div>
+      <div class="right" id="right">
+        <input type="file" id="fileInput">
+        <img src="" alt="" id="selectedImg">
+      </div>
     </div>
     <footer>
-      <input type="button" class="footer-btn reset" value="Reset Filters">
+      <input type="button" class="footer-btn reset" value="Reset Filters" id="reset">
       <div>
-        <input type="button" class="footer-btn image" value="Select Image">
-        <input type="button" class="footer-btn save" value="Save">
+        <input type="button" class="footer-btn save" value="Save" id="saveImg">
       </div>
     </footer>
   </div>
+
+  <script>
+    const $ = (par) => document.querySelector(par)
+    const fileInput = $('#fileInput')
+    const selectedImg = $('#selectedImg')
+    const right = $('#right')
+    const invertBtn = $('#invertRange')
+    const grayscaleBtn = $('#grayscaleRange')
+    const rotateRightBtn = $('#rotateRight')
+    const rotateLeftBtn = $('#rotateLeft')
+    const saturateRange = $('#saturateRange')
+    const brightnessRange = $('#brightnessRange')
+    const flipHorizontalBtn = $('#flipHorizontal')
+    const flipVerticalBtn = $('#flipVertical')
+    const reset = $('#reset')
+    let invert = 0, grayscale = 0, rotate = 0,  saturate = 0, brightness = 0, flipHorizontal  = 1, flipVertical = 1 
+
+    brightnessRange.addEventListener('change', (e) => {
+      $('#brightness').innerText = e.target.value
+      brightness = e.target.value
+      selectedImg.style.filter = `brightness(${brightness}%)`
+    })
+    saturateRange.addEventListener('change', (e) => {
+      $('#saturate').innerText = e.target.value
+      saturate = e.target.value
+      selectedImg.style.filter = `saturate(${saturate}%)`
+    })
+    grayscaleBtn.addEventListener('change', (e) => {
+      grayscale = e.target.value
+      selectedImg.style.filter = `grayscale(${grayscale}%)`
+    })
+    invertBtn.addEventListener('change', (e) => {
+      invert = e.target.value
+      selectedImg.style.filter = `grayscale(${invert}%)`
+    })
+
+    rotateRightBtn.addEventListener('click', () => {
+      rotate = 90
+      selectedImg.style.transform = `rotateZ(${rotate}deg)`
+    })
+    rotateLeftBtn.addEventListener('click', () => {
+      rotate = 0
+      selectedImg.style.transform = `rotateZ(${rotate}deg)`
+    })
+    flipHorizontalBtn.addEventListener('click', () => {
+      flipHorizontal == 1 ? flipHorizontal = -1 : flipHorizontal = 1
+      selectedImg.style.transform = `scaleX(${flipHorizontal})`
+    })
+    flipVerticalBtn.addEventListener('click', () => {
+      flipVertical == 1 ? flipVertical = -1 : flipVertical = 1
+      selectedImg.style.transform = `scaleY(${flipVertical})`
+    })
+    right.addEventListener('click', () => {
+      fileInput.click()
+      fileInput.addEventListener('change', (e) => {
+        if(e.target.files[0]){
+          $('#left').style.opacity = 1
+          $('#left').style.cursor ='auto'
+          right.style.backgroundImage = ''
+          selectedImg.style.display = 'block'
+          selectedImg.src = URL.createObjectURL(e.target.files[0])
+        }
+      })
+    })
+
+    reset.addEventListener('click', () => {
+      brightness = 0
+      saturate = 0
+      invert = 0
+      grayscale = 0
+      flipHorizontal = 1
+      flipVertical = 1
+      selectedImg.style.filter = `brightness(${brightness}%)`
+      selectedImg.style.filter = `saturate(${saturate}%)`
+      selectedImg.style.filter = `invert(${invert}%)`
+      selectedImg.style.filter = `grayscale(${grayscale}%)`
+      selectedImg.style.transform = `scaleX(${flipHorizontal})`
+      selectedImg.style.transform = `scaleY(${flipVertical})`
+    })
+    $('#saveImg').addEventListener('click', () => {
+      const canvas = document.createElement('canvas')
+      const ctx = canvas.getContext('2d')
+      canvas.width = selectedImg.naturalWidth
+      canvas.height = selectedImg.naturalHeight
+
+      ctx.filter = `brightness(${brightness}%) saturate(${saturate}%) invert(${invert}%) grayscale(${grayscale}%)`
+      ctx.translate(canvas.width / 2, canvas.height /2)
+      ctx.scale(flipHorizontal, flipVertical)
+      if(rotate != 0){
+        ctx.rotate(rotate * Math.PI / 180)
+      }
+      ctx.drawImage(selectedImg, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height)
+      // document.body.appendChild(canvas)
+
+      let link = document.createElement('a')
+      link.download = 'image.jpg'
+      link.href = canvas.toDataURL()
+      link.click()
+    })
+  </script>
 </body>
 </html>

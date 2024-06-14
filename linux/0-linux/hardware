@@ -1,7 +1,3 @@
-ifconfig
-ping domainname
-
-
 diks info--------------------------------------------
 fdisk -l
 fdisk -l | grep 'Disk /dev'
@@ -22,4 +18,3 @@ ram info-----------------------------------------
 free = display as byte
 free -m = display as mb
 vmstat -s = display as details
-

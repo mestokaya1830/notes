@@ -1,7 +1,3 @@
-get terminal history-------------------------------------------------
-history
-
-
 start-stop-status services--------------------------------------
 
 sudo service mongod status
@@ -26,6 +22,3 @@ sudo systemctl start mongod
 sudo systemctl restart mongod
 sudo systemctl disable mongod //not start at startup machine
 sudo systemctl enable mongod  // start at startup
-
-
-
