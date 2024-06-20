@@ -1,0 +1,21 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.router{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.navbar{
+  display: flex;
+  align-items: center;
+  height: 70px;
+  padding: 0 20px;
+}
+.navbar a {
+  font-size: 18px;
+  text-decoration: none;
+  margin: 0 15px;
+}

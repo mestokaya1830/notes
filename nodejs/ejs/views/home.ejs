@@ -1,0 +1,17 @@
+<h1><%= title %></h1>
+
+<% if (users) { %>
+  <ul>
+    <% users.forEach(function(item){ %>
+      <li>
+        <span><%= item.id %></span>
+        <span><%= item.name %></span>
+        <span><%= item.password %></span>
+        <a href= "/edit/<%= item.id %>">Edit</a>
+        <form action="/delete/<%= item.id %>" method="post">
+          <input type="submit" value="Delete">
+        </form>
+      </li>
+    <% }); %>
+  </ul>
+<% } %>

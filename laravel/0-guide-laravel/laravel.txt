@@ -2,4 +2,10 @@ sudo apt-get install composer
 ----------------------------------------------------------
 composer create-project laravel/laravel projectname
 
+create controller ------------------------------------
+php artisan make:controller UserController
+with resource
+php artisan make:controller PhotoController --resource
+for api
+php artisan make:controller PhotoController --api
 
