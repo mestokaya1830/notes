@@ -2,6 +2,15 @@
 
 <% if (users) { %>
   <ul>
+    <li class="title">
+      <span>ID</span>
+      <span>NAME</span>
+      <span>PASSWORD</span>
+      <span>EDIT</span>
+      <span>DELETE</span>
+    </li>
+  </ul>
+  <ul>
     <% users.forEach(function(item){ %>
       <li>
         <span><%= item.id %></span>

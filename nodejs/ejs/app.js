@@ -7,8 +7,8 @@ import Users from './models/usersSC.js'
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(express.static('static'))
-app.use(expressLayouts)
 
+app.use(expressLayouts)
 app.set('view engine', 'ejs')
 
 app.get('/', async(req, res) => {
