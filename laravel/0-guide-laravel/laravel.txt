@@ -27,6 +27,13 @@ php artisan migrate:rollback --step=5
 php artisan migrate:reset //command will roll back all of your application's migrations
 php artisan migrate:fresh //command will drop all tables from the database and then execute the migrate command
 
+for existing database-------------------------------
+composer require --dev kitloong/laravel-migrations-generator
+php artisan migrate:generate  //for all tables
+php artisan migrate:generate --tables="table1,table2,table3,table4,table5" //specific tables
+or ignored tables  php artisan migrate:generate --ignore="table3,table4,table5"
+
+
 models-------------------------------------------------
 php artisan model:show User
 php artisan make:model "name" -c  //for controller
