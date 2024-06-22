@@ -8,4 +8,4 @@ const formValidate = (title='', category='', mainimage ='noimage.jpg') => {
   return errors
 }
 
-export default formValidate
+module.exports = formValidate

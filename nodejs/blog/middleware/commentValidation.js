@@ -10,4 +10,4 @@ const formValidate = (name='', email='', commenttext ='') => {
   return errors
 }
 
-export default formValidate
+module.exports = formValidate
