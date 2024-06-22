@@ -3,7 +3,9 @@ sudo apt-get install composer
 composer create-project laravel/laravel projectname
 or
 composer global require laravel/installer
-
+sudo nano $HOME/.bashrc
+Add the following line: export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+source $HOME/.bashrc
 laravel new example-app
 
 create controller ------------------------------------
