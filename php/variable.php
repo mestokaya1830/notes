@@ -48,7 +48,6 @@
 
 
   //convert type
-  
   echo '<br/>';
   $age = (int)'30';
   var_dump($age);
