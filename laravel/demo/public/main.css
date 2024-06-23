@@ -1,26 +1,25 @@
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.navbar{
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 70px;
-  padding: 0 20px;
-  background-color: #222;
-  box-shadow: 2px 5px 10px #666;
+.navbar {
+    display: flex;
+    align-items: center;
+    height: 70px;
+    padding: 0 20px;
+    background-color: #333;
+    box-shadow: 5px 5px 10px #666;
 }
 .navbar a {
-  text-decoration: none;
-  font-size: 18px;
-  margin: 0 15px;
-  color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+    margin: 0 15px;
+    color: #fff;
 }
-.router{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 30px;
+.router {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
 }

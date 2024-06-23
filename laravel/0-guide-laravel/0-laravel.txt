@@ -56,3 +56,32 @@ php artisan make:component folder.input --view  //only for views
 
 middleware---------------------------------------------
 php artisan make:middleware EnsureTokenIsValid
+
+
+seeder---------------------------------------------------
+php artisan make:seeder UserSeeder
+php artisan db:seed
+php artisan db:seed --class=UserSeeder
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

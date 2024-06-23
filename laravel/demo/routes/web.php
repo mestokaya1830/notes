@@ -1,17 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ProductController;
 
-//view routers
 Route::get('/', function () {
     return view('pages/index');
 });
-Route::get('/addproduct', function () {
-    return view('pages/add-product');
-});
 
-
-//controllers routers
-Route::resource('/products', ProductsController::class);
-
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/{id}', [ProductController::class, 'details']);
+Route::get('/products/{id}/edit', [ProductController::class, 'edit']);
