@@ -5,4 +5,3 @@ const db  = mongoose.connect('mongodb://mesto:MK1972mk11130113@localhost:27017/w
 .catch((error) => console.log(error))
 
 export default db
-

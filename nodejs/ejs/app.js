@@ -12,7 +12,7 @@ app.use(expressLayouts)
 app.set('view engine', 'ejs')
 
 app.get('/', async(req, res) => {
-  const result = await Users.find()
+  const result = await Users.find({})
   res.render('home', {
     title: 'Home Page',
     users: result
@@ -57,7 +57,7 @@ app.use((req, res) => {
 })
 
 app.use((error, req, res, next) => {
-  res.status(500).json(error)
+  // res.status(500).json(error)
   next(error)
 })
 
