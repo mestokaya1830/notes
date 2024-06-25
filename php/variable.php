@@ -7,13 +7,13 @@
 </head>
 <body>
  <?php
-//  const variable
+//  const variable------------------------------------------------------
   define('ID', 30); //you cannot change const
   echo 'With Define = '. ID; //const dosnt use $ symbol
 
   echo '<br/>';
 
-  // or like so
+  // or like so------------------------------------------------------
   const ID1 = 2;
   echo 'With const keyword = '. ID1;//const dosnt use $ symbol
 
@@ -25,8 +25,7 @@
   var_dump($str);
   echo '<br/>';
 
-  // strict types
-
+  // strict types----------------------------------------------------
   // declare(strict_types=1);
   
   function test(int $x, int $y){
@@ -38,7 +37,7 @@
 
   echo '<br/>';
 
-  //check type
+  //check type---------------------------------------------------
   $state = True;
   if(is_bool($state)){
     echo 'State is a Boolean';
@@ -47,7 +46,7 @@
   }
 
 
-  //convert type
+  //convert type---------------------------------------------------
   echo '<br/>';
   $age = (int)'30';
   var_dump($age);
