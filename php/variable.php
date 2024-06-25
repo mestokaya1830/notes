@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
- <?php
+<?php
 //  const variable------------------------------------------------------
   define('ID', 30); //you cannot change const
+  define('USERS', ['Mesto','Ali','Deniz']);
   echo 'With Define = '. ID; //const dosnt use $ symbol
 
+  echo '<br/>';
+  print_r(USERS); //const dosnt use $ symbol
   echo '<br/>';
 
   // or like so------------------------------------------------------
@@ -54,6 +49,4 @@
   echo '<br/>';
   $num = strval(30);
   var_dump($num);
- ?>
-</body>
-</html>
+?>

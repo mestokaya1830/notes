@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-
-<body>
-  <?php $title = 'Array'; ?>
-  <h1><?php echo $title; ?></h1>
-
-  <?php
-
+<?php
   $numbers = [1, 2, 3, 4, 5];
   print_r($numbers);
 
@@ -36,13 +22,8 @@
 
   $users[3]['name'] = "Salih";
   $users[3]['salary'] = 5000;
-  print_r($users);
 
-  //with pre
-  echo '<pre>';
-  print_r($users);
-  echo '</pre>';
-
+  echo '<pre>';print_r($users);'</pre>';
   echo '<br/>';
   echo 'Array length = ' . count($users);
 
@@ -51,10 +32,7 @@
   array_push($users, ['name' => 'nemrut', 'salary' => 6000]);
   echo '<br/>';
   echo 'Array Push';
-  echo '<pre>';
-  print_r($users);
-  echo '</pre>';
-
+  echo '<pre>';print_r($users);'</pre>';
   echo '<br/>';
 
   //nested array
@@ -93,23 +71,15 @@
     ]
   ];
 
-  echo '<pre>';
-    print_r($people);
-  echo '</pre>';
+  echo '<pre>';print_r($people);'</pre>';
 
   //filter array
-  echo '<pre>';
-    print_r($people[0]['langs']);
-  echo '</pre>';
+  echo '<pre>';print_r($people[0]['langs']);'</pre>';
 
 
   //remove array element
   unset($people[0]);
   echo 'Unset first Element(remove) Element';
-  echo '<pre>';
-    print_r($people);
-  echo '</pre>';
-  ?>
-</body>
-
-</html>
+  echo '<pre>';print_r($people);'</pre>';
+  echo '<br/>';
+?>

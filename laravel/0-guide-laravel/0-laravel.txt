@@ -29,6 +29,11 @@ Add the following line: export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 source $HOME/.bashrc
 laravel new example-app
 
+
+commands----------------------------------------------
+php artisan list or only php artisan
+php artisan help make:controller ... enjoy //for detail for command
+
 create controller ------------------------------------
 php artisan make:controller "name"
 with resource
@@ -37,17 +42,6 @@ for api
 php artisan make:controller "name" --api
 
 
-db-------------------------------------------------------
-php artisan make:migration tablename or create with model
-php artisan db:show
-php artisan db:table users
-php artisan migrate:status
-php artisan migrate
-php artisan migrate --force
-php artisan migrate:rollback
-php artisan migrate:rollback --step=5
-php artisan migrate:reset //command will roll back all of your application's migrations
-php artisan migrate:fresh //command will drop all tables from the database and then execute the migrate command
 
 for existing database-------------------------------
 composer require --dev kitloong/laravel-migrations-generator
