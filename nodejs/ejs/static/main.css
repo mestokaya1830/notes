@@ -42,7 +42,6 @@ input{
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 5px 10px;
-  cursor: pointer;
 }
 ul .title{
   font-weight: bold;
@@ -62,4 +61,12 @@ ul .title{
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 20px;
+}
+.register-btn{
+  cursor: pointer;
+  height: 40px;
+  padding: 0;
+}
+.delete-btn{
+  cursor: pointer;
 }

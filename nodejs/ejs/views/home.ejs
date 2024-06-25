@@ -18,7 +18,7 @@
         <span><%= item.password %></span>
         <a href= "/edit/<%= item.id %>">Edit</a>
         <form action="/delete/<%= item.id %>" method="post">
-          <input type="submit" value="Delete">
+          <input type="submit" value="Delete" class="delete-btn">
         </form>
       </li>
     <% }); %>
