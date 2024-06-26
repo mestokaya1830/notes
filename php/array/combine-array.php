@@ -1,7 +1,8 @@
 <?php
-$lang1 = [1,2,3];
-$lang2 = ['Nodejs','Python','PHP'];
-$all = array_combine($lang1, $lang2);
+  echo '<pre>';'</pre>';//for display array format
 
-echo '<pre>';print_r($all);'</pre>'
+  $lang1 = [1,2,3];
+  $lang2 = ['Nodejs','Python','PHP'];
+  $all = array_combine($lang1, $lang2);
+  print_r($all);
 ?>
