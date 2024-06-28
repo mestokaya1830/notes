@@ -12,11 +12,14 @@ class UsersController extends Controller
 
     public function Create(Request $request){
         $request->validate([
-            'name' => 'required|min:2|max:20',
-            'password' => 'required|min:2|max:20'
+            'name' => ['required', 'min:2', 'max:20'],
+            'email' => ['required', 'max:255'],
+            'password' => ['required', 'min:4', 'max:20', 'confirmed']
         ]);
 
-        return $request->input();
+       return($request->username);
+        // return($request->input());
+        // return($request);
         //or use this
         // return $request->all();
         //or use this
