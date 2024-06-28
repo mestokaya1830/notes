@@ -11,11 +11,13 @@
       padding: 0;
       box-sizing: border-box;
     }
-    body{
+
+    body {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
+
     form {
       display: flex;
       flex-direction: column;
@@ -54,35 +56,22 @@
       font-weight: bold;
       color: #666;
     }
-    h1{margin: 30px 0;}
+
+    h1 {
+      margin: 30px 0;
+    }
   </style>
 </head>
 
 <body>
   <h1>Php Form</h1>
-  <form action="forms.php" method="post">
+  <form action="register.php" method="post">
     <label for="">Username</label>
     <input type="text" class="inputs" name="username">
     <label for="">Password</label>
-    <input type="password" class="inputs" name=password>
-    <button type="submit">Send</button>
+    <input type="password" class="inputs" name="password">
+    <button type="submit" name="submit">Send</button>
   </form>
-
-  <?php
-
-  //showing all inputs value on the url
-    // if(isset($_GET['submit'])){
-    //   echo $_GET['username'];
-    //   echo $_GET['password'];
-    // }
-
-
-    //send to server
-    // if(isset($_POST['submit'])){
-    //   echo $_POST['username'];
-    //   echo $_POST['password'];
-    // }
-  ?>
 </body>
 
 </html>
