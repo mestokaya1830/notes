@@ -25,8 +25,8 @@
   <ul>
     <?php foreach ($users as $item) { ?>
       <li>
-        <span><?php echo $Item['name'] ?></span>
-        <span><?php echo $Item['salary'] ?></span>
+        <span><?php echo $item['name'] ?></span>
+        <span><?php echo $item['salary'] ?></span>
       </li>
     <?php } ?>
   </ul>
