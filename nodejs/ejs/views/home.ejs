@@ -3,6 +3,7 @@
 <% if (users) { %>
   <ul>
     <li class="title">
+      <span>Image</span>
       <span>ID</span>
       <span>NAME</span>
       <span>PASSWORD</span>
@@ -13,6 +14,7 @@
   <ul>
     <% users.forEach(function(item){ %>
       <li>
+        <span><img src="/uploads/<%= item.image %>" alt="" class="user-image"></span>
         <span><%= item.id %></span>
         <span><%= item.name %></span>
         <span><%= item.password %></span>

@@ -2,15 +2,19 @@ import express from 'express'
 const app = express()
 import expressLayouts from 'express-ejs-layouts'
 import './models/db.js'
+import fileUpload from 'express-fileupload'
 import Users from './models/usersSC.js'
 import flash from 'connect-flash'
 import session from  'express-session'
 import tryCatch from './models/tryCatch.js'
+import path from 'path'
+import fs from 'fs'
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(express.static('static'))
 app.use(flash())
+app.use(fileUpload())
 
 app.use(expressLayouts)
 app.set('view engine', 'ejs')
@@ -44,11 +48,14 @@ app.get('/register', tryCatch(async(req, res) => {
 }))
 
 app.post('/register',tryCatch(async(req, res) => {
+  const file = req.files.file
   const newUser = new Users({
     name: req.body.user,
-    password: req.body.password
+    password: req.body.password,
+    image: file.name
   })
   await newUser.save()
+  await file.mv(path.resolve('static/uploads', file.name))
   req.flash('user', req.body.user) 
   res.redirect('/register')
 }))
@@ -67,7 +74,16 @@ app.post('/edit/:id', tryCatch(async(req, res) => {
 }))
 
 app.post('/delete/:id', tryCatch(async(req, res) => {
+  const findUser = await Users.findOne({_id: req.params.id})
   await Users.deleteOne({_id: req.params.id})
+  const imagePath = './static/uploads/'+findUser.image
+  if (fs.existsSync(imagePath)){
+    fs.rmSync(imagePath, { recursive: true }, () => {
+      res.json({code:200})
+    })
+  } else {
+    res.json({code: 400, message:'Sorry no images to remove!'})
+  }
   res.redirect('/')
 }))
 

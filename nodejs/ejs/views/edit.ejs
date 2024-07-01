@@ -10,6 +10,7 @@
 <% if (user) { %>
   <ul>
     <li>
+      <span><img src="/uploads/<%= user.image %>" alt="" class="user-image"></span>
       <span><%= user.id %></span>
       <span><%= user.name %></span>
       <form action="/edit/<%= user.id %>" method="post">
