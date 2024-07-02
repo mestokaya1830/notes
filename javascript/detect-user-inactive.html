@@ -43,6 +43,14 @@
         width: 150px;
         height: 50px;
       }
+      button{
+        padding: 8px 25px;
+        margin: 0 5px;
+        font-size: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
@@ -50,28 +58,25 @@
     <div class="timer" id="timer">00</div>
     <div class="container">
       <button id="restart">Restart</button>
-      <button id="stop">Stop</button>
     </div>
 
     <script>
-      let active = false;
       let start = 0;
       let end = 0;
-
       let interval = setInterval(() => {
         start++;
-        console.log("timer", start);
+        document.getElementById('timer').innerText = start;
         // if(start > 5){
         //   alert('Move mouse')
         // }
       }, 1000);
-      window.onmousemove = () => {
+      resetTimer = () => {
         start = 0;
       };
-      // window.onmousemove = initTimer
-      // window.onclick = initTimer
-      // window.ontouchstart = initTimer
-      // window.onkeydown = initTimer
+      window.onmousemove = resetTimer
+      window.onclick = resetTimer
+      window.ontouchstart = resetTimer
+      window.onkeydown = resetTimer
     </script>
   </body>
 </html>
