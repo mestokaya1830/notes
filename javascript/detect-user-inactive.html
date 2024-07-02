@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+      }
+      h1 {
+        margin: 30px 0;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 400px;
+        height: 100px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 20px;
+      }
+      .timer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        position: absolute;
+        right: 80px;
+        top: 50px;
+        background-color: darkcyan;
+        color: #fff;
+        font-size: 30px;
+        width: 150px;
+        height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Javascript Detect User Inactive</h1>
+    <div class="timer" id="timer">00</div>
+    <div class="container">
+      <button id="restart">Restart</button>
+      <button id="stop">Stop</button>
+    </div>
+
+    <script>
+      let active = false;
+      let start = 0;
+      let end = 0;
+
+      let interval = setInterval(() => {
+        start++;
+        console.log("timer", start);
+        // if(start > 5){
+        //   alert('Move mouse')
+        // }
+      }, 1000);
+      window.onmousemove = () => {
+        start = 0;
+      };
+      // window.onmousemove = initTimer
+      // window.onclick = initTimer
+      // window.ontouchstart = initTimer
+      // window.onkeydown = initTimer
+    </script>
+  </body>
+</html>
