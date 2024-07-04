@@ -30,6 +30,11 @@ const router = createRouter({
       component: () => import('@/views/Lazy.vue')
     },
     {
+      path: '/slot',
+      name: 'slot',
+      component: () => import('@/views/Slot.vue')
+    },
+    {
       path: '/:catchAll(.*)',
       name: 'notfound',
       component: () => import('@/views/NotFound.vue')
