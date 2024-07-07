@@ -49,6 +49,7 @@ app.post('/api/newuser', Wrap(async(req, res) => {
   await newUser.save()
   res.json('Saved')
 }))
+
 app.post('/api/deleteuser', Wrap(async(req, res) => {
   await Users.deleteOne({_id:req.body.userID})
   res.json('Deleted')
@@ -62,6 +63,11 @@ if(process.env.NODE_ENV == 'production'){
   app.get('*', (req, res) => res.sendFile(path.resolve('dist/index.html')))
 }
 
+
+app.use((err, req, res, next) => {
+  console.log(err)
+  next()
+})
 app.listen(process.env.PORT, () => {
   console.log('Server is running...' + process.env.PORT)
 })

@@ -2,7 +2,7 @@ const { Board, Led } = require("johnny-five");
 const board = new Board();
 
 board.on("ready", function(){
-  let led = new Led(13);
+  let led = new Led(11);
   this.repl.inject({
     greenLed: led
   })

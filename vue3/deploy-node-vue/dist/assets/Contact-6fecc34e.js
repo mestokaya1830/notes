@@ -1,0 +1,1 @@
+import{_ as e,o as s,c,a as t}from"./index-f33c8d3c.js";const o="/assets/img1-f7bea3cf.png",n={},a=t("h2",null,"Contact",-1),_=t("img",{src:o,alt:""},null,-1),r=[a,_];function l(i,d){return s(),c("div",null,r)}const m=e(n,[["render",l]]);export{m as default};
