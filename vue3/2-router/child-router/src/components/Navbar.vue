@@ -4,7 +4,7 @@
       <router-link  to="/" class="links">Home</router-link>
       <router-link  to="/about" class="links">About</router-link>
       <router-link  to="/contact" class="links">Contact</router-link>
-      <router-link  to="/account" class="links">Account</router-link>
+      <router-link  to="/admin" class="links">Admin</router-link>
     </nav>
   </div>
 </template>
@@ -23,9 +23,12 @@
 <style scoped>
   nav{
     display: flex;
+    align-items: center;
+    height: 70px;
   }
   .links{
-    margin: 10px;
+    margin: 0 15px;
+    font-size: 22px;
   }
   .links{
     text-decoration: none;
