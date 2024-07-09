@@ -1,18 +1,22 @@
 import React from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
+//layouts
 import ClientLayout from '../views/layouts/client-layout.js'
 import AdminLayout from '../views/layouts/admin-layout.js'
 
-import Home from '../views/home.js'
+//client
+import Home from '../views/client/home.js'
+const About = React.lazy(() => import('../views/client/about.js'))
+const Contact = React.lazy(() => import('../views/client/contact.js'))
 
-const About = React.lazy(() => import('../views/about.js'))
-const Contact = React.lazy(() => import('../views/contact.js'))
+//admin
 const Dashboard = React.lazy(() => import('../views/admin/index.js'))
+
+//general
 const NotFound = React.lazy(() => import('../views/notfound.js'))
 
 export default function index() {
-
   const Router = createBrowserRouter([
     {
       path: '/',
@@ -33,11 +37,6 @@ export default function index() {
           path: '/contact',
           name: 'contact',
           element: <React.Suspense fallback="Loading..."><Contact /></React.Suspense>
-        },
-        {
-          path: '*',
-          name: 'notfond',
-          element: <React.Suspense fallback="Loading..."><NotFound /></React.Suspense>
         }
       ]
     },
@@ -52,6 +51,11 @@ export default function index() {
           element: <React.Suspense fallback="Loading..."><Dashboard /></React.Suspense>
         }
       ]
+    },
+    {
+      path: '*',
+      name: 'notfond',
+      element: <React.Suspense fallback="Loading..."><NotFound /></React.Suspense>
     }
   ])
   return (
