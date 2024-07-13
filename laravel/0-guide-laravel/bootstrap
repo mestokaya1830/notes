@@ -1,0 +1,6 @@
+
+
+npm install -D bootstrap@5.3.3
+npm install
+aad this in resources/css/app.css and resources/js/app.js
+@import 'bootstrap';
