@@ -18,6 +18,9 @@ const Contact  = React.lazy(() => import('../client/contact'))
 const Users  = React.lazy(() => import('../server/users'))
 const Settings  = React.lazy(() => import('../server/settings'))
 
+//notfound
+const NotFound  = React.lazy(() => import('../notfound'))
+
 
 export default function index() {
   const Router = createBrowserRouter([
@@ -64,6 +67,11 @@ export default function index() {
           element: <React.Suspense fallback="Loading..."><Settings /></React.Suspense>
         }
       ]
+    },
+    {
+      path: '*',
+      name:'notfound',
+      element:<React.Suspense fallback="Loading..."><NotFound /></React.Suspense>
     }
   ])
   return (
