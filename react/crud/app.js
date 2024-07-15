@@ -20,8 +20,28 @@ if(process.env.NODE_ENV === 'production'){
 
 app.get('/', async(req, res) => {
   const [ users ] = await mysql.query('Select * From users')
-  console.log(users)
   res.status(200).json({users})
+})
+
+app.post('/create-user', async(req, res) => {
+  await mysql.query('Insert Into users(name, password, age)Values(?,?,?)', [req.body.name, req.body.password, req.body.age])
+  res.status(200).json('User created')
+})
+
+app.get('/details/:id', async(req, res) => {
+  const [ user ] = await mysql.query('Select * From users Where id = ? LIMIT 1', [req.params.id])
+  res.status(200).json({user})
+})
+
+app.put('/update/:id', async(req, res) => {
+  console.log(req.params.id)
+  await mysql.query('Update users Set password = ? , age = ?', [req.body.password, req.body.age ])
+  res.status(200).json('User updated')
+})
+
+app.post('/delete/:id', async(req, res) => {
+  await mysql.query('Delete From users Where id = ?', [req.params.id])
+  res.status(200).json('User deleted')
 })
 
 app.use((err, req, res, next) => {
