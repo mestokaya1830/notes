@@ -12,51 +12,39 @@
 body{
 	display: flex;
 	flex-direction: column;
-	height: 100vh;/*this need for full height screen and fixed header and footer*/
+	height: 100vh;
+	margin: 0;
+	padding: 0;
 }
-#header{
+.container{
 	display: flex;
-	align-items: center;
-	justify-content: center;
-	height:40px;
-	min-height:40px;
-	color:#fff;
-	background-color:#353535;
+	flex-wrap: wrap;
+	width: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin-top: 50px;
+	& div{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-grow: 1;
+		flex-basis: 200px;
+		background-color: red;
+		height: 50px;
+		border: 1px solid #ccc;
+	}
 }
-#content{
-	display: flex;
-	flex-direction:column;
-	justify-content:center;
-	align-items:center;
-	height:100%;/*this needs for fixed footer*/
-	padding:10px;
-	box-sizing:border-box;
-	background-color:#ccc;
-	overflow: auto;
-}
-#content::-webkit-scrollbar{
-	width: 0;
-}
-#footer{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height:40px;
-	min-height: 40px;
-	color:#fff;
-	background-color:#353535;
-}
+
 </style>
 </head>
 <body>
-	<div id="header">
-		<h3>Header</h3>
+	<div class="container">
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4</div>
 	</div>
-	<div id="content">
-		<h1>Content</h1>
-	</div>
-	<div id="footer">
-		<h3>Footer</h3>
-	</div>   
 </body>
 </html>

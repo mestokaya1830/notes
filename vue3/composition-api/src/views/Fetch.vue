@@ -23,11 +23,6 @@
 import {ref, onMounted} from 'vue'
 import axios from 'axios'
  const title = ref('Fetch')
-  // const users = ref([
-  //   {id:1, name:'Mesto', age: 50},
-  //   {id:2, name:'Ali', age: 40},
-  //   {id:3, name:'Deniz', age: 30}
-  // ])
   let photos = ref(null)
   fetch('https://jsonplaceholder.typicode.com/photos')
   .then(data => data.json())
