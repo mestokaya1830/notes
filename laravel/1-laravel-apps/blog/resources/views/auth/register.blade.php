@@ -4,9 +4,9 @@
     <form action="{{route('register')}}" method="post">
       @csrf
       <div class="mb-3 mt-3">
-        <label for="username" class="form-label">Username</label>
-        <input type="text" class="form-control" id="username" name="username" value="{{old('username')}}">
-        @error('username')
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}">
+        @error('name')
             <p class="text text-danger mt-2">{{$message}}</p>
         @enderror
       </div>
@@ -28,13 +28,9 @@
         <label for="password_confirmation" class="form-label">Confirm-Password</label>
         <input type="password" class="form-control" id="password_confirmation"  name="password_confirmation">
       </div>
-      <div class="form-check mb-3">
-        <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" name="remember"> Remember me
-        </label>
-      </div>
+      
       <div class="d-grid">
-        <button type="submit" class="btn btn-primary btn-block">Register</button>
+        <button type="submit" class="btn btn-dark btn-block">Register</button>
       </div>
     </form>
   </div>

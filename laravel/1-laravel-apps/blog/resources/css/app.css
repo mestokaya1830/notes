@@ -19,3 +19,13 @@
     margin: 0 15px;
   }
 }
+.profile{
+  width: 120px;
+}
+.logged-image{
+  width: 46px;
+  height: 46px;
+  border-radius: 50px;
+  cursor: pointer;
+  border: 2px solid #ccc;
+}
