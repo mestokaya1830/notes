@@ -17,7 +17,7 @@ class AuthController extends Controller
         // dd($request->post());
         $createdUser = User::create($newUser);
         Auth::login($createdUser);
-        return redirect()->route('home');
+        return redirect()->route('posts.index');
         // dd($request->username);
         // dd($request->all());
         // dd($request);
@@ -54,6 +54,6 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('home');
+        return redirect()->route('posts.index');
     }
 }

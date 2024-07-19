@@ -1,7 +1,6 @@
 <div class="navbar">
   <div>
-    <a href="{{route('home')}}" class="links">Home</a>
-    <a href="{{route('posts')}}" class="links">Posts</a>
+    <a href="{{route('posts.index')}}" class="links">Home</a>
   </div>
   <div>
     @guest
