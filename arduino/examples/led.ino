@@ -1,14 +1,15 @@
 // C++ code
 //
+#define led 2
 void setup()
 {
-  pinMode(2, OUTPUT);
+  pinMode(led, OUTPUT);
 }
 
 void loop()
 {
-  digitalWrite(2, HIGH);
+  digitalWrite(led, 1);
   delay(1000); // Wait for 1000 millisecond(s)
-  digitalWrite(2, LOW);
+  digitalWrite(led, 0);
   delay(1000); // Wait for 1000 millisecond(s)
 }

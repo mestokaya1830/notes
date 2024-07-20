@@ -11,9 +11,9 @@
 
 <script setup>
 //composition api
-  import {ref, onMounted, watch} from 'vue'
+  import {ref, watch} from 'vue'
 
-  const title = ref('Watch')
+  const title ='Watch'
 
   const counter = ref(0)
   const increase = () => counter.value++
@@ -26,7 +26,4 @@
     console.log('Old', oldValue, 'New', newValue)
   })
 
-  onMounted(() => {
-    console.log(title)
-  })
 </script>

@@ -10,7 +10,7 @@
   import {ref, onMounted} from 'vue'
   import { useRoute, useRouter } from 'vue-router'
 
-  const title = ref('Route Param')
+  const title = 'Route Param'
   const route = useRoute()
   const router = useRouter()
   
@@ -23,9 +23,7 @@
   //     params: {id: '1'}
   //   })
   // }
-  onMounted(() => {
-    console.log(route.params)//now there is no param
-    console.log(route.path)
-    console.log(route.name)
-  })
+  console.log(route.params)//now there is no param
+  console.log(route.path)
+  console.log(route.name)
 </script>

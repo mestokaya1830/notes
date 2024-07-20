@@ -8,9 +8,8 @@
 <script setup>
   import Navbar from "./components/Navbar.vue";
   import { provide } from "vue";
-  import store from '@/store'
   
-  provide('store', store)
+  provide('message', 'From App.vue')
 </script>
 
 <style>

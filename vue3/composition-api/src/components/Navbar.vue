@@ -13,7 +13,7 @@
       <router-link to="/directive" class="links">Directive</router-link>
       <router-link to="/routeparam" class="links">Route Param</router-link>
       <router-link to="/nexttick" class="links">NextTick</router-link>
-      <router-link to="/providevuex" class="links">Provide Vuex</router-link>
+      <router-link to="/provider" class="links">Provider</router-link>
     </nav>
   </div>
 </template>
