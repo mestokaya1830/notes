@@ -1,30 +1,25 @@
-<div class="navbar">
-  <div>
-    <a href="{{route('posts.index')}}" class="links">Home</a>
-  </div>
-  <div>
+<nav class="navbar">
     @guest
-        <a href="{{route('register')}}" class="links">Register</a>
-        <a href="{{route('login')}}" class="links">Login</a>
+      <div>
+        <a href="/" class="links">Home</a>
+        <a href="/about" class="links">About</a>
+        <a href="/contact" class="links">Contact</a>
+      </div>
+      <div>
+      <a href="/register" class="links">Register</a>
+      <a href="/login" class="links">Login</a>
     @endguest
     @auth
-    <a class="links" href="#">{{auth()->user()->name}}</a>
-    <div class="btn-group profile">
-      <button class="btn dropdown-toggle" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
-        <img src="https://picsum.photos/200/300" alt="No Image" class="logged-image">
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
-        <li><a class="dropdown-item" href="{{route('dashboard')}}">Dashboard</a></li>
-        <li><a class="dropdown-item" href="#">Profile</a></li>
-        <li>
-          <form action="{{route('logout')}}" method="post">
-            @csrf
-            <button type="submit" class="dropdown-item">Logout</button>
-          </form>
-        </li>
-      </ul>
-    </div>
+      <div class="dropdown">
+        <button class="btn dropdown-toggle btn-profile" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="https://picsum.photos/200/300" alt="">
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="#">Dashboard</a></li>
+          <li><a class="dropdown-item" href="#">Profile</a></li>
+          <li><a class="dropdown-item" href="#">Logout</a></li>
+        </ul>
+      </div>
     @endauth
-    
   </div>
-</div>
+</nav>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Laravel</title>
+    </head>
+    <body class="antialiased">
+        @include('./pages/header')
+        <h1>Home Page</h1>
+        @include('./pages/footer')
+    </body>
+</html>

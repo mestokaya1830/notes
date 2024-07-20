@@ -1,25 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashBoardController;
-use App\Http\Controllers\PostController;
 
-
-Route::middleware('guest')->group(function() {
-  //views
-  Route::view('/register', 'auth.register')->name('register');
-  Route::view('/login', 'auth.login')->name('login');
-  
-  //controllers
-  Route::post('/register',[AuthController::class, 'register'])->name('register');
-  Route::post('/login',[AuthController::class, 'login'])->name('login');
+//clients
+Route::middleware(['guest'])->group(function() {
+    Route::view('/', 'clients.index');
+    Route::view('/about', 'clients.about');
+    Route::view('/contact', 'clients.contact');
+    Route::view('/register', 'clients.register');
+    Route::view('/login', 'clients.login');
 });
 
-Route::middleware('auth')->group(function() {
-  Route::get('/dashboard', [DashBoardController::class, 'index'])->middleware('auth')->name('dashboard');
-  Route::post('/logout',[AuthController::class, 'logout'])->name('logout');
+//admin
+Route::middleware(['auth'])->group(function() {
+    Route::view('/admin', 'admin.index');
 });
-
-
-Route::resource('/posts', PostController::class);
