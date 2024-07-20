@@ -22,7 +22,7 @@ const mailoption  = {
   text: 'Hello Mesto',
   html: `
   <h3>How are you?To confirm your E-Mail please click on this link</h3>
-  <a href="https://www.mesfor.com">Activate</a>
+  <a href="http://localhost:3000/reset-password">Activate</a>
   `
 }
 
@@ -31,6 +31,10 @@ transporter.sendMail(mailoption,(err, info) =>{
     console.log(err)
   }
   console.log('Email send:' + info.response)
+})
+
+app.get('/reset-password', (req, res) => {
+  res.status(200).json('Password updated!')
 })
 
 app.listen(process.env.PORT || 3000, () => {
