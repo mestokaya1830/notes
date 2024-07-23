@@ -7,6 +7,7 @@ import Nested from './modules/userSC.js'
 import dotenv from 'dotenv'
 import path from 'path'
 dotenv.config()
+
 app.use(cors({credentials: true}))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true, limit: '3mb' }))
@@ -29,7 +30,6 @@ app.post('/api/gamelogs', Wrap(async(req, res) => {
 }))
 
 if(process.env.NODE_ENV == 'production'){
-  app.use(express.static('dist'))
   app.get('*', (req, res) => res.sendFile(path.resolve('dist/index.html')))
 }
 
