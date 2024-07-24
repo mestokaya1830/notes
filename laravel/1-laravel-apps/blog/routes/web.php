@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ClientPostsController;
 use Illuminate\Support\Facades\Route;
 
 //both middleware
-Route::resource('/', PostController::class);
+
+Route::resource('/', ClientPostsController::class);
 
 //guest
 Route::middleware(['guest'])->group(function(){
@@ -18,5 +20,5 @@ Route::middleware(['guest'])->group(function(){
 //auth
 Route::middleware(['auth'])->group(function(){
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-    Route::view('/admin', 'admin.index')->name('dashboard');
+    Route::resource('/posts', PostController::class);
 });

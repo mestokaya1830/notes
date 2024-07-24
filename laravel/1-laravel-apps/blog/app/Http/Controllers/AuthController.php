@@ -24,7 +24,7 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
         if(Auth::attempt($loginUser, $request->remember)){
-            return redirect()->route('dashboard');
+            return redirect()->route('posts.index');
         } else {
             return back()->withErrors([
                 'credential' => 'Wrong credential!'

@@ -8,10 +8,9 @@ aad this in resources/css/app.css and resources/js/app.js
 
 
 pagination
-Go to your app/Providers/AppServiceProvider.php file. Then add use Illuminate\Pagination\Paginator; and find out the boot() function. Then write this line Paginator::useBootstrap(); inside the function.
+Go to your app/Providers/AppServiceProvider.php file.
 
 use Illuminate\Pagination\Paginator;
-
 public function boot()
 {
     Paginator::useBootstrap();
