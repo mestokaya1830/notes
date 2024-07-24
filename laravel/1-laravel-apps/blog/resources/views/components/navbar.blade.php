@@ -1,5 +1,5 @@
 <nav class="navbar">
-    <a href="{{ route('home') }}" class="links">Home</a>
+    <a href="{{ route('index') }}" class="links">Home</a>
 
     @guest
         <div>

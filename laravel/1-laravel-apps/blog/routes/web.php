@@ -1,10 +1,11 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 //both middleware
-Route::view('/', 'clients.index')->name('home');
+Route::resource('/', PostController::class);
 
 //guest
 Route::middleware(['guest'])->group(function(){
@@ -13,7 +14,6 @@ Route::middleware(['guest'])->group(function(){
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);
 });
-
 
 //auth
 Route::middleware(['auth'])->group(function(){
