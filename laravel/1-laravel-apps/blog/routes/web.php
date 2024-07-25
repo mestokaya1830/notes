@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 //both middleware
 
 Route::redirect('/', 'client');//use clients route instead /
+Route::view('/about', 'client.about')->name('client.about');//use clients route instead /
+Route::view('/contact', 'client.contact')->name('client.contact');//use clients route instead /
 Route::resource('/client', PostClientController::class);
 Route::get('/client/{user}/posts', [PostClientController::class,'clientUserPosts'])->name('client.user.posts');
 

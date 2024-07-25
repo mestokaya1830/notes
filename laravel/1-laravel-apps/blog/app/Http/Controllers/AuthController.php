@@ -16,7 +16,7 @@ class AuthController extends Controller
         ]);
         $registeredUser = User::create($newUser);
         Auth::login($registeredUser);
-        return redirect()->route('dashboard');
+        return redirect()->route('client.index');
    }
    public function login(Request $request){
         $loginUser = $request->validate([

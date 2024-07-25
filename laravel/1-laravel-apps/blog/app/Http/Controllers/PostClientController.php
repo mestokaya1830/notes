@@ -17,8 +17,11 @@ class PostClientController extends Controller
     public function index()
     {
         $posts = Post::latest()->paginate(6);
-        // $posts = Post::all();
         return view('client.index', ['posts' => $posts]);
+        // $posts = Post::all();
+        // $posts = Post::get();
+        // $posts = Post::latest();
+        // $posts = Post::input();
     }
 
 

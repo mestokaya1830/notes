@@ -16,8 +16,8 @@ body {
 .links {
     text-decoration: none;
     font-size: 22px;
-    color: #fff;
     margin: 0 15px;
+    color: #fff;
 }
 
 .router {
@@ -49,8 +49,18 @@ body {
     margin: 10px 0;
     box-shadow: 2px 2px 10px #ddd, -2px -2px 10px #ddd;
     border: none;
+    & img{
+        width: 100%;
+        max-height: 500px;
+    }
 }
 .pagination {
     --bs-pagination-padding-x: 20px;
     --bs-pagination-padding-y: 10px;
+}
+.active{
+    color: green;
+}
+.inActive{
+    color: #fff;
 }
