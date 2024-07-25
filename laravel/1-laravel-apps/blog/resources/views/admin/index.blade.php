@@ -1,7 +1,7 @@
 <x-layout title="Admin Posts">
     <h1 style="margin-bottom: 30px;">Create New Post</h1>
     <div class="text text-success">{{session('success')}}</div>
-    <form action="{{route('posts.store')}}" method="post" class="border rounded p-5 mb-5">
+    <form action="{{route('admin.store')}}" method="post" class="border rounded p-5 mb-5">
         @csrf
         <div class="mb-3 row">
             <label for="title" class="form-label">Title</label>
@@ -38,9 +38,9 @@
                     <div class="card">
                         <div class="card-body">
                             <h3 class="card-title">{{ $item->title }}</h3>
-                            <h6 class="card-subtitle mb-2 text-muted">{{ $item->created_at->diffForHumans() }} / {{$item->user->name}}</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ $item->created_at->diffForHumans() }} / </h6>
                             <p class="card-text">{{ Str::words($item->body, 25, '...') }}</p>
-                            <a href="#" class="card-link">Card link</a>
+                            <a href="{{route('admin.show', $item)}}" class="card-link">read more</a>
                         </div>
                     </div>
                 </div>

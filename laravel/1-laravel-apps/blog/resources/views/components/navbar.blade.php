@@ -1,5 +1,5 @@
 <nav class="navbar">
-    <a href="{{ route('index') }}" class="links">Home</a>
+    <a href="{{ route('client.index') }}" class="links">Home</a>
 
     @guest
         <div>
@@ -15,7 +15,7 @@
             data-bs-toggle="dropdown" aria-expanded="false">
 
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="{{ route('posts.index') }}">Dashboard</a></li>
+                <li><a class="dropdown-item" href="{{ route('admin.index') }}">Dashboard</a></li>
                 <li><a class="dropdown-item" href="#">Profile</a></li>
                 <li>
                     <form action="{{route('logout')}}" method="post">

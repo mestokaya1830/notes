@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class PostController extends Controller
+class PostAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -45,14 +46,18 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
+    public function show(Post $admin) //with resource route param (not param must be with route)
     {
-        //
+        return view('admin.show', ['post' => $admin]);
     }
+    //or manually id
+    // public function show($id) //with resource route param
+    // {
+    //     $post = Post::find($id);
+    //     return view('admin.show', ['post' => $post]);
+    // }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(Post $post)
     {
         //
@@ -74,3 +79,4 @@ class PostController extends Controller
         //
     }
 }
+

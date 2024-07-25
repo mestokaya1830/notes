@@ -1,5 +1,5 @@
 <x-layout title="Home">
-    <h1>Latest Posts</h1>
+    <h1>All Posts</h1>
     @if ($posts)
         <div class="row">
             @foreach ($posts as $item)
@@ -7,9 +7,9 @@
                     <div class="card">
                         <div class="card-body">
                             <h3 class="card-title">{{ $item->title }}</h3>
-                            <h6 class="card-subtitle mb-2 text-muted">{{ $item->created_at->diffForHumans() }}</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ $item->created_at->diffForHumans() }} / <a href="{{route('client.user.posts', $item->user)}}">{{$item->user->name}}</a></h6>
                             <p class="card-text">{{ Str::words($item->body, 25, '...') }}</p>
-                            <a href="#" class="card-link">Card link</a>
+                            <a href="{{route('client.show', $item)}}" class="card-link">Read more</a>
                         </div>
                     </div>
                 </div>

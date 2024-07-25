@@ -24,7 +24,7 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
         if(Auth::attempt($loginUser, $request->remember)){
-            return redirect()->route('posts.index');
+            return redirect()->route('admin.index');
         } else {
             return back()->withErrors([
                 'credential' => 'Wrong credential!'
@@ -35,6 +35,6 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('index');
+        return redirect()->route('client.index');
    }
 }
