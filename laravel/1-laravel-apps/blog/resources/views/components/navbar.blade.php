@@ -13,7 +13,7 @@
     @endguest
     @auth
         <div style="display: flex;align-items:center;">
-            <label class="links">{{ auth()->user()->name }}</label>
+            <a href="{{route('admin.index')}}" class="links {{Route::is('admin.index') ? 'active' : 'inActive'}}">{{ auth()->user()->name }}</a>
             <div class="dropdown">
                 <img src="https://picsum.photos/200/300" alt="" class="btn btn-secondary dropdown-toggle"
                     id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
