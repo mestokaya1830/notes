@@ -17,7 +17,7 @@ const usersSchema = new mongoose.Schema({
   },
   name:{type: String, required: true, minlength:3, length:50},
   password:{type: String, required: true, minlength:4, length:100},
-  languages:[],
+  languages:[Array],
   messages:[messagesSchema],
   created_at:{type: Date, required: true, default:Date.now()}
 })

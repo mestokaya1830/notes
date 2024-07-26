@@ -1,19 +1,29 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 
-const usersSchema = new mongoose.Schema({
-  email:{
-    type: String,
-    required: true,
-    unique: true,
-    minlength:3,
-    length:50,
-    lovercase: true,
-    trim:true
+const usersSC = new mongoose.Schema({
+  name: {
+    type: String, 
+    required:[true, 'Name is required'], 
+    minlength:['3', 'Name must be more then 3'], 
+    maxlength:['255','Name must be less then 255']
   },
-  name:{type: String, required: true, minlength:3, length:50},
-  password:{type: String, required: true, minlength:4, length:100},
-  created_at:{type: Date, required: true, default:Date.now()},
-  isAdmin:{type: Boolean, default: false}
+  email: {
+    type: String, 
+    unique:[true, 'This email is exists'], 
+    required:[true, 'Email is required'], 
+    maxlength:['255','Email must be less then 255']
+  },
+  password: {
+    type: String, 
+    required:[true, 'Password is required'], 
+    minlength:['3', 'Password must be more then 3'], 
+    maxlength:['255','Password must be less then 255']
+  },
+  token: {type: String}
 })
 
-export default new mongoose.model('users', usersSchema)
+export default mongoose.model('users', usersSC)
+
+
+not when unique not works
+open mongosh use users then paste this db.users.ensureIndex( { "email": 1 }, { unique: true } )
