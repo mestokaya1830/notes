@@ -3,7 +3,8 @@ import helmet from 'helmet'
 import fileUpload from 'express-fileupload'
 import path from 'path'
 import authRouter from './router/authRouter.js'
-import postsRouter from './router/postsRouter.js'
+import clientPostRouter from './router/clientPostRouter.js'
+import adminPostRouter from './router/adminPostRouter.js'
 import session from 'express-session'
 import MongoStore from 'connect-mongo'
 import 'dotenv/config'
@@ -35,7 +36,8 @@ app.use(session({
 }))
 
 app.use('/api', authRouter)
-app.use('/api/posts/', postsRouter)
+app.use('/api/client/', clientPostRouter)
+app.use('/api/admin/', adminPostRouter)
 
 if(process.env.NODE_ENV == 'production'){
   app.use(express.static('dist'))

@@ -47,13 +47,11 @@ export default {
       this.post.image = `${this.$store.state.auth._id}.${event.target.files[0].name}`
       this.data.append('file', event.target.files[0])
       this.data.append('post', JSON.stringify(this.post))
-      console.log(this.post.image)
     },
     async createPost() {
-      await axios.post('/api/posts/create', this.data).then(res => {
+      await axios.post('/api/admin/create', this.data).then(res => {
         if (res.status == 200) {
           this.message = res.data
-          console.log(res)
         }
       })
     }

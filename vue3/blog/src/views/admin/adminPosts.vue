@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h2>All Posts</h2>
+    <h2>{{ $store.state.auth.name }} Posts</h2>
     <div class="row">
     <template v-for="item in posts" :key="item._id">
         <div class="col-sm-6">
@@ -10,10 +10,10 @@
               <h5 class="card-title">{{ item.title }}</h5>
               <p class="card-subtitle mb-2 text-muted">
                 {{ new Date(item.created_at).toLocaleDateString() }}
-                <a :href="`/${item.owner}/posts`">{{ item.owner }}</a>
+                <strong>{{ item.owner }}</strong>
               </p>
               <p class="card-text">{{ String(item.body).substring(0, 200) }}</p>
-              <a :href="`${item.owner}/post/${item._id}`" class="card-link">Read more...</a>
+              <a :href="`post/${item._id}`" class="card-link">Read more...</a>
             </div>
           </div>
         </div>
@@ -28,7 +28,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      posts: {}
+      posts: {},
     }
   },
   mounted() {
@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     async getPosts() {
-      await axios.get('/api/posts').then(res => {
+      await axios.get(`/api/admin/posts`).then(res => {
         if (res.status == 200) {
           this.posts = res.data.posts
         }

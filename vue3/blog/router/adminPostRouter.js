@@ -6,26 +6,22 @@ import path from 'path'
 import Posts from '../models/postsSC.js'
 
 
-router.get('/', tryCatch(async(req, res) => {
-  const posts = await Posts.find({})
-  res.status(200).json({posts})
-}))
-router.get('/:user/posts', tryCatch(async(req, res) => {
-  const posts = await Posts.find({owner: req.params.user})
+router.get('/posts', tryCatch(async(req, res) => {
+  const posts = await Posts.find({owner: req.session.auth.name})
   res.status(200).json({posts})
 }))
 
-router.get('/:user/post/:id', tryCatch(async(req, res) => {
+router.get('/post/:id', tryCatch(async(req, res) => {
   const post = await Posts.findOne({_id: req.params.id})
   res.status(200).json({post})
 }))
 
 router.post('/create', tryCatch(async(req, res) => {
-  const post = JSON.parse(req.body.post) 
+  const {title, body, image} = JSON.parse(req.body.post)
   const newPost = new Posts({
-    title: post.title,
-    body: post.body,
-    image: post.image,
+    title: title,
+    body: body,
+    image: image,
     owner: req.session.auth.name
   })
   await newPost.save()
