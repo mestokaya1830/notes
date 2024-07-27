@@ -80,6 +80,9 @@ export default {
           if (res.status == 200) {
             this.error = {}
             this.message = res.data
+            setTimeout(() => {
+              this.$router.push('/admin/posts')
+            }, 2000)
           }
         })
       }

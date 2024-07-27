@@ -32,7 +32,6 @@ router.post('/create', tryCatch(async(req, res) => {
 }))
 
 router.post('/update', tryCatch(async(req, res) => {
-  console.log(req.files)
   const {_id, title, body, imageName} = JSON.parse(req.body.post)
   if(req.files != null){
     const imagePath = './public/uploads/'+imageName
