@@ -30,3 +30,7 @@ body{
   max-height: 400px;
   width: 100%;
 }
+
+.updateImage{
+  max-width: 200px;
+}

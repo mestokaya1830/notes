@@ -22,16 +22,15 @@ router.post('/register', tryCatch(async(req, res) => {
   if(checkEmail){
     res.status(201).json('This email exists')
     return false
-  } else {
-    const newUser = new Users({
-      name: req.body.user.name,
-      email: req.body.user.email,
-      password: cryptr.encrypt(req.body.user.password)
-    })
-    await newUser.save()
-    req.session.auth = checkEmail
-    res.status(200).json('New User Registered')
   }
+  const newUser = new Users({
+    name: req.body.user.name,
+    email: req.body.user.email,
+    password: req.body.user.password != '' ? cryptr.encrypt(req.body.user.password) : req.body.user.password
+  })
+  await newUser.save()
+  req.session.auth = checkEmail
+  res.status(200).json('New User Registered')
 }))
 
 router.post('/emil-verification', tryCatch(async(req, res) => {

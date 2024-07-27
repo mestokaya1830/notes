@@ -85,13 +85,18 @@ const router = createRouter({
           name: "admin-posts",
           component: () => import("../views/admin/adminPosts.vue"),
           meta: { title: "Posts" },
-          
         },
         {
           path: "/admin/post/:id",
           name: "admin-post-details",
           component: () => import("../views/admin/adminPostDetails.vue"),
           meta: { title: "Post Details" },
+        },
+        {
+          path: "/admin/post/edit/:id",
+          name: "admin-post-edit",
+          component: () => import("../views/admin/adminPostEdit.vue"),
+          meta: { title: "Post Edit" },
         },
       ]
     },

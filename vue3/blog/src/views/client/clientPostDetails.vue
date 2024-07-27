@@ -6,7 +6,7 @@
         <a href="#" @click="getBack()" class="card-link">Return</a>
         <div class="card">
           <div class="card-body">
-            <img :src="`/uploads/${post.image}`" alt="">
+            <img :src="`/uploads/${post.imageName}`" alt="">
             <h5 class="card-title">{{ post.title }}</h5>
             <p class="card-subtitle mb-2 text-muted">{{ new Date(post.created_at).toLocaleDateString() }}</p>
             <p class="card-text">{{ post.body }}</p>

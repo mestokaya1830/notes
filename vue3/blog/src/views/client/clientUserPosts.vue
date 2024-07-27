@@ -7,7 +7,7 @@
         <div class="col-sm-6">
           <div class="card">
             <div class="card-body">
-              <img :src="`/uploads/${item.image}`" alt="">
+              <img :src="`/uploads/${item.imageName}`" alt="">
               <h5 class="card-title">{{ item.title }}</h5>
               <p class="card-subtitle mb-2 text-muted">
                 {{ new Date(item.created_at).toLocaleDateString() }}

@@ -13,7 +13,7 @@ const postsSC = new mongoose.Schema({
     minlength:['3', 'Body must be more then 10'], 
     maxlength:['5000','Body must be less then 5000']
   },
-  image: {
+  imageName: {
     type: String
   },
   owner: {
