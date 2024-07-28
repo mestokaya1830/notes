@@ -64,8 +64,13 @@ router.post('/emil-verification', tryCatch(async(req, res) => {
 }))
 
 router.post('/reset-password', tryCatch(async(req, res) => {
-  console.log(req.body.token)
-  res.status(200).json('Reset Password Page')
+  const checkUser = await Users.findOne({email: req.body.email}).limit(1)
+  if(checkUser){
+    await Users.updateOne({email: req.body.email}, {$set:{password: req.body.password}})
+    res.status(200).json('Reset Password Successfully')
+  } else {
+    res.status(201).json('User not found!')
+  }
 }))
 
 router.post('/logout', tryCatch(async(req, res) => {
