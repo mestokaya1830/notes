@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class VerficationMail extends Mailable
+class RegisterMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -27,7 +27,7 @@ class VerficationMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Mesfor Reset Password  Request',
+            subject: 'Register Mail',
         );
     }
 
@@ -37,7 +37,7 @@ class VerficationMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'client.email-verfication',
+            view: 'client.email-register',
         );
     }
 

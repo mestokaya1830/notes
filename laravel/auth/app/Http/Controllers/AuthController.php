@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Mail as Mail;
 use App\Mail\VerficationMail;
+use App\Mail\RegisterMail;
 class AuthController extends Controller
 {
     public function register(Request $request)
@@ -16,9 +17,14 @@ class AuthController extends Controller
             'email' => ['required', 'max:255', 'email', 'unique:users'],
             'password' => ['required', 'max:255', 'confirmed'],
         ]);
-        $registeredUser = User::create($newUser);
-        Auth::login($registeredUser);
-        return redirect()->route('client.index');
+        User::create($newUser);
+        Mail::to($request->email)->send(new RegisterMail());
+        return back()->with('status','Check your email to login');
+
+        //auto login without email-------------------------------------------
+        // $registeredUser = User::create($newUser);
+        // Auth::login($registeredUser);
+        //return redirect()->route('client.index');
     }
 
     public function login(Request $request)
@@ -47,9 +53,14 @@ class AuthController extends Controller
     public function emailVerfication(Request $request)
     {
         // Mail::to(auth()->user()->email)->send($request->email);//loggedin user
-        Mail::to($request->email)->send(new VerficationMail());
+        $user = User::where('email', '=', $request->email)->first();
+        if($user){
+            Mail::to($request->email)->send(new VerficationMail());
+            return redirect()->route('client.index');
+        } else {
+            return back()->withErrors(['credential' => 'User not exists']);
+        }
 
-        return redirect()->route('client.index');
     }
 
     public function resetPassword(Request $request, User $user)

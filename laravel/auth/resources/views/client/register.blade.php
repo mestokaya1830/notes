@@ -42,6 +42,9 @@
                     <input type="password" class="form-control" name="password_confirmation" id="password_confirmation">
                 </div>
             </div>
+            <div class="text text-success mt-3">
+                <h3 class="text text-center">{{session('status')}}</h3>
+            </div>
             <div class="d-grid">
                 <button type="submit" class="btn btn-dark btn-lg">Register</button>
             </div>
