@@ -18,7 +18,7 @@ class RegisterMail extends Mailable
      */
     public function __construct()
     {
-        //
+       
     }
 
     /**
@@ -37,7 +37,7 @@ class RegisterMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'client.email-register',
+            view: 'emails.email-register',
         );
     }
 

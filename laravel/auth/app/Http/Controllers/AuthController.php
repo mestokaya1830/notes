@@ -18,8 +18,10 @@ class AuthController extends Controller
             'password' => ['required', 'max:255', 'confirmed'],
         ]);
         User::create($newUser);
+
         Mail::to($request->email)->send(new RegisterMail());
         return back()->with('status','Check your email to login');
+
 
         //auto login without email-------------------------------------------
         // $registeredUser = User::create($newUser);

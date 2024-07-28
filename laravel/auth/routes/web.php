@@ -25,6 +25,7 @@ Route::middleware(['guest'])->group(function(){
     //not-accepted  = /reset-password
     Route::view('/client/reset-password', 'client.reset')->name('reset-password');
     Route::put('/reset-password', [AuthController::class, 'resetPassword'])->name('reset-password');
+
 });
 
 //auth
