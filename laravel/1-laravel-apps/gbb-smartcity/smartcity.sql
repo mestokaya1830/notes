@@ -1,3 +1,4 @@
+-- Active: 1722266454666@@127.0.0.1@3306@smartcity
 -- phpMyAdmin SQL Dump
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
@@ -29,11 +30,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `activities` (
   `id` int(11) NOT NULL,
-  `title` varchar(100) DEFAULT '---',
-  `text` text DEFAULT '---',
-  `img` varchar(50) DEFAULT '---',
-  `link` text DEFAULT '---',
-  `created_at` date NOT NULL DEFAULT current_timestamp(),
+  `title` varchar(100) DEFAULT NUll,
+  `text` text DEFAULT NUll,
+  `img` varchar(50) DEFAULT NUll,
+  `link` text DEFAULT NUll,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_turkish_ci;
 
@@ -66,11 +67,11 @@ INSERT INTO `admins` (`id`, `name`, `password`, `email`, `date`) VALUES
 
 CREATE TABLE `banners` (
   `id` int(11) NOT NULL,
-  `title` varchar(255) DEFAULT '---',
-  `text` text DEFAULT '---',
-  `img` varchar(255) DEFAULT '---',
-  `link` text DEFAULT '---',
-  `created_at` date NOT NULL DEFAULT current_timestamp(),
+  `title` varchar(255) DEFAULT NULL,
+  `text` text DEFAULT NULL,
+  `img` varchar(255) DEFAULT NULL,
+  `link` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_turkish_ci;
 

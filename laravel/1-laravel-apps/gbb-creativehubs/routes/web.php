@@ -151,7 +151,7 @@ Route::group(['middleware' => 'checkSession'], function () {
     });
 
     Route::get('/nodedetails/{id}', function ($id) {
-        return $data['result'] =  DB::table('nodes')->where('source', $id)->orWhere('source2', $id)->orWhere('source3', $id)->orWhere('id', $id)->get(['id', 'type', 'text', 'location', 'address', 'link', 'category', 'bg']);
+        $data['result'] =  DB::table('nodes')->where('source', $id)->orWhere('source2', $id)->orWhere('source3', $id)->orWhere('id', $id)->get(['id', 'type', 'text', 'location', 'address', 'link', 'category', 'bg']);
         return $data;
     });
 

@@ -1,16 +1,31 @@
 
-create private user------------------------------------------------------
-DROP USER 'username'@'host';
+create full permission user------------------------------------------------------
+DROP USER 'mesto'@'host';
+CREATE USER 'mesto'@'localhost' IDENTIFIED BY 'mk1972mk';
+GRANT ALL ON *.* TO 'mesto'@'localhost';
+FLUSH PRIVILEGES;
+
+show user permission------------------------------------------------------
 SELECT User, Host FROM mysql.user;
-SHOW GRANTS FOR 'testuser'@'localhost';
+SHOW GRANTS FOR 'mesto'@'localhost';
 SELECT db, host, user FROM mysql.db;
 SELECT db, host, user FROM mysql.db WHERE db = 'db';
 SELECT * FROM mysql.db WHERE Db = 'db'\G;
 
-CREATE USER 'mesto'@'localhost' IDENTIFIED BY 'mk1972mk';
-GRANT ALL ON *.* TO 'mesto'@'localhost';//for all database
-GRANT ALL PRIVILEGES ON gasvet.* TO 'mesto'@'localhost';
+
+create specific database user---------------------------------
+DROP USER 'mesto'@'host';
+CREATE USER 'mesto'@'localhost' IDENTIFIED BY 'mk1972mk'
+GRANT ALL PRIVILEGES ON dbname.* TO 'mesto'@'localhost';
+FLUSH PRIVILEGES;
+
+alter password for all permission---------------------------------------------------------------
 ALTER USER 'mesto'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mk1972mk';
+GRANT ALL ON *.* TO 'mesto'@'localhost';
+FLUSH PRIVILEGES;
+
+
+alter specific role--------------------------------------------------------- 
 GRANT SELECT, INSERT, DELETE ON testdb1.* TO testuser@'localhost';//spesific grant
 FLUSH PRIVILEGES;
 

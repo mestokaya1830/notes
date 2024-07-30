@@ -149,14 +149,15 @@
         const getNodeDetails = async (id) => {
             const result = await fetch(`/nodedetails/${id}`)
             const final = await result.json()
+            console.log(final.result)
             document.getElementById('details').style.display = 'block'
-            let finalFilter = final.filter(item => item.id === id)
+            let finalFilter = final.result.filter(item => item.id === id)
             document.getElementById('details-header').style.backgroundColor = finalFilter[0].bg
             document.getElementById('header-title').innerHTML = id
             document.getElementById('header-category').innerHTML = finalFilter[0].category
 
             document.getElementById('details-body').innerHTML = ''
-            for (const item of final) {
+            for (const item of final.result) {
                 if (item.type !== 'title') {
                     document.getElementById('details-body').innerHTML += `
                     <div class="details-list" >
