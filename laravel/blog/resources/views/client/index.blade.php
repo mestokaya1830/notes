@@ -1,10 +1,11 @@
 <x-layout title="Home">
+    {{ Breadcrumbs::render('home') }}
     <h1>All Posts {{$posts->total()}}</h1>
-    {{ $posts }}
+    {{ $posts->links() }}
     @if ($posts)
-        <div class="row">
-            @foreach ($posts as $item)
-                <div class="col-sm-6">
+    <div class="row">
+        @foreach ($posts as $item)
+        <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
                             <img src="{{asset('storage/'.$item->image)}}" alt="">

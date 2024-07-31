@@ -36,7 +36,5 @@ class PostClientController extends Controller
        $post = Post::find($id);
         return view('client.show', ['post' => $post]);
     }
-
-
 }
 

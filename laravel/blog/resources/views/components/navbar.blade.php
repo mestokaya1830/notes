@@ -19,8 +19,7 @@
                     id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="{{ route('admin.index') }}">Dashboard</a></li>
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="{{route('admin.index')}}">Posts</a></li>
                     <li>
                         <form action="{{ route('logout') }}" method="post">
                             @csrf

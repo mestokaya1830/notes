@@ -7,6 +7,13 @@
                     <form action="{{ route('admin.update', $post) }}" method="post" enctype="multipart/form-data" class="card-body">
                         @csrf
                         @method('PUT')
+                        <a href="{{route('admin.index')}}">Return</a>
+                        <img src="{{ asset('storage/' . $post->image) }}" alt="">
+                        <div class="text text-danger">
+                            @error('image')
+                                {{ $message }}
+                            @enderror
+                        </div>
                         <label for="title">Title</label>
                         <input type="text" class="form-control mb-3" name="title" id="title"
                             value="{{ $post->title }}">
@@ -22,13 +29,7 @@
                                 {{ $message }}
                             @enderror
                         </div>
-                        <label for="body">Image</label>
-                        <img src="{{ asset('storage/' . $post->image) }}" alt="">
-                        <div class="text text-danger">
-                            @error('image')
-                                {{ $message }}
-                            @enderror
-                        </div>
+
                         <div class="mt-3">
                             <input type="file" name="image" id="image">
                         </div>

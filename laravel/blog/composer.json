@@ -6,8 +6,11 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "davejamesmiller/laravel-breadcrumbs": "5.x",
+        "diglactic/laravel-breadcrumbs": "*",
         "laravel/framework": "^11.9",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "tabuna/breadcrumbs": "^4.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
