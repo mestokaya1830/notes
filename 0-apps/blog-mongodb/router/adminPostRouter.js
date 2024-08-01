@@ -18,10 +18,21 @@ router.get('/post/:id', tryCatch(async(req, res) => {
 }))
 
 router.post('/create', tryCatch(async(req, res) => {
+  const markdownParser = (content) => {
+    const htmlText = content
+        .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+        .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+        .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+        .replace(/^#### (.*$)/gim, '<h4>$1</h4>')
+        .replace(/^##### (.*$)/gim, '<h5>$1</h5>')
+        .replace(/^###### (.*$)/gim, '<h6>$1</h6>')
+    return htmlText.trim() 
+  }
   const {title, body, imageName} = JSON.parse(req.body.post)
+  
   const newPost = new Posts({
     title: title,
-    body: body,
+    body: markdownParser(body),
     imageName: imageName,
     owner: req.session.auth.name
   })

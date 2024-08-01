@@ -5,7 +5,7 @@ import nodeMailer  from 'nodemailer'
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
-
+//email host settings
 const transporter = nodeMailer.createTransport({
   host: "smtp-mail.outlook.com",
   auth: {
@@ -14,6 +14,7 @@ const transporter = nodeMailer.createTransport({
   }
 })
 
+//email options
 const mailoption  = {
   from: 'mesto1830@outlook.com',
   to: 'mesto1830@gmail.com',
@@ -26,6 +27,7 @@ const mailoption  = {
   `
 }
 
+//send email
 transporter.sendMail(mailoption,(err, info) =>{
   if (err) {
     console.log(err)

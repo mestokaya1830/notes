@@ -2,6 +2,7 @@
   <div>
     <div class="container">
       <h1>Create New Post</h1>
+      <button class="btn btn-secondary" @click="getBack()">Return</button>
       <h3 class="text text-success text-center">{{ message }}</h3>
       <form @submit.prevent id="form" class="border rounded p-4" enctype="multipart/form-data">
         <div class="mb-3 row">
@@ -22,7 +23,7 @@
             <div class="text text-danger mt-2" v-if="error.file">{{ error.file }}</div>
           </div>
           <div class="d-grid mt-3">
-            <button class="btn btn-primary" @click="updatePost()">Update</button>
+            <button class="btn btn-dark" @click="updatePost()">Update</button>
           </div>
         </div>
       </form>
@@ -81,11 +82,14 @@ export default {
             this.error = {}
             this.message = res.data
             setTimeout(() => {
-              this.$router.push('/admin/posts')
+              this.$router.push('/admin/post/'+this.$route.params.id)
             }, 2000)
           }
         })
       }
+    },
+    getBack(){
+      window.history.back()
     }
   }
 }

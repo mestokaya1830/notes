@@ -37,6 +37,7 @@ router.post('/register', tryCatch(async(req, res) => {
 router.post('/emil-verification', tryCatch(async(req, res) => {
   const token = Math.random().toString(36).substring(2,50)
   
+  //email host settings
   const transporter = nodeMailer.createTransport({
     host: "smtp-mail.outlook.com",
     auth: {
@@ -45,6 +46,7 @@ router.post('/emil-verification', tryCatch(async(req, res) => {
     }
   })
   
+  //email options
   const mailoption  = {
     from: 'mesto1830@outlook.com',
     to: req.body.email,
@@ -56,6 +58,7 @@ router.post('/emil-verification', tryCatch(async(req, res) => {
     `
   }
   
+  //send email
   transporter.sendMail(mailoption,(err, info) =>{
     if (err) {
       console.log(err)

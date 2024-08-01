@@ -50,8 +50,8 @@ export default {
           this.error = {}
           this.message = res.data
           setTimeout(() => {
-            this.$router.push('/admin/posts')
-          }, 2000)
+            this.$router.push('/admin')
+          }, 1000)
         }
       })
     },

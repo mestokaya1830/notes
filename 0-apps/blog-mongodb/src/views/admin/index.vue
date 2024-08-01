@@ -15,8 +15,8 @@
                 {{ new Date(item.created_at).toLocaleDateString() }}
                 <strong>{{ item.owner }}</strong>
               </p>
-              <p class="card-text">{{ String(item.body).substring(0, 200) }}</p>
-              <a :href="`post/${item._id}`" class="card-link">Read more...</a>
+              <p class="card-text" v-html="(item.body).substring(0, 20)"></p>
+              <a :href="`/admin/post/${item._id}`" class="card-link">Read more...</a>
             </div>
           </div>
         </div>
