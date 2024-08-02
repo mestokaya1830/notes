@@ -3,8 +3,8 @@ mongosh ->
 use admin //root role must take admin database
 db.createUser(
   {
-    user: 'username',
-    pwd:  'password',
+    user: 'mesto',
+    pwd:  'MK1972mk11130113',
     roles: [{role:"root", db:"admin"}]
 	
   }
@@ -15,7 +15,7 @@ use admin
 db.createUser(
   {
     user: 'Boss',
-    pwd:  'MK1972mk11130113',
+    pwd:  'mk1972mk',
     roles: [ { role: "userAdminAnyDatabase", db: "admin" }, 'readWriteAnyDatabase'] 
   }
 )
@@ -24,8 +24,8 @@ mongosh
 use dbName
 db.createUser(
   {
-    user: 'mesto',
-    pwd:  'MK1972mk11130113',
+    user: 'blog',
+    pwd:  'mk1972mk',
     roles: [{role:"readWrite", db:"bet"}]
 	
   }

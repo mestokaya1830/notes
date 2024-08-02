@@ -1,14 +1,59 @@
 
-install mysql as root--------------------------------------------------------------
 sudo apt update
 sudo apt install mysql-server
-sudo mysql_secure_installation
 sudo systemctl restart mysql
+
+****************************************************************************************
+add password for current user root-----------------------------------------------
 sudo mysql -u root -p
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mk1972mk';
 flush privileges;
 
+****************************************************************************************
 
+create new user for all databases----------------------------------------------------------
+DROP USER 'mesto'@'localhost';
+CREATE USER 'mesto'@'localhost' IDENTIFIED BY 'mk1972mk';
+GRANT ALL ON *.* TO 'mesto'@'localhost';
+FLUSH PRIVILEGES;
+
+alter password for all databases----------------------------------------------------------
+ALTER USER 'mesto'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mk1972mk';
+GRANT ALL ON *.* TO 'mesto'@'localhost';
+FLUSH PRIVILEGES;
+
+*******************************************************************************************
+
+create new user for specific database---------------------------------
+DROP USER 'mesto'@'localhost';
+CREATE USER 'laravel'@'localhost' IDENTIFIED BY 'mk1972mk'
+GRANT ALL PRIVILEGES ON laravel_blog.* TO 'laravel'@'localhost';
+FLUSH PRIVILEGES;
+
+alter password for specific database---------------------------------
+ALTER USER 'mesto'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mk1972mk';
+GRANT ALL PRIVILEGES ON blog.* TO 'mesto'@'localhost';
+FLUSH PRIVILEGES;
+
+*****************************************************************************************
+
+alter specific role--------------------------------------------------------- 
+GRANT SELECT, INSERT, DELETE ON blog.* TO testuser@'localhost';//spesific grant
+FLUSH PRIVILEGES;
+
+REVOKE ALL PRIVILEGES ON blog.* FROM 'testuser'@'localhost';
+FLUSH PRIVILEGES;
+******************************************************************************************
+
+show user permission------------------------------------------------------
+SELECT User, Host FROM mysql.user;
+SHOW GRANTS FOR 'mesto'@'localhost';
+SELECT db, host, user FROM mysql.db;
+SELECT db, host, user FROM mysql.db WHERE db = 'db';
+SELECT * FROM mysql.db WHERE Db = 'db'\G;
+
+
+******************************************************************************************
 
 Uninstall mysql--------------------------------------------------------------
 sudo apt-get remove --purge mysql-server mysql-client mysql-common -y
@@ -19,3 +64,22 @@ sudo rm -r /etc/mysql
 sudo rm -r /var/lib/mysql
 sudo rm -r /var/lib/mysql-files
 sudo rm -r /var/lib/mysql-keyring
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

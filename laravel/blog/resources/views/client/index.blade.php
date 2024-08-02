@@ -1,5 +1,4 @@
 <x-layout title="Home">
-    {{ Breadcrumbs::render('home') }}
     <h1>All Posts {{$posts->total()}}</h1>
     {{ $posts->links() }}
     @if ($posts)
