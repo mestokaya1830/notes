@@ -1,0 +1,19 @@
+👉️ get customers_id in orders-table as group
+SELECT COUNT(*) FROM orders  GROUP BY customer_id;
+
+
+👉️ get customers info
+SELECT name, COUNT(*) FROM customers 
+JOIN orders ON orders.customer_id = customers.id GROUP BY customers.id;
+
+
+👉️ get customers info, total-orders and total-amount
+SELECT name, COUNT(*), SUM(orders.total) FROM customers
+JOIN orders ON orders.customer_id = customers.id GROUP BY customers.id;
+
+
+👉️ get customers info and orders-count greather then 2
+SELECT name, count(*) FROM customers
+JOIN orders ON orders.customer_id = customers.id GROUP BY customers.id
+HAVING COUNT(*) >= 2;
+
