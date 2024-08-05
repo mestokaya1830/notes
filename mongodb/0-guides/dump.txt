@@ -1,0 +1,35 @@
+
+👉️ BACKUP ALL DB NEED EXTRA ROLE
+ mongodump --verbose --out backupname --authenticationDatabase admin --username 'user' --password 'password'
+
+
+👉️ BACKUP SINGLE DB
+ mongodump --db=gasvet --out backupname --authenticationDatabase admin --username 'user' --password 'password'
+  
+  
+👉️ BACKUP COLLECTION
+ mongodump --db=gasvet --collection users --out usersdump -authenticationDatabase admin --username 'user' --password 'password'
+ 
+ 
+👉️ BACKUP EXCLUDE COLLECTION
+ mongodump --db=gasvet --excludeCollection=users --out excludeusersdump -authenticationDatabase admin --username 'user' --password 'password'
+
+
+
+👉️ IMPORT JSON FILE
+ mongoimport --db bet --collection soccerlivemarkets --file soccerlivemarkets.json --jsonArray
+
+
+👉️ RESTORE ALL DB
+ mongorestore --verbose ./dump --authenticationDatabase admin --username 'user' --password 'password'
+   
+   
+👉️ RESTORE ONLY ONE DB
+ mongorestore -d bet ./dump/12-20/bet --drop --authenticationDatabase admin --username 'Boss' --password 'MK1972mk11130113@'
+ 
+   
+👉️ RESTORE SINGLE COLLECTION
+ mongorestore -d dbname --collection users ./dbname --authenticationDatabase admin --username 'user' --password --drop
+  
+
+
