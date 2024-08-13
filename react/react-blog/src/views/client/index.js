@@ -21,10 +21,10 @@ export default function Index() {
               <div className='card'>
                 <div className='card-body'>
                   <h2>{item.title}</h2>
-                  <p>{item.createdAt} <a href="/">{item.owner}</a></p>
+                  <p>{item.createdAt} <a href={`/${item.owner}/posts`}>{item.owner}</a></p>
                   <span>{String(item.body).substring(0,100)}</span>
                 <div>
-                  <a href="/">Read more...</a>
+                  <a href={`${item.owner}/${item._id}`}>Read more...</a>
                 </div>
                 </div>
               </div>

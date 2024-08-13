@@ -31,11 +31,11 @@ export default function index() {
           element: <Home />
         },
         {
-          path: '/users/:id',
+          path: '/:id/posts',
           element: <React.Suspense fallback="Loading..."><Posts /></React.Suspense>
         },
         {
-          path: '/user/:id/details',
+          path: '/:user/:id',
           element: <React.Suspense fallback="Loading..."><Details /></React.Suspense>
         },
         {

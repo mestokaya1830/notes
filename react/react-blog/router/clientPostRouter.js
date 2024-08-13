@@ -11,12 +11,12 @@ router.get('/', tryCatch(async(req, res) => {
 
 router.get('/:user/posts', tryCatch(async(req, res) => {
   const posts = await Posts.find({owner: req.params.user})
-  res.status(200).json({posts})
+  res.status(200).json(posts)
 }))
 
 router.get('/:user/post/:id', tryCatch(async(req, res) => {
   const post = await Posts.findOne({_id: req.params.id})
-  res.status(200).json({post})
+  res.status(200).json(post)
 }))
 
 export default router
