@@ -19,6 +19,13 @@ const EmailVerfication  =  React.lazy(() => import('../views/auth/email-verficat
 const ResetPassword  =  React.lazy(() => import('../views/auth/reset-password.js'))
 
 
+//user
+const UserPosts  =  React.lazy(() => import('../views/user/index.js'))
+const UserPostDetails  =  React.lazy(() => import('../views/user/details.js'))
+const PostCreate  =  React.lazy(() => import('../views/user/create.js'))
+const Edit  =  React.lazy(() => import('../views/user/edit.js'))
+
+
 export default function index() {
 
   const router = createBrowserRouter([
@@ -45,6 +52,22 @@ export default function index() {
         {
           path: '/contact',
           element: <React.Suspense fallback="Loading..."><Contact /></React.Suspense>
+        },
+        {
+          path: '/user/posts',
+          element: <React.Suspense fallback="Loading..."><UserPosts /></React.Suspense>
+        },
+        {
+          path: '/user/:user/:id',
+          element: <React.Suspense fallback="Loading..."><UserPostDetails /></React.Suspense>
+        },
+        {
+          path: '/user/post/create',
+          element: <React.Suspense fallback="Loading..."><PostCreate /></React.Suspense>
+        },
+        {
+          path: '/user/post/edit/:id',
+          element: <React.Suspense fallback="Loading..."><Edit /></React.Suspense>
         },
         {
           path: '*',

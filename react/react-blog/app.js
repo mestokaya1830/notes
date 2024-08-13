@@ -6,7 +6,7 @@ import fileUpload from 'express-fileupload'
 import path from 'path'
 import authRouter from './router/authRouter.js'
 import clientPostRouter from './router/clientPostRouter.js'
-import adminPostRouter from './router/adminPostRouter.js'
+import userPostRouter from './router/userPostRouter.js'
 import session from 'express-session'
 import MongoStore from 'connect-mongo'
 import 'dotenv/config'
@@ -41,7 +41,7 @@ app.use(session({
 
 app.use('/api', authRouter)
 app.use('/api/client/', clientPostRouter)
-app.use('/api/admin/', adminPostRouter)
+app.use('/api/user/posts/', userPostRouter)
 
 if(process.env.NODE_ENV === 'production'){
   app.use(express.static('dist'))

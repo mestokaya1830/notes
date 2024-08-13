@@ -61,12 +61,21 @@ ul li span{
 .card{
   box-shadow: 2px 2px 5px #ddd, 2px 2px 5px #ddd;
   margin: 5px;
+  padding: 10px;
+  min-height: 540px;
 }
 .card img{
-  max-height: 400px;
+  max-height: 300px;
   width: 100%;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
 }
 
 .updateImage{
   max-width: 200px;
+}
+p, .read-more{margin: 10px 0;}
+.create-btn{
+  padding: 0 20px;
 }
