@@ -7,8 +7,9 @@ const cryptr = new Cryptr("myTotalySecretKey");
 const router = express.Router()
 
 router.post('/login', tryCatch(async(req, res) => {
-  const checkEmail = await Users.findOne({email: req.body.user.email}).limit(1)
-  if(checkEmail && cryptr.decrypt(checkEmail.password) == req.body.user.password){
+  const {email, password} = req.body
+  const checkEmail = await Users.findOne({email: email}).limit(1)
+  if(checkEmail && cryptr.decrypt(checkEmail.password) === password){
     req.session.auth = checkEmail
     console.log(req.session)
     res.status(200).json(checkEmail)
@@ -19,15 +20,16 @@ router.post('/login', tryCatch(async(req, res) => {
 }))
 
 router.post('/register', tryCatch(async(req, res) => {
-  const checkEmail = await Users.findOne({email: req.body.user.email}).limit(1)
+  const {username, email, password} = req.body
+  const checkEmail = await Users.findOne({email: email}).limit(1)
   if(checkEmail){
     res.status(201).json('This email exists')
     return false
   }
   const newUser = new Users({
-    name: req.body.user.name,
-    email: req.body.user.email,
-    password: req.body.user.password != '' ? cryptr.encrypt(req.body.user.password) : req.body.user.password
+    name: username,
+    email: email,
+    password: password !== '' ? cryptr.encrypt(password) : password
   })
   await newUser.save()
   req.session.auth = checkEmail

@@ -1,12 +1,12 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 export default function Details() {
   const [data, setData] = useState([])
   const { user, id } = useParams()
-
+  const navigate = useNavigate()
   useEffect(() => {
     axios.get(`http://localhost:3000/api/user/posts/post/${id}`)
     .then((res) => setData(res.data))
@@ -18,7 +18,7 @@ export default function Details() {
   }
   const deletePost = () => {
     axios.post(`http://localhost:3000/api/user/posts/delete/${id}`, {imageName: data.imageName})
-    .then((res) => console.log(res.data))
+    .then((res) => navigate('/user/posts'))
     .catch((err) => console.log(err))
   }
   return (

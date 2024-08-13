@@ -39,7 +39,7 @@ app.use(session({
   })
 }))
 
-app.use('/api', authRouter)
+app.use('/api/auth', authRouter)
 app.use('/api/client/', clientPostRouter)
 app.use('/api/user/posts/', userPostRouter)
 

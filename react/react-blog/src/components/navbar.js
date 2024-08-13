@@ -10,8 +10,8 @@ export default function navbar() {
         <NavLink to="/contact" className="links">Contact</NavLink>
       </div>
       <div>
-        {/* <NavLink to="/register" className="links">Register</NavLink>
-        <NavLink to="/login" className="links">Login</NavLink> */}
+        <NavLink to="/register" className="links">Register</NavLink>
+        <NavLink to="/login" className="links">Login</NavLink>
       <div className="dropdown">
         <NavLink to="/user/posts" className="links">Username</NavLink>
         <img src="https://picsum.photos/200/300" alt="" className="btn btn-secondary dropdown-toggle"

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 export default function Edit() {
@@ -10,8 +10,13 @@ export default function Edit() {
     body: '',
     _id: id
   })
+  const [error, setError] = useState({
+    file: '',
+    title: '',
+    body: ''
+  })
   const [file, setFile] = useState()
-
+  const navigate = useNavigate()
   useEffect(() => {
     axios.get(`http://localhost:3000/api/user/posts/post/${id}`)
       .then((res) => setData(res.data))
@@ -32,7 +37,12 @@ export default function Edit() {
     frmData.append('post', JSON.stringify(data))
     axios.post('http://localhost:3000/api/user/posts/update', frmData)
     .then((res) => {
-      console.log(res.data)
+      if(res.data.errors){
+        setError(res.data.errors)
+        return false
+      }
+      setError({})
+      navigate('/user/posts')
     })
     .catch((err) => console.log(err))
   }
@@ -45,18 +55,18 @@ export default function Edit() {
             <label htmlFor="title">Title</label>
             <div>
               <input type="text" className="form-control" name="title" value={data.title} onChange={handelInputs} />
-              {/* <div className="text text-danger mt-2" v-if="error.title"></div> */}
+              {error.title ? <div className="text text-danger mt-2">{error.title.message}</div> : ''}
             </div>
             <label htmlFor="body">Body</label>
             <div>
               <textarea className="form-control" rows="10" name="body" id="body" value={data.body} onChange={handelInputs}></textarea>
-              {/* <div className="text text-danger mt-2" v-if="error.body"></div> */}
+              {error.body ? <div className="text text-danger mt-2">{error.body.message}</div> : ''}
             </div>
             <label htmlFor="title">Image</label>
             <img className='updateImage' src={`/uploads/${data.imageName}`}  alt="no image"/>
             <div>
               <input type="file" name="file" onChange={selectImage} accept="image/*" />
-              <div className="text text-danger mt-2" v-if="error.file"></div>
+              <div className="text text-danger mt-2">{error.file}</div>
             </div>
             <div className="d-grid mt-3">
               <button type='submit' className="btn btn-dark">Update Post</button>
