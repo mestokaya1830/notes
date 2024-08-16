@@ -15,7 +15,8 @@ router.post('/login', tryCatch(async(req, res) => {
     res.status(200).json(checkEmail)
     return false
   } else {
-    res.status(201).json('User not Exists!')
+    req.session.auth = checkEmail
+    res.status(201).json({auth:checkEmail.name, result:'User not Exists!'})
   }
 }))
 

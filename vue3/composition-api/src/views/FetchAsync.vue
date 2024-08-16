@@ -12,11 +12,7 @@
 </template>
 
 <script>
-// import component as 'AsyncComponent' lazy load
 const AsyncComponent = defineAsyncComponent(() =>import('@/components/AsyncComponent.vue'))
-//normal loading
-// import AsyncComponent from '@/components/AsyncComponent.vue'
-
 import { onErrorCaptured } from 'vue'
 import { defineAsyncComponent } from 'vue'
 

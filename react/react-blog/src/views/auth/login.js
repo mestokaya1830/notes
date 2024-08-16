@@ -17,8 +17,7 @@ export default function Login() {
   let navigate = useNavigate()
 
   const handelInputs = (e) => {
-    const val = e.target.value
-    setData(values => ({ ...values, [e.target.name]: val }))
+    setData(values => ({ ...values, [e.target.name]: e.target.value }))
   }
   const loginUser = (e) => {
     e.preventDefault()
@@ -35,7 +34,7 @@ export default function Login() {
             setError(res.data.errors)
             return false
           } else if (res.status === 201) {
-            setError({status: res.data })
+            setError({status: res.data.result })
             return false
           } else {
             setError({})

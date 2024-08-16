@@ -21,8 +21,7 @@ export default function Register() {
   let navigate = useNavigate()
 
   const handelInputs = (e) => {
-    const val = e.target.value
-    setData(values => ({ ...values, [e.target.name]: val }))
+    setData(values => ({ ...values, [e.target.name]: e.target.value }))
   }
   const createUser = (e) => {
     e.preventDefault()
