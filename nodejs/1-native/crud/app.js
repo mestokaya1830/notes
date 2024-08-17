@@ -1,11 +1,14 @@
-const http = require('http')
-const fs = require('fs')
-let person = require('./person.json')
+import http from 'http'
+import fs from 'fs'
+import person from './person.json' assert { type: "json" }
+import url from 'url'
 
 http.createServer((req, res) => {
 //get person
   if (req.method === 'GET' && req.url === '/api/person') {
     res.writeHead(200, { 'Content-Type': 'application/json' })
+    console.log(url.parse(req.url, true))
+    console.log(req.url)
     res.end(JSON.stringify(person))
 //filter person
   } else if (req.method === 'GET' && req.url.match(/\/api\/person\/([0-9]+)/)) {

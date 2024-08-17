@@ -10,8 +10,8 @@
   </div>
 </template>
 
+<!-- composition api -->
 <script setup>
-//composition api
   import {ref, onMounted, computed} from 'vue'
 
   const title = ref('Computed')
@@ -29,3 +29,31 @@
     console.log(title)
   })
 </script>
+
+<!-- <script>
+export default {
+  name: 'Computed',
+  data() {
+    return {
+      counter: 0,
+      title:'Computed'
+    }
+  },
+  computed: {
+    computedResult() {
+      if (this.counter % 2 == 0){
+        return 'Even'
+      }
+      return 'Odd'
+    }
+  },
+  methods:{
+    increase(){
+      this.counter++
+    },
+    decrease(){
+      this.counter--
+    }
+  }
+}
+</script> -->
