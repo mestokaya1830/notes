@@ -17,7 +17,7 @@
     <div>
       <input type="button" value="Add New Item" @click="addNewItem()" />
 <br>
-<p>If you enter something in inputbox method is triggerd buu not computed look at the console</p>
+<p>If you enter something in inputbox method is triggerd but not computed look at the console</p>
       <input type="text" v-model="test" placeholder="Enter something...">
       {{ test }}
       <input type="button" value="Add New Text" @click="addNewtext()" />

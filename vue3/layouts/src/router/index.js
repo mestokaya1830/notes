@@ -1,8 +1,8 @@
 import { createWebHistory, createRouter } from "vue-router";
 
 //layouts
-import ClientLayout from "../views/layouts/client-layout.vue";
-import AdminLayout from "../views/layouts/admin-layout.vue";
+import ClientLayout from "@/layouts/client-layout.vue";
+import AdminLayout from "@/layouts/admin-layout.vue";
 
 const routes = [
   {
@@ -40,7 +40,7 @@ const routes = [
     ]
   },
   {
-    path: "/:pathName(.*)*",
+    path: "/:pathName(.*)",
     name: "notfound",
     component: () => import('../views/notfound.vue'),
   },
