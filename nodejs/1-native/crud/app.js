@@ -3,7 +3,7 @@ import fs from 'fs'
 import person from './person.json' assert { type: "json" }
 import url from 'url'
 
-http.createServer((req, res) => {
+const server = http.createServer((req, res) => {
 //get person
   if (req.method === 'GET' && req.url === '/api/person') {
     res.writeHead(200, { 'Content-Type': 'application/json' })
@@ -56,6 +56,10 @@ http.createServer((req, res) => {
     res.writeHead(200, { 'Content-Type': 'application/json' })
     res.end(JSON.stringify({ "message": "Url not found" }))
   }
-}).listen(3000, () => {
+})
+server.on('request', (req, res) => {
+  console.log('listen request event with on eventhandler', req.url)
+})
+server.listen(3000, () => {
   console.log('Server is running...')
 })
