@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import {AuthContext} from "../context/authProvider.jsx"
+import { AuthContext } from "../context/authProvider.jsx"
 
 export default function Login() {
   //get login data

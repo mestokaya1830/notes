@@ -42,7 +42,7 @@ export default function Restmethod() {
           value={password}
           onChange={handlePassword}
         />
-        <select name="" id="" value={gender} onChange={handleGender}>
+        <select  onChange={handleGender}>
           <option value="Select Gender">Select Gander</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
