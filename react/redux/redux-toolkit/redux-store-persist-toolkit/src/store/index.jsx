@@ -13,7 +13,10 @@ const reducer = combineReducers({
   auth: authSlice
 })
 
-const perRed = persistReducer(persistConfig, reducer)
-export default configureStore({
-  reducer: perRed
+export const store =  configureStore({
+  reducer: persistReducer(persistConfig, reducer),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false
+    })
 })

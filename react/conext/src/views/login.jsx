@@ -4,6 +4,7 @@ import { AuthContext } from "../context/authProvider.jsx"
 export default function Login() {
   //get login data
   const [data, setData] = useState(null)
+  
   const handleInput = (e) => {
     setData(item => ({...item, [e.target.name]: e.target.value}))
   }
