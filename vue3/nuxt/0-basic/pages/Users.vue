@@ -1,10 +1,18 @@
+<script setup>
+  useHead({
+    title:"Users"
+  })
+  const {data} = await useFetch('https://jsonplaceholder.typicode.com/users')//client side
+</script>
+
 <template>
   <div>
     <h1>Users</h1>
-    <ul>
-      <li><NuxtLink to="/users/1">User 1</NuxtLink></li>
-      <li><NuxtLink to="/users/2">User 2</NuxtLink></li>
-      <li><NuxtLink to="/users/3">User 3</NuxtLink></li>
+    <ul v-for="item in data" :key="item.id">
+      <li><NuxtLink :to="`/users/${item.id}`">
+        <span>{{ item.id }}</span>
+        <span>{{ item.name }}</span>
+      </NuxtLink></li>
     </ul>
   </div>
 </template>
