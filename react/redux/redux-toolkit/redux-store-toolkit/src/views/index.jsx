@@ -7,8 +7,9 @@ export default function Index() {
   return (
     <>
       <h1>Home</h1>
-      {auth ? <h2>Welcome</h2> : <h2>Please login!</h2>}
-      <button onClick={() => dispatch(setAuth(true))}>Set Auth</button>
+      {auth ? <h2>Welcome {auth}</h2> : <h2>Please login!</h2>}
+      <button onClick={() => dispatch(setAuth("mestokaya"))}>login</button>
+      <button onClick={() => dispatch(setAuth(""))}>logout</button>
     </>
   )
 }

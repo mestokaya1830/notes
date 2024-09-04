@@ -13,6 +13,7 @@ const reducer = combineReducers({
   auth: authSlice
 })
 
+
 export const store =  configureStore({
   reducer: persistReducer(persistConfig, reducer),
   middleware: (getDefaultMiddleware) =>

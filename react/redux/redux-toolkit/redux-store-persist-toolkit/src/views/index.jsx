@@ -4,11 +4,19 @@ import { useSelector, useDispatch } from 'react-redux'
 export default function Index() {
   const auth = useSelector(state => state.auth.value)
   const dispatch = useDispatch()
+
+  const logout = () => {
+    dispatch(setAuth(""))
+    if(JSON.parse(localStorage.getItem('persist:root'))){
+      localStorage.removeItem('persist:root')
+    }
+  }
   return (
     <>
       <h1>Home</h1>
       {auth === "" ? <h2>Please login...</h2> : <h2>Welcome {auth}</h2>}
-      <button onClick={() => dispatch(setAuth("mestokaya"))}>Set Auth</button>
+      <button onClick={() => dispatch(setAuth("mestokaya"))}>Login</button>
+      <button onClick={() => logout()}>Logout</button>
     </>
   )
 }
