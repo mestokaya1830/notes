@@ -6,10 +6,10 @@ export default function Index() {
   const dispatch = useDispatch()
 
   const logout = () => {
-    dispatch(setAuth(""))
     if(JSON.parse(localStorage.getItem('persist:root'))){
       localStorage.removeItem('persist:root')
     }
+    dispatch(setAuth(""))
   }
   return (
     <>
