@@ -4,7 +4,7 @@ import Home from "../views/Home.vue";
 // import style from './assets/light.css'
 
 const style = () => {
-  const userColor = 'dark'
+  const userColor = 'light'//here come from store
   return import(`../assets/${userColor}.css`)
 }
 style()
