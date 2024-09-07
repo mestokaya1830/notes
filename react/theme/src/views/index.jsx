@@ -11,7 +11,7 @@ export default function Index() {
   return (
     <>
       <h1>Home</h1>
-      <h3>Current Theme is {theme.charAt(0).toUpperCase() + theme.slice(1)}</h3>
+      <h3>Current Theme is {theme[0].toUpperCase() + theme.slice(1)}</h3>
       <button onClick={() => changeTheme()}>Change Theme</button>
     </>
   )
