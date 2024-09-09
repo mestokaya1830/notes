@@ -5,8 +5,7 @@ import Posts from './posts.js'
 
 const vuexLocal = new VuexPersistence({
   storage: localForage,
-  asyncStorage: true,
-  reducer: (state) => clone(state)
+  asyncStorage: true
 })
 
 export default createStore({
@@ -27,7 +26,7 @@ export default createStore({
       state.users = payload //payload comes from actions commit
     }
 
-    //self persist (you dont persist plugin)
+    //self persist (with this you dont need persist plugin)
     // login(state, form){
     //   state.form = form
     //   localStorage.setItem('auth', JSON.stringify(form))

@@ -1,5 +1,6 @@
 import React from 'react'
 import { createBrowserRouter, RouterProvider, createRoutesFromElements, Route } from 'react-router-dom'
+import RouteGuard from '../components/routeGuard.jsx'
 
 //client
 import DefaultLayout from '../layouts/default.jsx'
@@ -24,9 +25,11 @@ export default function index2() {
             <Route path='/about' element={<React.Suspense fallback="Loading..."><About /></React.Suspense>} />
             <Route path='/contact' element={<React.Suspense fallback="Loading..."><Contact /></React.Suspense>} />
         </Route>
-        <Route path='/admin' element={<AdminLayout />}>
-            <Route index element={<Dashboard />} />
+        <Route element={<RouteGuard />}>
+          <Route path='/admin' element={<AdminLayout />}>
+            <Route index element={<React.Suspense fallback="Loading..."><Dashboard /></React.Suspense>} />
             <Route path='/admin/user/:id' element={<React.Suspense fallback="Loading..."><Details /></React.Suspense>} />
+          </Route>
         </Route>
         <Route path='*' element={<React.Suspense fallback="Loading..."><NotFound /></React.Suspense>} />
       </Route>

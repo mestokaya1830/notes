@@ -1,6 +1,6 @@
 import React from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-
+import RouteGuard from '../components/routeGuard.jsx'
 //client
 import DefaultLayout from '../layouts/default.jsx'
 import Home from '../views/client/index.jsx'
@@ -37,7 +37,7 @@ export default function Index() {
     },
     {
       path: '/admin',
-      element: <AdminLayout />,
+      element: <RouteGuard><AdminLayout /></RouteGuard>,
       children:[
         {
           path:'/admin',
