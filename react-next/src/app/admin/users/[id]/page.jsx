@@ -1,7 +1,9 @@
 import { getUsers } from "../page"
+
 export default async function Details({params}) {
-  const users = await getUsers()//here comt from page cache
+  const users = await getUsers()//burasi users sayfasindaki users verisini cachden okur (performas icin gerekli)
   const details = users.filter(item => item.id == params.id)[0]
+  
 //  const goBack = () => {
 //   window.history.back()
 //  }
@@ -19,3 +21,9 @@ export default async function Details({params}) {
     </>
   )
 }
+
+//burasi dinamik olan id parametresini server tarafinda static hale getirir (performans icin gerekli)
+export async function generateStaticParams() {
+  const user = await getUsers()
+  return user.map(item => ({id: `${item.id}`}))
+} 
