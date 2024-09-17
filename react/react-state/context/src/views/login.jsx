@@ -12,8 +12,8 @@ export default function Login() {
   }
 
   //construct authContext method
-  const {setUser} = useContext(AuthContext)
-
+  const { setUser } = useContext(AuthContext)
+  
   //login
   const loginUser = (e) => {
     e.preventDefault()

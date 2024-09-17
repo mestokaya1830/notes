@@ -3,7 +3,7 @@ import { useContext } from "react"
 import { AuthContext } from "../context/authProvider.jsx"
 
 export default function Navbar() {
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
   console.log(user)
   return (
     <>

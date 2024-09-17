@@ -1,5 +1,0 @@
-👉️INSTALL
-npx create-next-app@latest
-
-👉️NOT
-example if create a folder like this  (auth)  du dont need to use on url auth/login use only login
