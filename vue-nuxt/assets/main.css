@@ -25,3 +25,13 @@ body{
 .active{
   color: green;
 }
+ul{
+  list-style: none;
+}
+ul li{
+  min-width: 300px;
+  height: 30px;
+}
+ul li span{
+  margin: 0 10px;
+}
