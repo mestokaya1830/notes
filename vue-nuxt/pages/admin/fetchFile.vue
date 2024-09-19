@@ -1,7 +1,5 @@
-
 <template>
   <div>
-    <Navbar />
-    <h1>Home</h1>
+    <h1>Fetch File</h1>
   </div>
 </template>

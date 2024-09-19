@@ -6,6 +6,7 @@ export default function Navbar() {
     <>
       <nav className='navbar'>
         <Link href="/" className='links'>Home</Link>
+        <Link href="/contact" className='links'>Contact</Link>
         <Link href="/admin" className='links'>Admin</Link>
         <Link href="/admin/users" className='links'>Fetch Api</Link>
         <Link href="/admin/persons" className='links'>Fetch File</Link>

@@ -1,5 +1,8 @@
 <template>
   <div>
-    <slot />
+    <Navbar />
+    <main class="router">
+      <slot />
+    </main>
   </div>
 </template>
