@@ -1,5 +1,10 @@
 <script setup>
     const users = await useFetch('https://jsonplaceholder.typicode.com/users')
+
+    //filter
+    // const users = await useFetch('https://jsonplaceholder.typicode.com/users',{
+    //   pick: ['id', 'name']
+    // })
 </script>
 
 <template>
