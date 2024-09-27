@@ -1,5 +1,6 @@
 export default defineEventHandler((event) => {
  console.log('Middleware') //this added auto all router to test call any router
+ event.context.authorization = 'mesto'
  console.log(event.context.authorization)
 
  const auth = event.context.authorization

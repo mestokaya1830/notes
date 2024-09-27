@@ -1,6 +1,6 @@
-to give root role---------------------------------------------
+👉️TO GIVE ROOT ROLE
 mongosh -> 
-use admin //root role must take admin database
+use admin //ROOT ROLE MUST TAKE ADMIN DATABASE
 db.createUser(
   {
     user: 'mesto',
@@ -9,7 +9,7 @@ db.createUser(
 	
   }
 )
-to superadmin role--------------------------------
+👉️TO SUPERADMIN ROLE
 mongosh -> 
 use admin
 db.createUser(
@@ -19,19 +19,19 @@ db.createUser(
     roles: [ { role: "userAdminAnyDatabase", db: "admin" }, 'readWriteAnyDatabase'] 
   }
 )
-for different database -----------------------------------------------------------
+👉️FOR DIFFERENT DATABASE
 mongosh
 use dbName
 db.createUser(
   {
-    user: 'firm',
-    pwd:  'mk1972mk',
-    roles: [{role:"readWrite", db:"firm"}]
+    user: 'mesto',
+    pwd:  'mk1972mk11130113',
+    roles: [{role:"readWrite", db:"bet"}]
 	
   }
 )
 
-update user-----------------------------------------------------------
+👉️UPDATE USER
 use dbName
 db.updateUser('username',{
     pwd: '123'
@@ -39,7 +39,7 @@ db.updateUser('username',{
   }
 )
 
-update user for multiple database and role-------------------------------
+👉️UPDATE USER FOR MULTIPLE DATABASE AND ROLE
 use dbName
 db.updateUser('username',{
     roles: [
@@ -50,8 +50,7 @@ db.updateUser('username',{
   }
 )
 
-auth-------------------------------------------------------------
-
+👉️AUTH
 after created user close mongosh and 
 open -> sudo nano /etc/mongod.conf
 remove # for both lines second line must have tab
@@ -68,7 +67,7 @@ db.auth('username','password')
 db.changeUserPassword('username','newpassword')
 finished
 
-delete user-------------------------------------------------------------------
+👉️DELETE USER
 use dbName
 db.dropUser('username')
 

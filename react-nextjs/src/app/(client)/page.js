@@ -1,7 +1,7 @@
-import Image from "next/image";
 import styles from "./page.module.css";
 
-export default function Home() {
+export default async function Home() {
+  await new Promise(resolve => setTimeout(resolve, 1000))
   return (
     <div className={styles.page}>
       <main className={styles.main}>
