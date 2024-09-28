@@ -18,7 +18,7 @@ console.log(data)
         <span>{{ data.data.body }}</span>
       </li>
       <button>
-        <NuxtLink to="/admin/serverside/">Back</NuxtLink>
+        <NuxtLink to="/admin/serversidefetch">Back</NuxtLink>
       </button>
     </ul>
   </div>

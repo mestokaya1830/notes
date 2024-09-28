@@ -14,7 +14,7 @@
         <span>{{ item.userId }}</span>
         <span>{{ item.title }}</span>
         <span>{{ String(item.body).substring(0, 50) }}</span>
-        <span><NuxtLink :to="`/admin/serverside/${item.userId}`">Details</NuxtLink></span>
+        <span><NuxtLink :to="`/admin/serversidefetch/${item.userId}`">Details</NuxtLink></span>
       </li>
     </ul>
   </div>
