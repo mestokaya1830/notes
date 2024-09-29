@@ -11,6 +11,7 @@ export default function Navbar() {
         <Link href="/images" className={pathname == '/images' ? 'active' : 'links'}>Images</Link>
         <Link href="/admin" className={pathname == '/admin' ? 'active' : 'links'}>Admin</Link>
         <Link href="/admin/users" className={pathname == '/admin/users' ? 'active' : 'links'}>Users</Link>
+        <Link href="/admin/backend" className={pathname == '/admin/backend' ? 'active' : 'links'}>Backend</Link>
       </nav>
     </dv>
   )
