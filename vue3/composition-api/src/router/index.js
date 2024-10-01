@@ -4,10 +4,39 @@ import Home from "../views/index.vue";
 import Admin from "../views/admin.vue";
 
 const routes = [
-  { path: "/", component: Home },
-  { path: "/admin", component: Admin },
-  { path: "/:catchAll(.*)", component: () => import("../views/notfound.vue") },
-  { path: "/props", component: () => import("../views/props.vue") },
+  { 
+    path: "/",
+    name: 'home',
+    component: Home
+  },
+  { 
+    path: "/admin",
+    name: 'admin',
+    component: Admin },
+  { 
+    path: "/props",
+    name: 'props',
+    component: () => import("../views/props.vue") },
+  { 
+    path: "/reactive",
+    name: 'reactive',
+    component: () => import("../views/reactive.vue") },
+  { 
+    path: "/computed",
+    name: 'computed',
+    component: () => import("../views/computed.vue") },
+  { 
+    path: "/form",
+    name: 'form',
+    component: () => import("../views/form.vue") },
+  { 
+    path: "/state",
+    name: 'state',
+    component: () => import("../views/state.vue") },
+  { 
+    path: "/:catchAll(.*)",
+    name: 'notfound',
+    component: () => import("../views/notfound.vue") },
 ];
 
 const router = createRouter({
