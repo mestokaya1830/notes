@@ -4,8 +4,6 @@
 
 <template>
   <Navbar />
- <main class="router">
-  <RouterView  />
- </main>
+  <RouterView  class="router"/>
 </template>
 

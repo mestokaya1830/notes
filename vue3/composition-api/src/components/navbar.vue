@@ -7,6 +7,7 @@
       <RouterLink to="/computed" class="links" exact-active-class="active">Computed</RouterLink>
       <RouterLink to="/form" class="links" exact-active-class="active">Form</RouterLink>
       <RouterLink to="/state" class="links" exact-active-class="active">State</RouterLink>
+      <RouterLink to="/fetch" class="links" exact-active-class="active">Fetch</RouterLink>
       <RouterLink to="/admin" class="links" exact-active-class="active">Admin</RouterLink>
     </nav>
   </div>
