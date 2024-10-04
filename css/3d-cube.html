@@ -92,7 +92,7 @@
       background-color: red;
     }
     input:focus~ .cube #right{
-      right: 180px;
+      left: 180px;
       background-color: red;
     }
     input:focus~ .cube #top{
@@ -121,11 +121,36 @@
       }
     }
     
+    #front:active{
+      transform: translateZ(180px) rotateY(360deg);
+      background-color: red;
+    }
+    #back:active{
+      transform: translateZ(-180px) rotateY(360deg);
+      background-color: red;
+    }
+    #left:active{
+      left: -180px;
+      background-color: red;
+    }
+    #right:active{
+      left: 180px;
+      background-color: red;
+    }
+    #top:active{
+      bottom: 180px;
+      background-color: red;
+    }
+    #bottom:active{
+      top: 180px;
+      background-color: red;
+    }
   </style>
 </head>
 <body>
   <h1>Css Cube</h1>
   <div class="container">
+    <!-- this button  triggered in css input~ -->
     <input type="button" value="Turn">
     <div class="cube">
       <div id="front">Front</div>

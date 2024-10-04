@@ -6,7 +6,10 @@
 	<title></title>
 	<link rel="stylesheet" href="">
 	<style>
-	.flip3d{
+		.con{
+			display: flex;
+		}
+	.card-1, .card-2{
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -17,6 +20,9 @@
 		margin: 50px;
 		padding: 5px;
 		position: relative;
+	}
+	.card-2{
+		transform-origin: 0%;
 	}
 	#front{
 		display: flex;
@@ -44,18 +50,34 @@
 		background-color: #eee;
 		transition: transform 0.5s linear 0s;
 	}
-	.flip3d:hover > #front{
+	.card-1:hover > #front{
 		transform: perspective(600px)rotateY(-180deg);
 	}
-	.flip3d:hover > #back{
+	.card-1:hover > #back{
 		transform: perspective(600px)rotateY(0);
+	}
+
+	/* card-2 */
+	.card-2 #front{
+		transform-origin: 0%;
+		transform: perspective(600px) rotateY(0);
+		
+	}
+	.card-2:hover > #front{
+		transform: perspective(600px)rotateY(90deg);
 	}
 	</style>
 </head>
 <body>
-	<div class="flip3d">
-		<div id="front"><h1>Front</h1></div>
-		<div id="back"><h1>Back</h1></div>
+	<div class="con">
+		<div class="card-1">
+			<div id="front"><h1>Front</h1></div>
+			<div id="back"><h1>Back</h1></div>
+		</div>
+		<div class="card-2">
+			<div id="front"><h1>Front</h1></div>
+			<div id="back"><h1>Back</h1></div>
+		</div>
 	</div>
 </body>
 </html>
