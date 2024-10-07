@@ -1,0 +1,82 @@
+<h1>{{ title }}</h1>
+<h2 [ngClass]="{dynamicClass: classState}">Dynamic Class</h2>
+<h2 [style]="style">Dynamic Style</h2>
+<h2 [style.color]="styleColor">Dynamic Style Color</h2>
+<div>
+  <h3>Button Disabled</h3>
+  <button [disabled]="btnState">Click Me</button>
+</div>
+<div style="margin-top: 20px;">
+  <h3>Local Image</h3>
+  <img src="assets/favicon.ico" alt="no image" width="100" height="100">
+</div>
+<div style="margin-top: 20px;">
+  <h3>Remote Image</h3>
+  <img src="https://picsum.photos/200" alt="no image" width="100" height="100">
+</div>
+
+<div>
+  <h1>{{counter}}</h1>
+</div>
+<div>
+  <button (click)="increase()">Increase</button>
+  <button (click)="decrease()">Decrease</button>
+</div>
+
+
+<!-- new method-->
+<div>
+  <h3>Auth</h3>
+  @if(auth){
+    <h2>Welcome {{auth}}</h2>
+  } @else {
+    <h2>Please Login</h2>
+  }
+</div>
+
+<!-- old method -->
+<div>
+  <h3>Auth</h3>
+  <h2 *ngIf="auth else login">Welcome {{auth}}</h2>
+  <ng-template #login>
+    <div>
+      <h2>Please login!</h2>
+    </div>
+  </ng-template>
+</div>
+
+<!-- new  method -->
+@switch(grade) {
+  @case(100){<h2>Senior</h2>}
+  @case(70){<h2>Middle</h2>}
+  @case(50){<h2>Junior</h2>}
+  @default{<h2>Beginner</h2>}
+}
+
+<!-- old method -->
+<div>
+  <h3>Switch Case</h3>
+  <div [ngSwitch]="grade">
+    <h2 *ngSwitchCase="100">Senior</h2>
+    <h2 *ngSwitchCase="70">Middle</h2>
+    <h2 *ngSwitchCase="50">Junior</h2>
+    <h2 *ngSwitchDefault>Beginner</h2>
+  </div>
+</div>
+
+<!-- new method -->
+ <ul>
+   @for(item of lang; track item.id; let i = $index; let total = $count){
+     <li>
+      <span>{{item.id}}</span>
+     <span>{{item.name}}</span>
+    </li>
+   }
+ </ul>
+<!-- old method -->
+ <ul>
+  <li *ngFor="let item of lang">
+    <span>{{item.id}}</span>
+    <span>{{item.name}}</span>
+  </li>
+ </ul>
