@@ -3,7 +3,7 @@ async function delay(ms) {
 }
 
 export default async function Home() {
- await delay(2000)
+ await delay(1000)
   return (
     <div>
       <h1>Home</h1>
