@@ -1,7 +1,12 @@
 const url = 'https://jsonplaceholder.typicode.com/todos'
 console.log(process.env.API_KEY)
+export async function GET(request) {
+const headerList = new Headers(request.headers)
+console.log(headerList)
+console.log(headerList.get('authorization'))
+console.log(headerList.get('user-agent'))
 
-export async function GET() {
+
   const result = await fetch(url)
   const todos = await result.json()
   return Response.json(todos)
