@@ -12,6 +12,7 @@ export default function Navbar() {
         <Link href='/admin' className={`links ${pathname === '/admin' ? 'active' : ''}`}>Admin</Link>
         <Link href='/admin/users' className={`links ${pathname === '/admin/users' ? 'active' : ''}`}>Users</Link>
         <Link href='/errortest' className={`links ${pathname === '/errortest' ? 'active' : ''}`}>Error Test</Link>
+        <Link href='/stream' className={`links ${pathname === '/stream' ? 'active' : ''}`}>Stream</Link>
       </nav>
     </>
   )
