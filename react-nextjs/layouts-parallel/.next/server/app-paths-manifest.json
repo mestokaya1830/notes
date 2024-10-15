@@ -1,7 +1,0 @@
-{
-  "/(client)/page": "app/(client)/page.js",
-  "/admin/page": "app/admin/page.js",
-  "/[...not-found]/page": "app/[...not-found]/page.js",
-  "/(client)/about/page": "app/(client)/about/page.js",
-  "/admin/users/page": "app/admin/users/page.js"
-}
