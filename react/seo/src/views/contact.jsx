@@ -1,14 +1,14 @@
 import { Helmet } from "react-helmet"
-export default function Index() {
+export default function Contact() {
   return (
     <>
-    <Helmet>
-      <title>Dashboard</title>
-      <meta name="description" content="Dashboard content" />
+     <Helmet>
+      <title>Contact</title>
+      <meta name="description" content="Contact content" />
       <meta name="keywords" content="react, meta tags, seo" />
       <meta name="author" content="Your Name" />
     </Helmet>
-      <h1>Dashboard</h1>
+      <h1>Contact</h1>
     </>
   )
 }

@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { Helmet } from "react-helmet"
 
 export default function Index() {
   const users = [
@@ -8,7 +9,14 @@ export default function Index() {
   ]
   return (
     <>
+    <Helmet>
+      <title>Users</title>
+      <meta name="description" content="Users content" />
+      <meta name="keywords" content="react, meta tags, seo" />
+      <meta name="author" content="Your Name" />
+    </Helmet>
       <h1>Dashboard</h1>
+      
       {users.map(item => (
         <div className="list" key={item.id}>
           <span>{item.id}</span>
