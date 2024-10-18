@@ -40,3 +40,16 @@ body{
   margin-top: 30px;
   border-radius: 5px;
 }
+
+.defaultStyle{
+  color: #fff;
+  background-color: #000;
+}
+.redStyle{
+  color: #fff;
+ background-color: red;
+}
+.blueStyle{
+  color: #fff;
+  background-color: blue;
+}
