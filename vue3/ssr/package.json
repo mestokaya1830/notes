@@ -1,0 +1,15 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "node ./server.mjs"
+    },
+    "dependencies": {
+        "vue": "^3.4.31",
+        "vue-router": "^4.4.0"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "latest",
+        "express": "^4.19.2",
+        "vite": "latest"
+    }
+}
