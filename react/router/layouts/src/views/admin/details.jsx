@@ -15,7 +15,7 @@ export default function Details() {
     </Helmet>
       <h2>User Details</h2>
       <h1>{id}</h1>
-      <button onClick={() => navigate('/admin')}>Back</button>
+      <button onClick={() => navigate('/admin/users')}>Back</button>
     </>
   )
 }
