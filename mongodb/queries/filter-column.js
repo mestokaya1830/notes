@@ -13,6 +13,9 @@ const Users = mongoose.model('users', usersSchema)
 
 app.get('/', async(req, res) => {
   const result = await Users.find({name:"Deniz"}, "language")
+  const result = await Users.find({name:"Deniz"}, {passowrd: 0})//expect password
+  const result = await Users.find({name:"Deniz"}, {password: 1})//only password and id
+  const result = await Users.find({name:"Deniz"}, {password: 1, _id: 0})//only password
   res.json(result)
 })
 
