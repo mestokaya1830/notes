@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default function Popup(props) {
   return (
     <div className='popup'>
@@ -10,7 +8,7 @@ export default function Popup(props) {
   )
 }
 
-
+  
 
 //class components
 

@@ -10,6 +10,11 @@ app.use((req, res, next) => {
 })
 
 app.get('/', (req, res) => {
+  console.log(req.url)
+  console.log(req.method)
+  console.log(req.hostname)
+  console.log(req.headers)
+  console.log(Object.entries(res.header))
   res.json({message: 'Cors without package'})
 })
 
