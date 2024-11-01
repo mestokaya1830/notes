@@ -1,7 +1,9 @@
+import styles from './admin.module.css'
+
 export default function Dashboard() {
   return (
     <>
-      <h1>Dashboard</h1>
+      <h1 className={styles.adminTitle}>Dashboard</h1>
     </>
   )
 }
