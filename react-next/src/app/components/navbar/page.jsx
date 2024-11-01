@@ -9,7 +9,11 @@ export default function Navbar() {
       <nav className="navbar">
         <Link href="/" className={activePath === '/' ? 'active' : 'links'}>Home</Link>
         <Link href="/image" className={activePath === '/image' ? 'active' : 'links'}>Images</Link>
-        <Link href="/fetch" className={activePath === '/fetch' ? 'active' : 'links'}>Fetch</Link>
+        <Link href="/fetch-api" className={activePath === '/fetch-api' ? 'active' : 'links'}>Fetch Api</Link>
+        <Link href="/load-file" className={activePath === '/load-file' ? 'active' : 'links'}>Load File</Link>
+        <Link href="/form" className={activePath === '/form' ? 'active' : 'links'}>Form</Link>
+        <Link href="/rewrite" className={activePath === '/rewrite' ? 'active' : 'links'}>Rewrite</Link>
+        <Link href="/admin" className={activePath === '/admin' ? 'active' : 'links'}>Dashboard</Link>
       </nav>
     </>
   )

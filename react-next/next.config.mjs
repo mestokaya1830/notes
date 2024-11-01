@@ -1,5 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  env: {
+    API: 'mesto',
+  },
+  async rewrites() {
+    return {
+      beforeFiles:[
+        {
+          source: '/rewrite/:path*',
+          destination: '/'
+        }
+      ]
+    }
+  },
   images: {
     remotePatterns: [
       {
@@ -8,7 +21,8 @@ const nextConfig = {
         port: ''
       }
     ]
-  }
+  },
+  
 };
 
 export default nextConfig;
