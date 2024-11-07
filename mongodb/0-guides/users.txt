@@ -24,9 +24,9 @@ mongosh
 use dbName
 db.createUser(
   {
-    user: 'mesto',
-    pwd:  'mk1972mk11130113',
-    roles: [{role:"readWrite", db:"bet"}]
+    user: 'blog',
+    pwd:  'mk1972mk',
+    roles: [{role:"readWrite", db:"blog"}]
 	
   }
 )
