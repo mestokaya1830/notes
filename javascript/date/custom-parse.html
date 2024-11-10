@@ -13,7 +13,7 @@
   <script>
     const d = new Date()
     console.log('Year-------------------- ', d.getFullYear())
-    console.log('Month------------------- ', d.getMonth())
+    console.log('Month------------------- ', d.getMonth() + 1)
     console.log('Days-------------------- ', d.getDate())
     console.log('DayOfWeek--------------- ', d.getDay());
     console.log('firstDayOfMonth--------- ', new Date(d.getFullYear(), d.getMonth(), 1)) 
@@ -23,6 +23,17 @@
     console.log('Current Week of Year----- ', Math.abs(new Date(d.getFullYear(), 0, 0) - d.getTime()) / 60000 / 
     60 / 24 / 7)
 
+
+    //weekend
+    const days = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate()
+    for (let i = 1; i < days + 1; i++) {
+      const dayString = `${d.getMonth() + 1}/${i}/${d.getFullYear()}`;
+      const weekend = new Date(dayString)
+      if(weekend.getDay() == 0 || weekend.getDay() == 6){
+        console.log(weekend.getDate(), weekend.toLocaleDateString())
+      }
+    }
+    
   </script>
 </body>
 </html>
