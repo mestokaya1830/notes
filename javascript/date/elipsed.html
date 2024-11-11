@@ -46,9 +46,9 @@
 
 
   <script>
-    let startTime = Date.now()
-    let elipsedTime = 0
     document.getElementById('start').addEventListener('click', () => {
+      let startTime = Date.now()
+      let elipsedTime = 0
       document.getElementById('milisecond').innerText = 'Please wait...'
       setTimeout(() => {
         let elipsedTime = Date.now() - startTime
