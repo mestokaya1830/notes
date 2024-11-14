@@ -16,6 +16,8 @@
     const http = new XMLHttpRequest()
     http.open('get', '../book.xml', true)//true mean async active
     http.onload = function () {
+      console.log(this.getAllResponseHeaders())
+      console.log(this.getResponseHeader("last-modified"))
       if (this.status === 200) {
         console.log(this.responseXML)
         const result = this.responseXML

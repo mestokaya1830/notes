@@ -15,6 +15,8 @@
     const http = new XMLHttpRequest()
     http.open('get', 'https://dev.to/search?q=nodejs', true)//true mean async active
     http.onload = function () {
+      console.log(this.getAllResponseHeaders())
+      console.log(this.getResponseHeader("last-modified"))
       if (this.status === 200) {
         console.log(this.responseText)
         const result = this.responseText

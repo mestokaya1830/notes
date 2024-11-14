@@ -92,9 +92,7 @@
     <!-- script side -->
   </div>
   <script>
-
     let result;
-
     let getLangs = async () => {
       const xhttp = new XMLHttpRequest()
       xhttp.open('get', 'http://localhost:3000/langs', true)
@@ -114,8 +112,7 @@
       xhttp.open('POST', 'http://localhost:3000/addlang')
       xhttp.setRequestHeader('Content-type', 'application/json')
       xhttp.send(JSON.stringify({
-        name: document.getElementById('add-new').value
-          .split(' ').map(item => item[0].toUpperCase() + item.slice(1)).join(' ')
+        name: document.getElementById('add-new').value.split(' ').map(item => item[0].toUpperCase() + item.slice(1)).join(' ')
       }))
       xhttp.onload = function () {
         if (this.status === 200) {

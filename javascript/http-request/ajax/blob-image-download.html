@@ -36,9 +36,11 @@
     <script>
       const downloadImg = () => {
       const http = new XMLHttpRequest()
-      http.open('get', 'https://source.unsplash.com/user/c_v_r/1900x800', true)
+      http.open('get', 'https://fastly.picsum.photos/id/75/200/300.jpg?hmac=sjSIzdmDj0dZefwBIN61pwl3azxymhEGh9owb8ZEgxg', true)
       http.responseType = 'blob'; 
       http.onload = function () {
+        console.log(this.getAllResponseHeaders())
+        console.log(this.getResponseHeader("last-modified"))
         if (this.status === 200) {
           let link = document.createElement('a')
           link.href = URL.createObjectURL(new Blob([this.response]))
