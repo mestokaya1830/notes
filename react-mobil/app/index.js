@@ -100,6 +100,11 @@ export default function Home() {
           }
         />
         <Message />
+       <View style={styles.boxCon}>
+        <View style={styles.box}>
+            <Text>BOX SHADOW</Text>
+          </View>
+       </View>
       </ScrollView>
     </View>
   );
@@ -128,4 +133,25 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  boxCon:{
+    flex: 1,
+    padding: 20
+  },
+  box:{
+    width:120,
+    height: 120,
+    backgroundColor: "#fff",
+    margin: "auto",
+    borderRadius:5,
+    borderBlockColor: "#000",
+    borderWidth: 5,
+    shadowColor: "#000",
+    shadowOffset:{
+      width: 6,
+      height: 6
+    },
+    shadowOpacity: 0.6,
+    elevation: 10,
+    shadowRadius: 4
+  }
 });
