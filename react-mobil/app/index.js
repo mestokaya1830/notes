@@ -10,15 +10,18 @@ import {
   ImageBackground,
   Pressable,
   Modal,
+  ActivityIndicator,
+  Alert
 } from "react-native";
 const logo = require("../assets/images/react-logo.png");
+import Message from "./components/message";
 
 export default function Home() {
   const [isModal, setModel] = useState(false);
   return (
     <View style={styles.viewStyle}>
       <ScrollView>
-        {/* <StatusBar style="auto" /> */}
+        <StatusBar backgroundColor="black" barStyle="default" />
         <Text style={styles.textStyle}>Welcome To React</Text>
         <Image source={logo} />
         <Image
@@ -31,6 +34,8 @@ export default function Home() {
             <Text style = {styles.textStyle}>Welcome To React</Text>
           </ImageBackground>
         </View> */}
+
+        <ActivityIndicator size="large" />
 
         <Text style={{ color: "#fff", padding: 20 }}>
           Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -68,12 +73,33 @@ export default function Home() {
         <View style={{ marginBottom: 20, marginTop: 20 }}>
           <Button title="Open Model" onPress={() => setModel(true)} />
         </View>
-        <Modal visible={isModal} animationType="fade">
+        <Modal
+          visible={isModal}
+          animationType="fade"
+          onRequestClose={() => setModel(false)}
+        >
           <View style={styles.modalStyle}>
             <Text style={{ fontSize: 30 }}>Modal</Text>
           </View>
           <Button title="Close" onPress={() => setModel(false)} />
         </Modal>
+
+        <Button
+          title="Confirm"
+          onPress={() =>
+            Alert.alert("Invalid Date", "Some Message", [
+              {
+                text: "Cacnel",
+                onPress: () => alert("Cancel Pressed"),
+              },
+              {
+                text: "OK",
+                onPress: () => alert("OK Pressed"),
+              },
+            ])
+          }
+        />
+        <Message />
       </ScrollView>
     </View>
   );
