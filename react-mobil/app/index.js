@@ -10,8 +10,9 @@ import {
   ImageBackground,
   Platform,
   SectionList,
+  TextInput,
 } from "react-native";
-
+import { useState } from "react";
 import logo from "../assets/images/react-logo.png";
 import Icon from "../assets/images/adaptive-icon.png";
 import Message from "./components/message";
@@ -34,15 +35,16 @@ const DATA = [
     title: "Desserts",
     data: ["Cheese Cake", "Ice Cream"],
   },
-]
+];
 
 //SafeAreaView for ios top padding
 export default function Index() {
+  const [username, setUsername] = useState("");
+  const [pass, setPass] = useState("");
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView>
         <View style={styles.container}>
-          {/* statubar */}
           <StatusBar backgroundColor="purple" barStyle="default" />
 
           <Text style={styles.textStyle}>React Native</Text>
@@ -81,6 +83,26 @@ export default function Index() {
               <Text style={styles.title}>{title}</Text>
             )}
           />
+          <Text style={styles.textStyle}>Input</Text>
+          <TextInput
+            style={styles.input}
+            value={username}
+            onChangeText={setUsername}
+            autoCapitalize="none"
+            autoCorrect={false}
+            placeholder="Username"
+          />
+          <TextInput
+            style={styles.input}
+            value={pass}
+            onChangeText={setPass}
+            secureTextEntry
+            keyboardType="numeric"
+            placeholder="Password"
+          />
+          <Text style={{width:300,fontSize: 24}}>{username} / {pass}</Text>
+
+          <TextInput placeholder="Message"  multiline style={styles.textarea} />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -145,4 +167,23 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: "brown",
   },
+  input: {
+    width: 300,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 4,
+    marginTop: 20,
+    paddingLeft: 8,
+    paddingRight: 8,
+    fontSize: 18
+  },
+  textarea:{
+    width: 300,
+    minHeight:100,
+    verticalAlign: "top",
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 4,
+    padding: 10
+  }
 });
