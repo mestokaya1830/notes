@@ -11,6 +11,9 @@ import {
   Platform,
   SectionList,
   TextInput,
+  Switch,
+  KeyboardAvoidingView,
+  Button
 } from "react-native";
 import { useState } from "react";
 import logo from "../assets/images/react-logo.png";
@@ -41,6 +44,27 @@ const DATA = [
 export default function Index() {
   const [username, setUsername] = useState("");
   const [pass, setPass] = useState("");
+  const [isMode, setMode] = useState(false);
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    let errors = {}
+    if(!username){
+      errors.username = 'Username is required'
+    } else if(!pass){
+      errors.pass = 'Pass is required'
+    }
+    setErrors(errors)
+    return Object.keys(errors).length === 0
+  }
+  const handelLogin = () => {
+    if(validateForm()){
+      console.log(username, pass)
+      setUsername("")
+      setPass("")
+      setErrors({})
+    }
+  }
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView>
@@ -83,26 +107,39 @@ export default function Index() {
               <Text style={styles.title}>{title}</Text>
             )}
           />
-          <Text style={styles.textStyle}>Input</Text>
-          <TextInput
-            style={styles.input}
-            value={username}
-            onChangeText={setUsername}
-            autoCapitalize="none"
-            autoCorrect={false}
-            placeholder="Username"
-          />
-          <TextInput
-            style={styles.input}
-            value={pass}
-            onChangeText={setPass}
-            secureTextEntry
-            keyboardType="numeric"
-            placeholder="Password"
-          />
+         
+            <TextInput
+              style={styles.input}
+              value={username}
+              onChangeText={setUsername}
+              autoCapitalize="none"
+              autoCorrect={false}
+              placeholder="Username"
+            />
+            {errors.username ? (<Text>{errors.username}</Text>) : null}
+            <TextInput
+              style={styles.input}
+              value={pass}
+              onChangeText={setPass}
+              secureTextEntry
+              keyboardType="numeric"
+              placeholder="Password"
+            />
+            {errors.pass ? (<Text>{errors.pass}</Text>) : null}
+            
+            <TextInput placeholder="Message"  multiline style={styles.textarea} />
+         
+          <Button title="Login" onPress={handelLogin}/>
           <Text style={{width:300,fontSize: 24}}>{username} / {pass}</Text>
-
-          <TextInput placeholder="Message"  multiline style={styles.textarea} />
+          <View style={{width: 300, flexDirection:'row', alignItems:'center', justifyContent:'space-between', padding:5}}>
+            <Text style={{width:100}}>Dark Mode</Text>
+            <Switch 
+              value={isMode} 
+              onValueChange={() => setMode((item) => !item)}
+              trackColor={{false: '#ccc', true: 'green'}}
+              thumbColor="lightblue"
+            />
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -145,9 +182,16 @@ const styles = StyleSheet.create({
     height: 260,
     marginTop: 20,
     marginBottom: 20,
-    borderWidth: 2,
-    borderColor: "purple",
+    backgroundColor:"white",
+    borderWidth: 1,
+    borderColor: "#ccc",
     borderRadius: 5,
+    shadowColor:'black',
+    shadowOffset:{
+      width:0,
+      height:5,
+    },
+    elevation:5
   },
   list: {
     flexDirection: "row",
@@ -172,7 +216,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#ccc",
     borderRadius: 4,
-    marginTop: 20,
+    marginTop: 10,
     paddingLeft: 8,
     paddingRight: 8,
     fontSize: 18
@@ -184,6 +228,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#ccc",
     borderRadius: 4,
-    padding: 10
+    padding: 10,
+    marginTop:10
   }
 });
