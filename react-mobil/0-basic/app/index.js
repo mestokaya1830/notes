@@ -13,7 +13,8 @@ import {
   TextInput,
   Switch,
   KeyboardAvoidingView,
-  Button
+  Button,
+  Alert
 } from "react-native";
 import { useState } from "react";
 import logo from "../assets/images/react-logo.png";
@@ -140,6 +141,18 @@ export default function Index() {
               thumbColor="lightblue"
             />
           </View>
+          <Button title="Confirm" 
+            onPress={() => Alert.alert('Invalid Data', 'Incorrect',[
+              {
+                text:'Cancel',
+                onPress: () => alert('By')
+              },
+              {
+                text:'OK',
+                onPress: () => alert('Welcome')
+              }
+            ])}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
