@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "react-mobil",
-    "slug": "react-mobil",
+    "name": "drawer-navigation",
+    "slug": "drawer-navigation",
     "version": "1.0.0",
-    "orientation": "default",
+    "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
