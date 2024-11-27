@@ -1,11 +1,8 @@
 import React from 'react'
 import { View, Text, Button, StyleSheet } from 'react-native'
-import { useNavigation } from '@react-navigation/native'
 
 
-export default function Home() {
-  const navigation  = useNavigation()
-
+export default function Home({navigation}) {
   return (
     <View style={styles.container}>
       <Text>Home Page</Text>

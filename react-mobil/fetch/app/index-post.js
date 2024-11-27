@@ -12,21 +12,28 @@ import { useState, useEffect } from "react";
 
 let limit = 10
 export default function Index() {
-  const [users, setUsers] = useState({});
+  const [posts, setPosts] = useState({});
   const [isLoading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
 
   
-  const getUsers = async () => {
-    const result = await fetch(`http://localhost:3000`);
+  const getPosts = async (limit = 10) => {
+    const result = await fetch(`https://jsonplaceholder.typicode.com/posts?_limit=${limit}`);
     const final = await result.json();
-    setUsers(final.users);
+    setPosts(final);
     setLoading(false);
   };
-
+  
+  const handleRefresh = () => {
+    setRefreshing(true)
+    limit += 10
+    console.log(limit)
+    getPosts(limit)
+    setRefreshing(false)
+  }
 
   useEffect(() => {
-    getUsers();
-    console.log(users)
+    getPosts();
   }, []);
 
   if (isLoading) {
@@ -43,21 +50,22 @@ export default function Index() {
         <StatusBar backgroundColor="purple" barStyle="default" />
         <Text style={styles.textStyle}>React Native Fetch</Text>
         <FlatList
-          data={users}
+          data={posts}
           renderItem={({ item }) => {
             return (
               <View key={item.id} style={styles.list}>
-                <Text>{item.name}</Text>
-                <Text>{item.country}</Text>
+                <Text>{item.title}</Text>
+                <Text>{item.body}</Text>
               </View>
             );
           }}
-          ListHeaderComponent={<Text>Users</Text>}
-          ListFooterComponent={<Text>End Of Users</Text>}
+          ListHeaderComponent={<Text>Posts</Text>}
+          ListFooterComponent={<Text>End Of Posts</Text>}
           ItemSeparatorComponent={() => {
             <View style={{ height: 16 }}></View>;
           }}
-          refreshing={getUsers}
+          refreshing={refreshing}
+          onRefresh={handleRefresh}
         />
       </SafeAreaView>
     </View>
