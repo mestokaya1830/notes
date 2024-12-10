@@ -81,14 +81,14 @@
     const d = new Date()
 
     const addDom = () => {
+      todoInput.value = ''
       list.innerHTML = ''
       todos.forEach((item, index) => {
-        
         list.innerHTML += 
         `<div class="list-item">
           <span>${item.todo}</span>
           <span>${item.date}</span>
-          <input type="checkbox" class="check" id=${index} onClick="setState(event)" />
+          <input type="checkbox" id=${index} class="check" onClick="setState(event)" />
           <button id="removeBtn" onClick="removeTodo(${index})">X</button>
           </div>`
           
