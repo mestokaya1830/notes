@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      h1{margin: 30px 0;}
+      .main-con{
+        display: flex;
+        background-color: #000;
+        padding: 30px 80px;
+        border-radius: 30px;
+      }
+      #container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 840px;
+        height: 400px;
+        border-radius: 5px;
+        margin: 50px auto;
+        object-fit: cover;
+        padding: 10px 5px;
+        box-shadow: inset 0 0 50px #f8a100;
+      }
+      #wrapper {
+        display: flex;
+        align-items: center;
+        min-width: 100%;
+        width: auto;
+        height: 100%;
+        overflow: hidden;
+        background-color: red;
+        position: relative;
+        scroll-behavior: smooth;
+      }
+      .img {
+        min-width: 830px;
+        height: 100%;
+      }
+      .prev,
+      .next {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        cursor: pointer;
+        color: #000;
+        font-weight: bold;
+        font-size: 30px;
+        transition: 0.6s ease;
+        user-select: none;
+        background-color: #f1f1f1;
+      }
+      .prev{
+        margin-right: 14px;
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+      }
+      .next{
+        margin-left: 14px;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+      }
+      .prev:hover,
+      .next:hover {
+        transform: scale(1.2);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Javascript Swipe Slider</h1>
+    <div class="main-con">
+      <div id="container">
+        <a class="prev" id="prev">❮</a>
+        <div id="wrapper"></div>
+        <a class="next" id="next">❯</a>
+      </div>
+    </div>
+
+    <script>
+      let images = [
+        "./images/img1.jpg",
+        "./images/img2.jpg",
+        "./images/img3.jpg",
+        "./images/img4.jpg",
+      ];
+
+      const setSlider = (param) => {
+        param.forEach((item, index) => {
+          document.getElementById('wrapper').innerHTML += `
+          <img src="${item}" alt="" id="${index}" class="img"/>
+          `
+        });
+        const imageWidht = document.getElementsByClassName('img')[0].width
+        document.getElementById('next').addEventListener('click', () => {
+          document.getElementById('wrapper').scrollLeft += imageWidht
+        })
+        document.getElementById('prev').addEventListener('click', () => {
+          document.getElementById('wrapper').scrollLeft -= imageWidht
+        })
+      }
+      setSlider(images)
+     </script>
+  </body>
+</html>

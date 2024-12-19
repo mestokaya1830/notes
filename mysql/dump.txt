@@ -1,0 +1,13 @@
+
+👉️ BACKAUP
+mysqldump -u root -p --all-databases --skip-lock-tables > alldb.sql
+mysqldump -p dbname > db.sql
+
+
+👉️ RESTORE
+mysql -u root -p < alldb.sql
+mysql -u root -p dbname < dbname.sql
+
+
+👉️ REPAIR
+mysqlcheck -u root -p --auto-repair --optimize --all-databases

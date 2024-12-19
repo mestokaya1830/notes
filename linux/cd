@@ -1,0 +1,17 @@
+file-structure------------------------------------------
+/bin contain executable files
+/etc contain system configration files
+/opt contain third party app files
+
+
+
+
+cd-----------------------------------------
+pwd //shows working directory
+cd //goes user directory
+cd / //goes root directory
+
+cd -l / or cd -l /home
+
+file and directory list-------------------------
+sudo ld -l or ls -al
