@@ -8,9 +8,9 @@ nvm i v20.18.0 or version_name
 //use node nvm version
 nvm list
 nvm current
-nvm use v17.0.0
+nvm use v20.18.0 
 nvm deactivate
-nvm uninstall v17.0.0
+nvm uninstall v20.18.0 
 
 or----------------------
 //remove node
