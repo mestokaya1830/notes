@@ -7,6 +7,11 @@
 </head>
 <body>
   <script type="text/javascript">
+    //Using Intl constructors to do language-specific formatting, with fallback
+    //const date = new Date("2012-05-24");
+   //const formattedDate = new Intl.DateTimeFormat(navigator.languages).format(date);
+
+
     var userLang = navigator.language || navigator.userLanguage; 
     alert ("The language is: " + userLang);
     </script>
