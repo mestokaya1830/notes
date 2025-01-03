@@ -25,10 +25,10 @@
         console.log(xml)
 
         //parse dom
-        let book = []
+        let books = []
         const data = (xml.getElementsByTagName("book"))
         for (let i = 0; i < data.length; i++) {
-          book.push({
+          books.push({
             author: data[i].getElementsByTagName('author')[0].childNodes[0].nodeValue,
             title: data[i].getElementsByTagName('title')[0].childNodes[0].nodeValue,
             genre: data[i].getElementsByTagName('genre')[0].childNodes[0].nodeValue,
@@ -38,7 +38,7 @@
           }
           )
         }
-        book.forEach(item => {
+        books.forEach(item => {
           console.log(item.title)
         })
       } catch (error) {
