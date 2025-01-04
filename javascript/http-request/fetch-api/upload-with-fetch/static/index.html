@@ -12,7 +12,7 @@
     <input type="file" id="file" name="file" multiple accept="images/*">
     <input type="button"  id="upload" value="upload">
   </form>
-
+  <h3 id="status"></h3>
   <script>
     document.getElementById('upload').onclick = async () => {
       const files = document.getElementById('file').files
@@ -35,11 +35,13 @@
       // console.log(JSON.stringify(Array.from(formData), '/t', 2))
 
       //or send direct with form
+       document.getElementById('status').innerText = 'Please wait...'
       const result = await fetch('http://localhost:3000/upload', {
         method:'post',
         body:formData
       })
       const final = await result.json()
+      document.getElementById('status').innerText = 'Upload completed'
       console.log(final)
     }
     
