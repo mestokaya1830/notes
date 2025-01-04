@@ -40,6 +40,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
     let data = document.getElementById('data').value
     let link = document.getElementById('link')
     link.href = URL.createObjectURL(new Blob([data], {type: 'text/plain'}))
+    URL.revokeObjectURL(link.href)
   </script>
 </body>
 

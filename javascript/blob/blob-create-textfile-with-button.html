@@ -39,9 +39,9 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
   <script>
     const createTextFile = () => {
       let data = document.getElementById('data').value
-      let url = URL.createObjectURL(new Blob([data], {type: 'text/plain'}))
+
       let link = document.createElement('a')
-      link.href = url
+      link.href = URL.createObjectURL(new Blob([data], {type: 'text/plain'}))
       link.download = 'text1.txt'
       link.click()
       URL.revokeObjectURL(link.href)
