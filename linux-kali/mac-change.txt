@@ -1,0 +1,20 @@
+👉️ GET MAC
+ifconfig 
+current mac ether 7a:46:98:fb:25:68
+
+👉️STOP wlan0
+sudo ifconfig wlan0 down
+
+👉️CHECK wlan0 is downed
+ifconfig
+when no wlan0  then down worked
+
+👉️CHANGE MAC
+sudo macchanger -r wlan0 //get random mac
+
+👉️CHECK NEW MAC
+ifconfig
+new mac ether 32:57:a9:d2:1c:7e
+
+
+

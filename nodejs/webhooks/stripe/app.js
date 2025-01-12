@@ -1,19 +1,17 @@
-const express = require('express')
-const pg = require('pug')
+import express from 'express'
+import pg from 'pug'
 const app = express()
-const cors = require('cors')
-// const helmet = require('helmet')
+import cors from 'cors'
+import stripe from 'stripe'
 
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 app.use(express.static('static'))
-// app.use(helmet())
 
 app.set('view engine','pug')
 
-const secret_key = 'sk_test_51KsAmgGjc2DBcMZIJwlMFs6s8gQQOxvN9mXqEYbZFkFHZg339AJY9SOhkH7rmmQL9ePqak1tANpSDIDMi7lkqNYp00rO853BbL'
-const stripe = require('stripe')(secret_key)
+let strp = stripe('sk_test_51KsAmgGjc2DBcMZIJwlMFs6s8gQQOxvN9mXqEYbZFkFHZg339AJY9SOhkH7rmmQL9ePqak1tANpSDIDMi7lkqNYp00rO853BbL')
 
 app.get('/', (req, res) => {
   res.render('index', {
@@ -22,19 +20,19 @@ app.get('/', (req, res) => {
   })
 })
 app.post('/payment', (req, res) => {
-  stripe.customers.create({
+  strp.customers.create({
     email:req.body.stripeEmail,
     source:req.body.stripeToken,
     name:'Mesto Kaya',
     address: {
       line1:'address',
-      postalCode:8000,
+      postal_code:8000,
       city:'Zurich',
       state:'Zurich',
       country:'Switzerland'
     }
   }).then(customer => {
-    return stripe.charges.create({
+    return strp.charges.create({
       amount:3000,
       description:'Nodejs course',
       currency:'usd',

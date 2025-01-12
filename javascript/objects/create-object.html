@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    //simple object
+    const user = {
+      name:'mesto',
+      salery:300
+    }
+    console.log(user)
+
+    //array object
+    const users = [
+      {id: 1, name:'mesto',salery:300},
+      {id: 2, name:'ali',salery:300},
+      {id: 3, name:'deniz',salery:400}
+    ]
+    console.log(users)
+
+    //object with method
+    const test = {
+      name:'Mustafa',
+      lastname:'Kaya',
+      fullname() {
+        return this.name +' '+ this.lastname
+      }
+    }
+    console.log(test.fullname())
+
+
+    //create array from objects
+    const keys = ["name", "age", "country"];
+      const values = ["bobby", 30, "Chile"];
+
+      const obj = {};
+
+      keys.forEach((element, index) => {
+        obj[element] = values[index];
+      });
+
+      // 👉️ { name: 'bobby', age: 30, country: 'Chile' }
+      console.log(obj);
+  </script>
+</body>
+</html>
