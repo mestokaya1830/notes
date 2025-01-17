@@ -61,21 +61,24 @@ const load = () => {
         daySquare.id = "current-day";
       }
 
-      // if(addEventDay){
-      //   const eventDiv = document.createElement('div')
-      //   eventDiv.classList.add('event')
-      //   eventDiv.innerText = addEventDay.name
-      //   eventDiv.name = addEventDay.name
-      //   daySquare.appendChild(eventDiv)
-      // }
+      if(addEventDay){
+        const eventDiv = document.createElement('div')
+        eventDiv.classList.add('event')
+        eventDiv.innerText = addEventDay.bookingname
+        eventDiv.name = addEventDay.bookingname
+        daySquare.appendChild(eventDiv)
+      }
       daySquare.addEventListener("click", (e) => openModel(dayString));
 
       //filter weekend
       const wd = new Date(dayString);
       if (wd.getDay() == 0 || wd.getDay() == 6) {
         daySquare.classList.add("weekend");
+        daySquare.addEventListener('click', () => {
+          document.getElementById("event-model").style.display = "none";
+        })
         if (document.getElementById("current-day")) {
-          document.getElementById("current-day").style.backgroundColor = "red";
+          document.getElementById("current-day").style.backgroundColor = "green";
         }
       }
     } else {
@@ -89,13 +92,13 @@ const load = () => {
 const openModel = (date) => {
   eventModel.style.display = "block";
   clicked = date;
-  // const eventForDay = events.find(item => item.date === clicked)
-  // if (eventForDay) {
-  //   document.getElementById('event-text').innerText = eventForDay.fullName
-  //   document.getElementById('delete-model').style.display = 'block'
-  // } else {
-  //   eventModel.style.display = 'block'
-  // }
+  const eventForDay = events.find(item => item.date === clicked)
+  if (eventForDay) {
+    document.getElementById('event-text').innerText = eventForDay.bookingname
+    document.getElementById('delete-model').style.display = 'block'
+  } else {
+    eventModel.style.display = 'block'
+  }
 };
 
 const closeModel = () => {
@@ -111,6 +114,7 @@ const deleteEvent = () => {
   clicked = null;
   document.getElementById("delete-model").style.display = "none";
   load();
+  eventModel.style.display = "none";
 };
 
 const initButtons = () => {
@@ -139,11 +143,12 @@ const initButtons = () => {
   });
 
   document.getElementById("cancel").addEventListener("click", closeModel);
-  // document.getElementById('delete').addEventListener('click', deleteEvent)
-  // document.getElementById('close').addEventListener('click', () => {
-  //   clicked = null
-  //   document.getElementById('delete-model').style.display = 'none'
-  // })
+  document.getElementById('delete').addEventListener('click', deleteEvent)
+  document.getElementById('close').addEventListener('click', () => {
+    clicked = null
+    closeModel()
+    document.getElementById('delete-model').style.display = 'none'
+  })
 };
 
 load();
