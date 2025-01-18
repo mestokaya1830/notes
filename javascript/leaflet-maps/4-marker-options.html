@@ -18,13 +18,14 @@
 
   <script src="./public/leaflet.js"></script>
   <script>
-    //add map layer
+    //set map
     let map = L.map('map').setView([37.065842, 37.376080], 12)
-    let osmBase = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png')
-    osmBase.addTo(map)
+    
+    //add layer
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map)
 
     //add marker on layer
-    let marker = L.marker([37.065842, 37.376080],{
+    L.marker([37.065842, 37.376080],{
       opacity:0.5,
       draggable:true,
       title:'Gaziantep Buyuksehir'
