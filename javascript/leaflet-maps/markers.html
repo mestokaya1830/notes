@@ -30,6 +30,19 @@
       draggable:true,
       title:'Gaziantep Buyuksehir'
     }).addTo(map)
+
+    L.circle([37.065000, 37.376000],{
+      color:'red',
+      fillColor:'blue',
+      fillOpacity: 0.5,
+      radius: 400
+    }).addTo(map)
+
+    L.polygon([
+      [37.035111, 37.444],
+      [37.095333, 37.3333],
+      [37.035999, 37.3444]
+    ]).addTo(map)
   </script>
 </body>
 </html>
