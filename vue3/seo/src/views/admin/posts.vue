@@ -11,6 +11,14 @@
   </div>
 </template>
 <script>
+import {useHead} from '@vueuse/head'
+useHead({
+  meta: [
+    {
+      name: 'description',  content:'Meta Posts Page'
+    }
+  ]
+})
 export default {
   name: 'Posts',
   data() {
