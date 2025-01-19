@@ -1,7 +1,8 @@
 import express from 'express'
 const app = express()
-import db from './0-db.js'
+import 'dotenv/config'
 
+import db from './0-db.js'
 
 app.use(express.json())
 
@@ -10,7 +11,8 @@ app.use((err, req, res, next) => {
   next()
 })
 
-app.listen(3000, () => {
-  //db() with async connection
+app.listen(process.env.PORT, () => {
+  //with async connection
+  // db() 
   console.log('Server is running...')
 })
