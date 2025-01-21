@@ -2,6 +2,15 @@
   definePageMeta({
     layout: "adminLayout",
   });
+  useHead({
+  title: "Admin Posts Details",
+  meta: [
+    {
+      name: "description",
+      content: "Admin Posts Details Page",
+    },
+  ],
+});
   const {id} = useRoute().params
 </script>
 <template>

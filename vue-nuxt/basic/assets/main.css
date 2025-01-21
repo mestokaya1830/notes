@@ -25,3 +25,17 @@
   flex-direction: column;
   padding: 50px;
 }
+ul{
+  list-style: none;
+}
+ul li{
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+.details-links{
+  font-size: 22px;
+  text-decoration: none;
+  margin-top: 10px;
+}
+.details-links:hover{color: green;}

@@ -7,6 +7,7 @@
 <script>
 import {useHead} from '@vueuse/head'
 useHead({
+  title:'Details',
   meta: [
     {
       name: 'description',  content:'Meta Details Page'
