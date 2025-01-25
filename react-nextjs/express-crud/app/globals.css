@@ -24,3 +24,21 @@
   align-items: center;
   padding: 50px;
 }
+ul{
+  list-style: none;
+  width: 400px;
+  margin-top: 50px;
+}
+ul li{
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+ul li span{
+  flex: 1;
+}

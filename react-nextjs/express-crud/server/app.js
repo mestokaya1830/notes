@@ -1,11 +1,24 @@
 import express from 'express'
 const app = express()
+import cors from 'cors'
 import db from './modules/db.js'
 
 app.use(express.json())
+app.use(cors())
 
-app.get('/', (req, res) => {
+app.get('/users', (req, res) => {
   db.query("Select * From users", (err, data) => {
+    if(err){
+      console.log(err)
+      res.status(400).json({message:err})
+    } else {
+      res.status(200).json({result:data})
+    }
+  })
+})
+
+app.get('/users/:id', (req, res) => {
+  db.query("Select * From users Where id = ?", [req.params.id], (err, data) => {
     if(err){
       console.log(err)
       res.status(400).json({message:err})
@@ -27,7 +40,8 @@ app.post('/adduser', (req, res) => {
   })
 })
 
-app.post('/updateuser/:id', (req, res) => {
+app.put('/updateuser/:id', (req, res) => {
+  console.log(req.body)
   const {password} = req.body
   db.query("Update users Set password = ? Where id = ?", [password, req.params.id], (err) => {
     if(err){
@@ -39,7 +53,7 @@ app.post('/updateuser/:id', (req, res) => {
   })
 })
 
-app.post('/deleteuser/:id', (req, res) => {
+app.delete('/deleteuser/:id', (req, res) => {
   db.query("Delete From users Where id = ?", [req.params.id], (err) => {
     if(err){
       console.log(err)

@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useState } from "react";
+import axios from "axios";
 
 export default function Create() {
   const [user, setUser] = useState()
@@ -12,7 +13,9 @@ export default function Create() {
   
   const addUser = (e) => {
     e.preventDefault()
-    console.log(user)
+    axios.post('http://localhost:4000/adduser', user).then((data) => {
+      console.log(data)
+    })
   }
   return (
     <>

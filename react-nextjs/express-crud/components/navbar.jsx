@@ -9,6 +9,7 @@ export default function Navbar() {
     <>
       <nav className="navbar">
         <Link href="/" className={pathName === '/' ? "active" : "links"} >Home</Link>
+        <Link href="/users" className={pathName === '/users' ? "active" : "links"} >Users</Link>
       </nav>
     </>
   )
