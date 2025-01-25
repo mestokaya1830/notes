@@ -23,9 +23,13 @@ export default db
 //   database:'blog'
 // })
 
-// db.connect(err => {
-//   if(!err) console.log('Mysql Connected')
-// })
+//db.connect(err => {
+//  if(!err){
+//   console.log('Mysql Connected')
+//  } else {
+//    console.log(err)
+//  }
+//})
 
 // export default db
 

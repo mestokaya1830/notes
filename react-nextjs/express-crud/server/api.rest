@@ -1,0 +1,27 @@
+###
+GET http://localhost:4000/
+
+
+###
+POST http://localhost:4000/adduser
+Content-Type: application/json
+
+{
+  "username":"mesto kaya",
+  "password": "9090"
+}
+
+
+###
+POST http://localhost:4000/updateuser/1
+Content-Type: application/json
+
+{
+  "password": "9090"
+}
+
+
+###
+POST http://localhost:4000/deleteuser/3
+
+
