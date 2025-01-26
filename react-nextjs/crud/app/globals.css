@@ -1,0 +1,25 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.navbar{
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  background-color: #000;
+  height: 64px;
+}
+.links, .active{
+  margin: 0 15px;
+  font-size: 22px;
+  text-decoration: none;
+}
+.links{color: #fff;}
+.active{color: green;}
+.router{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+}
