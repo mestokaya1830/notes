@@ -23,3 +23,26 @@
   align-items: center;
   padding: 50px;
 }
+ul{
+  list-style: none;
+  margin-top: 50px;
+  width: 600px;
+}
+ul li{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 43px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0 5px;
+  margin: 5px 0;
+}
+ul li span{width: 200px;}
+form{
+  display: flex;
+  flex-direction: column;
+}
+form input{
+  margin: 5px 0;
+}
