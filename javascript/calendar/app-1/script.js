@@ -62,11 +62,19 @@ const load = () => {
       }
 
       if(addEventDay){
-        const eventDiv = document.createElement('div')
-        eventDiv.classList.add('event')
-        eventDiv.innerText = addEventDay.bookingname
-        eventDiv.name = addEventDay.bookingname
-        daySquare.appendChild(eventDiv)
+        events.forEach(item => {
+          if(item.date == addEventDay.date){
+            const eventDiv = document.createElement('div')
+            const eventHour = document.createElement('span')
+            eventHour.innerText = item.bookingHour
+            eventDiv.classList.add('event')
+            eventHour.classList.add('hour')
+            eventDiv.innerText = item.bookingname
+            eventDiv.name = item.bookingname
+            eventDiv.appendChild(eventHour)
+            daySquare.appendChild(eventDiv)
+          }
+        })
       }
       daySquare.addEventListener("click", (e) => openModel(dayString));
 
@@ -94,8 +102,9 @@ const openModel = (date) => {
   clicked = date;
   const eventForDay = events.find(item => item.date === clicked)
   if (eventForDay) {
-    document.getElementById('event-text').innerText = eventForDay.bookingname
-    document.getElementById('delete-model').style.display = 'block'
+    document.getElementById('delete-event-text').innerText = eventForDay.bookingname
+    document.getElementById('delete-event-hour').innerText = eventForDay.bookingHour
+    // document.getElementById('delete-model').style.display = 'block'
   } else {
     eventModel.style.display = 'block'
   }
