@@ -4,7 +4,7 @@ import hb from 'handbrake-js'
 import fs from 'fs'
 
 app.get('/', (req, res) => {
-  hb.spawn({input: '1.avi', output: '1.mp4'})
+  hb.spawn({input: '1.avi', output: '2.mp4'})
   .on('error',err=>{
     console.log(err);
   })

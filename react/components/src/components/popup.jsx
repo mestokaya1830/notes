@@ -1,9 +1,9 @@
-export default function Popup(props) {
+export default function Popup({message, openPopup}) {
   return (
     <div className='popup'>
       <h2>Popup Component</h2>
-      <p>{props.message}</p>
-      <button onClick={() => props.openPopup(false)}>Close Popup</button>
+      <p>{message}</p>
+      <button onClick={() => openPopup(false)}>Close Popup</button>
     </div>
   )
 }

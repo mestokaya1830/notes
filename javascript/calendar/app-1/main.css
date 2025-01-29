@@ -19,6 +19,7 @@ body{
   flex-wrap: wrap;
   width: 100%;
   margin:auto;
+  position: relative;
 }
 button{
   width: 75px;
@@ -145,4 +146,32 @@ button{
 .weekend{
   background-color: red;
   cursor: not-allowed;
+}
+.eventDay{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  background-color: #92a2d1;
+}
+.hoursTable{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  margin: 2px;
+  padding: 5px;
+}
+.hoursTable:hover{
+  cursor: pointer;
+  transform: scale(1.1);
 }

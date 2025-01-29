@@ -98,16 +98,26 @@ const load = () => {
 };
 
 const openModel = (date) => {
-  eventModel.style.display = "block";
-  clicked = date;
-  const eventForDay = events.find(item => item.date === clicked)
-  if (eventForDay) {
-    document.getElementById('delete-event-text').innerText = eventForDay.bookingname
-    document.getElementById('delete-event-hour').innerText = eventForDay.bookingHour
-    // document.getElementById('delete-model').style.display = 'block'
-  } else {
-    eventModel.style.display = 'block'
-  }
+  const el = document.createElement('div')
+  el.classList.add('eventDay')
+  const hours = ["20:00","20:30","9:00","9:30","10:00","10:30","11:00","11:30"]
+  hours.forEach(item => {
+    const hoursTable = document.createElement('div')
+    hoursTable.innerText = item
+    hoursTable.classList.add('hoursTable')
+    el.appendChild(hoursTable)
+  })
+  calendar.appendChild(el)
+  // eventModel.style.display = "block";
+  // clicked = date;
+  // const eventForDay = events.find(item => item.date === clicked)
+  // if (eventForDay) {
+  //   document.getElementById('delete-event-text').innerText = eventForDay.bookingname
+  //   document.getElementById('delete-event-hour').innerText = eventForDay.bookingHour
+  //   // document.getElementById('delete-model').style.display = 'block'
+  // } else {
+  //   eventModel.style.display = 'block'
+  // }
 };
 
 const closeModel = () => {
