@@ -1,25 +1,16 @@
-import { NavLink, useNavigate } from "react-router-dom"
+import { NavLink } from "react-router-dom"
+import { useContext } from "react"
+import { AuthContext } from "../context/authProvider.jsx"
 
 export default function Navbar() {
-  const navigate = useNavigate()
-
-  const deleteLoggedUser = () => {
-    localStorage.removeItem("loggedUser");
-    navigate('/login')
-  }
+  const { user } = useContext(AuthContext)
   return (
     <>
       <nav className="navbar">
-        <div>
-          <NavLink to="/" className="links">Home</NavLink>
-          <NavLink to="/admin" className="links">Admin</NavLink>
-        </div>
-        <div>
-          <NavLink to="/login" className="links">Login</NavLink>
-          <button className="logout" onClick={deleteLoggedUser}>Logout</button>
-        </div>
+        <NavLink to="/" className="links">Home</NavLink>
+        <NavLink to="/login" className="links">Login</NavLink>
+        {user !== null ? <div className="links">{user.username}</div>: <div className="links">Please login!</div>}
       </nav>
     </>
   )
 }
-
