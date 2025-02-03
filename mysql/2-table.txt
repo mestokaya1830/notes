@@ -1,0 +1,52 @@
+👉️ CREATE
+use dbname;
+CREATE TABLE users (
+    id int NOT NULL AUTO_INCREMENT,
+    username varchar(255) NOT NULL,
+    password varchar(255),
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (ID)
+);
+
+CREATE TABLE posts (
+    id int NOT NULL AUTO_INCREMENT,
+    title varchar(255) NOT NULL,
+    body text NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    user_id int not null,
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+
+👉️ DROP
+drop table test;
+
+
+👉️ RENAME
+RENAME TABLE table_name TO new_name;
+
+
+👉️ COPY
+INSERT INTO copyCUSTOMERS (ID,NAME,AGE,ADDRESS,SALARY) SELECT ID,NAME,AGE,ADDRESS,SALARY FROM CUSTOMERS;
+
+CREATE TABLE new_table SELECT * FROM original_table;
+CREATE TABLE testCUSTOMERS1 LIKE CUSTOMERS;
+CREATE TABLE new_table LIKE original_table;
+INSERT INTO new_table SELECT * FROM original_table;
+
+👉️ TRANCATE
+TRUNCATE TABLE CUSTOMERS;
+
+👉️ REPAIR
+REPAIR TABLE CUSTOMERS;
+
+
+👉️ SHOW TABLES;
+DESCRIBE  users;
+
+
+
+
+
+

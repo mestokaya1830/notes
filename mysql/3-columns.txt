@@ -1,0 +1,17 @@
+use dbname;
+👉️ ADD COLUMN
+ALTER TABLE test ADD COLUMN phone VARCHAR(15) AFTER state;
+
+👉️ MODIFY COLUMN
+ALTER TABLE CUSTOMERS MODIFY ID VARCHAR(20);
+
+👉️ DEFAULT COLUMN
+ALTER TABLE betsummary ALTER country SET DEFAULT 'Deutschland';
+ALTER TABLE CUSTOMERS ALTER NAME DROP DEFAULT;
+
+👉️ DROP COLUMN
+alter table users drop id;
+
+
+SHOW TABLES;
+DESCRIBE  users;

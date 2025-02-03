@@ -10,7 +10,7 @@ const db = mysql.createPool({
 
 
 export default db
-
+//query with promise
 // const [row] = await Mysql.query('Select * From products')
 //   console.log(result)
 
@@ -33,11 +33,11 @@ export default db
 
 // export default db
 
+
+//query with callback
 // Mysql.query('Select * From products', (err, res) => {
 //   console.log(res)
 // })
-
------------------------------------------------------
 
 
 
