@@ -19,24 +19,23 @@ CREATE TABLE posts (
 );
 
 
-👉️ DROP
-drop table test;
-
-
 👉️ RENAME
 RENAME TABLE table_name TO new_name;
 
 
-👉️ COPY
-INSERT INTO copyCUSTOMERS (ID,NAME,AGE,ADDRESS,SALARY) SELECT ID,NAME,AGE,ADDRESS,SALARY FROM CUSTOMERS;
+👉️ COPY TABLE WITH DATA
+//with optional columns
+create table 1
+create table 2
+insert table 2 and type code below
+INSERT INTO users2 (ID,NAME,AGE) SELECT ID,NAME,AGE FROM users;
 
-CREATE TABLE new_table SELECT * FROM original_table;
-CREATE TABLE testCUSTOMERS1 LIKE CUSTOMERS;
-CREATE TABLE new_table LIKE original_table;
-INSERT INTO new_table SELECT * FROM original_table;
+//or with all columns
+CREATE TABLE users2 SELECT * FROM users;
 
-👉️ TRANCATE
-TRUNCATE TABLE CUSTOMERS;
+👉️ COPY TABLE ONLY STRUCTURE(WITHOUT DATA)
+CREATE TABLE users2 LIKE users;
+
 
 👉️ REPAIR
 REPAIR TABLE CUSTOMERS;
@@ -44,6 +43,14 @@ REPAIR TABLE CUSTOMERS;
 
 👉️ SHOW TABLES;
 DESCRIBE  users;
+
+
+👉️ TRANCATE
+TRUNCATE TABLE CUSTOMERS;
+
+
+👉️ DROP
+drop table test;
 
 
 
