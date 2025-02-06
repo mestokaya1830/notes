@@ -38,8 +38,14 @@
     //add layer
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map)
 
+      //add marker on layer
+      
+      let overLay = {
+        "Show/Hide Marker" : L.marker([37.065842, 37.376080]).addTo(map)
+      }
     //add extra layers
-    L.control.layers({
+    L.control.layers(
+      {
         "Google Hybrid": L.tileLayer('http://mt0.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}',{
             maxZoom: 20,
             subdomains:['mt0','mt1','mt2','mt3']
@@ -64,19 +70,13 @@
             maxZoom: 18,
             attribution: null
         })
-    },
-    {
-        'Draw Layer': L.featureGroup().addTo(map)
-    },
-    {
+      },
+      overLay,
+      {
         position: 'topleft',
         collapsed: true
-    }
+      }
     ).addTo(map);
-        
-    //add marker on layer
-    L.marker([37.065842, 37.376080]).addTo(map)
-  
   </script>
 </body>
 </html>
