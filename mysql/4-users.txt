@@ -9,7 +9,6 @@ flush privileges;
 
 
 👉️ PERMISSION
-
 GRANT ALL ON *.* TO 'mesto'@'localhost';
 GRANT ALL ON blog.* TO 'mesto'@'localhost';
 FLUSH PRIVILEGES;
