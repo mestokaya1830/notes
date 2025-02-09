@@ -7,7 +7,8 @@
   <title>Document</title>
   <link rel="stylesheet" href="./public/leaflet.css">
   <script src="./public/leaflet.js"></script>
-  
+  <script src="./public//leaflet-knn-master//leaflet-knn.min.js"></script>
+  <script src="../public/data.js"></script>
   <style>
     #map{
       width: 100vw;
@@ -26,7 +27,13 @@
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map)
 
     //add marker on layer
-    L.marker([37.065842, 37.376080]).addTo(map)
+    let marker = L.geoJSON(data).addTo(map)
+
+    let nearestPoint = leafletKnn(marker)
+    map.on('click', (e) => {
+      let result = nearestPoint.nearest(e.latlng,1)[0]
+      result.layer.bindPopup('I am nearest').openPopup()
+    })
   </script>
 </body>
 </html>
