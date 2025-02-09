@@ -20,20 +20,13 @@
 
   <script>
     //set map
-    let map = L.map('map').setView([37.065842, 37.376080], 12)
+    let map = L.map('map').setView([37.065842, 37.376080], 13)
 
     //add layer
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map)
 
     //add marker on layer
-    L.marker([37.065842, 37.376080]).addTo(map).bindTooltip("Click an the map look to at the console").openTooltip()
-    
-    map.on('click', (e) => {
-      // debugger
-      // console.log(e.latlng)
-      // console.log(e)
-      let marker = new L.marker([e.latlng.lat, e.latlng.lng]).addTo(map)
-    })
+    L.marker([37.065842, 37.376080]).addTo(map)
   </script>
 </body>
 </html>
