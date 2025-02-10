@@ -1,4 +1,21 @@
 
+mongosh then
+👉️CREATE DATABASE
+use dbname
+
+👉️SHOW DATABASE
+show dbs;
+
+👉️DROP DATABASE
+use dbname
+db.dropDatabase();
+
+👉️DATABASE INFO
+use dbname
+db.stats();
+
+
+
 👉️ BACKUP ALL DB NEED EXTRA ROLE
  mongodump --verbose --out backupname --authenticationDatabase admin --username 'user' --password 'password'
 
