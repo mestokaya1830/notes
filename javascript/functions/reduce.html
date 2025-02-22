@@ -22,43 +22,43 @@
       { id: 4, name: 'alex', salary: 5000, age: 35 }
     ]
 
-    let sum = numbers.reduce((acc, curr) => acc + curr, 0)//0 is initial value
+    let sum = numbers.reduce((prev, next) => prev + next, 0)//0 is initial value
     console.log('Total salary: ', sum)
 
 
     //find max
-    // let maxNumber = numbers.reduce((acc, curr) => {
-    //   if (curr > acc) return curr
-    //   return acc
+    // let maxNumber = numbers.reduce((prev, next) => {
+    //   if (next > prev) return next
+    //   return prev
     // }, 0)
     // console.log('Max number: ', maxNumber)
 
 
     //find min
-    // let minNumber = numbers.reduce((acc, curr) => {
-    //   if (curr < acc) return curr
-    //   return acc
+    // let minNumber = numbers.reduce((prev, next) => {
+    //   if (next < prev) return next
+    //   return prev
     // }, 0)
     // console.log('Min number: ', minNumber)
 
     //convert array
-    // const names = users.reduce((acc, curr) => [...acc, curr.name], [])
+    // const names = users.reduce((prev, next) => [...prev, next.name], [])
     // console.log(names)
 
     //convert dict
-    // const dict = users.reduce((acc, curr) => {
-    //   return {...acc, [curr.id]:curr}
+    // const dict = users.reduce((prev, next) => {
+    //   return {...prev, [next.id]:next}
     // })
     // console.log(dict)
     // console.log(dict['2'])//get 2. user like dict
 
 
     //grouped users
-    // const groupAsSalary = users.reduce((acc, curr) => {
-    //   const salary = curr.salary
-    //   if(acc[salary] == null) acc[salary] = []
-    //   acc[salary].push(curr)
-    //   return acc
+    // const groupAsSalary = users.reduce((prev, next) => {
+    //   const salary = next.salary
+    //   if(prev[salary] == null) prev[salary] = []
+    //   prev[salary].push(next)
+    //   return prev
     // }, {})
     // console.log(groupAsSalary)
 
