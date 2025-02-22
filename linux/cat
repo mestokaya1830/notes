@@ -1,6 +1,0 @@
-cat--------------------------------------------------
-cat filename //open file
-cat filename | sort
-cat > filename //open to write new text
-cat >> filename //open to append new end of existing text
-ls -l > filename //write query to file

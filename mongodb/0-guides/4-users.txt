@@ -1,10 +1,30 @@
+👉️AUTH
+after created user close mongosh and 
+open -> sudo nano /etc/mongod.conf
+remove # for both lines second line must have tab
+security:
+  authorization: enabled
+  
+sudo systemctl restart mongod
+or
+systemctl start mongod
+
+than
+mongosh -u 'mesto' -p 'mk1972mk' --authenticationDatabase admin
+
+or in mongosh to login use this
+db.auth('username','password')
+db.changeUserPassword('username','newpassword')
+finished
+
+
 👉️TO GIVE ROOT ROLE
 mongosh -> 
 use admin //ROOT ROLE MUST TAKE ADMIN DATABASE
 db.createUser(
   {
     user: 'mesto',
-    pwd:  'MK1972mk11130113',
+    pwd:  'mk1972mk',
     roles: [{role:"root", db:"admin"}]
 	
   }
@@ -50,22 +70,7 @@ db.updateUser('username',{
   }
 )
 
-👉️AUTH
-after created user close mongosh and 
-open -> sudo nano /etc/mongod.conf
-remove # for both lines second line must have tab
-security:
-  authorization: enabled
-  
-sudo systemctl restart mongod
 
-than
-mongosh -u 'username' -p 'password' --authenticationDatabase admin
-
-or in mongosh to login use this 
-db.auth('username','password')
-db.changeUserPassword('username','newpassword')
-finished
 
 👉️DELETE USER
 use dbName

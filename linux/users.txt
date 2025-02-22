@@ -27,9 +27,3 @@ sudo passwd               // change user password
 
 
 
-
-USER INFO----------------------------------------------------
-id username                     // show user id
-su - username then type ll      // permission of users
-
-

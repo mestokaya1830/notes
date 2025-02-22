@@ -4,7 +4,7 @@ import hb from 'handbrake-js'
 import fs from 'fs'
 
 app.get('/', (req, res) => {
-  hb.spawn({input: '1.avi', output: '2.mp4'})
+  hb.spawn({input: '4.webm', output: '4.mp4'})
   .on('error',err=>{
     console.log(err);
   })
@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
       progress.percentComplete,
       progress.eta
     );
-    let stream = fs.createReadStream('1.avi')
+    let stream = fs.createReadStream('4.mp4')
     stream.pipe(res);
   });
 })
