@@ -1,5 +1,4 @@
 let nav = 0;
-let clicked = null;
 
 const calendar = document.getElementById("calendar");
 let fullName = document.getElementById("full-name");
@@ -16,8 +15,6 @@ const weekdays = [
   "Friday",
   "Saturday",
 ];
-
-
 
 const load = () => {
   const dt = new Date();
@@ -61,20 +58,24 @@ const load = () => {
         daySquare.id = "current-day";
       }
 
-      if(addEventDay){
-        events.forEach(item => {
-          if(item.date == addEventDay.date){
-            const eventDiv = document.createElement('div')
-            const eventHour = document.createElement('span')
-            eventHour.innerText = item.bookingHour
-            eventDiv.classList.add('event')
-            eventHour.classList.add('hour')
-            eventDiv.innerText = item.bookingname
-            eventDiv.name = item.bookingname
-            eventDiv.appendChild(eventHour)
-            daySquare.appendChild(eventDiv)
+      if (addEventDay) {
+        let count = 0
+        events.forEach((item) => {
+          if (item.date == addEventDay.date) {
+            const eventDiv = document.createElement("div");
+            const eventHour = document.createElement("span");
+            const eventCount = document.createElement("span");
+            eventHour.innerText = item.bookingHour;
+            eventDiv.classList.add("event");
+            eventHour.classList.add("hour");
+            eventDiv.innerText = item.bookingname;
+            eventDiv.innerText = count = count + 1
+            eventDiv.name = item.bookingname;
+            eventDiv.appendChild(eventHour);
+            daySquare.appendChild(eventDiv);
+            daySquare.appendChild(eventCount);
           }
-        })
+        });
       }
       daySquare.addEventListener("click", (e) => openModel(dayString));
 
@@ -82,11 +83,12 @@ const load = () => {
       const wd = new Date(dayString);
       if (wd.getDay() == 0 || wd.getDay() == 6) {
         daySquare.classList.add("weekend");
-        daySquare.addEventListener('click', () => {
+        daySquare.addEventListener("click", () => {
           document.getElementById("event-model").style.display = "none";
-        })
+        });
         if (document.getElementById("current-day")) {
-          document.getElementById("current-day").style.backgroundColor = "green";
+          document.getElementById("current-day").style.backgroundColor =
+            "green";
         }
       }
     } else {
@@ -95,46 +97,52 @@ const load = () => {
 
     calendar.appendChild(daySquare);
   }
+ 
 };
 
 const openModel = (date) => {
-  const el = document.createElement('div')
-  el.classList.add('eventDay')
-  const hours = ["20:00","20:30","9:00","9:30","10:00","10:30","11:00","11:30"]
-  hours.forEach(item => {
-    const hoursTable = document.createElement('div')
-    hoursTable.innerText = item
-    hoursTable.classList.add('hoursTable')
-    el.appendChild(hoursTable)
+  const el = document.createElement("div");
+  el.classList.add("eventDay");
+  const hours = [
+    "8:00",
+    "8:30",
+    "9:00",
+    "9:30",
+    "10:00",
+    "10:30",
+    "11:00",
+    "11:30",
+  ];
+  hours.forEach((item) => {
+    const hoursTable = document.createElement("div");
+    hoursTable.innerText = item;
+    hoursTable.classList.add("hoursTable");
+    el.appendChild(hoursTable);
+  });
+  calendar.appendChild(el);
+
+  //close model after hour selected
+  document.querySelectorAll('.hoursTable').forEach(item => {
+    item.addEventListener('click', () => {
+      events.push({
+        date: date,
+        bookingname: 'Mesto',
+        bookingHour: item.innerText
+      });
+      localStorage.setItem("events", JSON.stringify(events));
+      load();
+    })
   })
-  calendar.appendChild(el)
-  // eventModel.style.display = "block";
-  // clicked = date;
-  // const eventForDay = events.find(item => item.date === clicked)
-  // if (eventForDay) {
-  //   document.getElementById('delete-event-text').innerText = eventForDay.bookingname
-  //   document.getElementById('delete-event-hour').innerText = eventForDay.bookingHour
-  //   // document.getElementById('delete-model').style.display = 'block'
-  // } else {
-  //   eventModel.style.display = 'block'
-  // }
 };
 
-const closeModel = () => {
-  fullName.value = "";
-  clicked = null;
-  document.getElementById("event-model").style.display = "none";
-  load();
-};
-
-const deleteEvent = () => {
-  events = events.filter((item) => item.date !== clicked);
-  localStorage.setItem("events", JSON.stringify(events));
-  clicked = null;
-  document.getElementById("delete-model").style.display = "none";
-  load();
-  eventModel.style.display = "none";
-};
+// const deleteEvent = () => {
+//   events = events.filter((item) => item.date !== clicked);
+//   localStorage.setItem("events", JSON.stringify(events));
+//   clicked = null;
+//   document.getElementById("delete-model").style.display = "none";
+//   load();
+//   eventModel.style.display = "none";
+// };
 
 const initButtons = () => {
   document.getElementById("back").addEventListener("click", (e) => {
@@ -145,29 +153,6 @@ const initButtons = () => {
     nav++;
     load();
   });
-
-  document.getElementById("save").addEventListener("click", (e) => {
-    if (fullName.value) {
-      fullName.classList.remove("err");
-      events.push({
-        date: clicked,
-        bookingname: fullName.value,
-        bookingHour: bookingHour.value,
-      });
-      localStorage.setItem("events", JSON.stringify(events));
-      closeModel();
-    } else {
-      fullName.classList.add("err");
-    }
-  });
-
-  document.getElementById("cancel").addEventListener("click", closeModel);
-  document.getElementById('delete').addEventListener('click', deleteEvent)
-  document.getElementById('close').addEventListener('click', () => {
-    clicked = null
-    closeModel()
-    document.getElementById('delete-model').style.display = 'none'
-  })
 };
 
 load();
