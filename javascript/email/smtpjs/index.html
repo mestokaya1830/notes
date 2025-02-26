@@ -63,6 +63,8 @@
     <script src="https://smtpjs.com/v3/smtp.js"></script>
 
     <script>
+      //create an account on the https://app.elasticemail.com/api/settings
+      //see https://www.youtube.com/watch?v=WtU8g6d_C5A&ab_channel=MuskanMaheshwari
       document.getElementById("send").addEventListener("click", (e) => {
         e.preventDefault();
         console.log(message);
@@ -71,15 +73,6 @@
           subject: document.getElementById("subject").value,
           message: document.getElementById("message").value,
         };
-        // Email.send({
-        //   SecureToken: "5bc3502c-4b8b-4aa3-8791-bf252c7fa944", //add your token here
-        //   To: email.value,
-        //   From: "mesto1830@gmail.com",
-        //   Subject: subject.value,
-        //   Body: message.value,
-        // })
-        // .then((message) => alert(message))
-
         Email.send({
           Host: "smtp.elasticemail.com",
           Username: "mesto1830@gmail.com",
