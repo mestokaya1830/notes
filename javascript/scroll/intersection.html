@@ -48,28 +48,28 @@
       }
       .img1-show{
         height: 100%;
-        transition: all 0.5s ease-in-out;
+        transition: all 1s ease;
       }
       .img2{
         width: 0;
       }
       .img2-show{
         width: 100%;
-        transition: all 0.5s ease-in-out;
+        transition: all 1s ease;
       }
       .img3{
         top: 700px;
       }
       .img3-show{
         top: 0;
-        transition: all 0.5s ease-in-out;
+        transition: all 1s ease;
       }
       .img4{
-        opacity: 0;;
+        opacity: 0;
       }
       .img4-show{
         opacity: 1;
-        transition: all 0.5s ease-in-out;
+        transition: all 1s ease;
       }
     </style>
   </head>
@@ -455,7 +455,7 @@
         }
       });
 
-      const observerCallback = (entries, observer, header) => {
+      const observerCallback = (entries, observer) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.children[0].classList.remove(entry.target.children[0].getAttribute('id'))
