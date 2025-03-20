@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body{
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      padding: 50px;
+      background-color: cadetblue;
+      overflow-x: hidden;
+    }
+
+    .red{background-color: red;}
+    .blue{background-color: blue;}
+    .green{background-color: green;}
+    .yellow{background-color: yellow;}
+    .orange{background-color: orange;}
+    .black{background-color: black;}
+
+    .box{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
+      width: 400px;
+      height: 200px;
+      margin: 20px 0;
+      box-shadow: 2px 4px 5px rgba(0,0,0,0.3);
+      transform: translateX(800%);
+      transition: transform 1s ease;
+      font-size: 40px;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 1px 1px #000;
+    }
+    .box:nth-of-type(even){
+      transform: translateX(-800%);
+    }
+    .box.show{
+      transform: translateX(0);
+    }
+  </style>
+</head>
+<body>
+  <div class="box red show">Content</div>
+  <div class="box blue show">Content</div>
+  <div class="box orange show">Content</div>
+  <div class="box green">Content</div>
+  <div class="box yellow">Content</div>
+  <div class="box black">Content</div>
+
+  <script>
+    const boxes = document.querySelectorAll('.box')
+    window.addEventListener('scroll', () => {
+      boxes.forEach(item => {
+        const boxTop = item.getBoundingClientRect().top
+        if(boxTop < window.innerHeight / 5 * 4){
+          item.classList.add('show')
+        } else {
+          item.classList.remove('show')
+        }
+      })
+    })
+
+  </script>
+</body>
+</html>
