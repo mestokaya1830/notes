@@ -32,7 +32,7 @@
       justify-content: center;
       border-radius: 20px;
       width: 400px;
-      height: 200px;
+      height: 100dvh;
       margin: 20px 0;
       box-shadow: 2px 4px 5px rgba(0,0,0,0.3);
       transform: translateX(800%);
@@ -63,7 +63,7 @@
     window.addEventListener('scroll', () => {
       boxes.forEach(item => {
         const boxTop = item.getBoundingClientRect().top
-        if(boxTop < window.innerHeight / 5 * 4){
+        if(boxTop < window.innerHeight / 8 * 4){
           item.classList.add('show')
         } else {
           item.classList.remove('show')
