@@ -59,6 +59,21 @@
         font-size: 18px;
         margin: 0 15px;
       }
+      #home{
+        background-image: url(./images/1.jpg);
+        background-size: cover;
+        background-position: center;
+        padding:  0 !important;
+      }
+      #overlay{
+        width: 100%;
+        background-color: rgba(0,0,0,0.5);
+        padding-top: 80px;
+      }
+      #overlay > h1 {
+        color: #fff;
+        text-align: center;
+      }
     </style>
   </head>
   <body>
@@ -72,7 +87,9 @@
 
     <!-- pages -->
     <div id="home" class="container">
-      <h1>Home</h1>
+      <div id="overlay">
+        <h1>Home Page</h1>
+      </div>
     </div>
     <div id="about" class="container">
       <h1>About</h1>
