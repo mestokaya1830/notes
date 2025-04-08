@@ -106,9 +106,7 @@
     let indicator = document.querySelector('.indicator')
     links.forEach((item, index) => {
       item.addEventListener('click', (e) => {
-        Array.from(pages).map(item => item.classList.remove('active'))
-        //or
-        // document.querySelector('.active').classList.remove('active')
+        document.querySelector('.active').classList.remove('active')
         item.classList.add('active')
         indicator.style.left = `${index * 125 + 26}px`
       })
