@@ -13,31 +13,26 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-      }
-      h1{
-        margin: 30px 0;
+        padding-top: 50px;
       }
       .wrapper{
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 60vw;
+        width: 70vw;
+        aspect-ratio: 16/9;
         background-color: #000;
-        padding: 30px 80px;
-        border-radius: 30px;
-        position: relative;
+        padding: 5%;
+        border-radius: 10px;
         overflow: hidden;
       }
       #container {
         display: flex;
-        justify-content: center;
         align-items: center;
         width: 100%;
-        border-radius: 5px;
-        margin: 50px auto;
-        object-fit: cover;
-        padding: 10px 5px;
-        box-shadow: inset 0 0 50px #f8a100;
+        height: 100%;
+        /* box-shadow:  0 0 50px #f8a100; */
+        position: relative;
       }
       #img {
         width: 100%;
@@ -51,36 +46,30 @@
         justify-content: center;
         padding: 10px;
         cursor: pointer;
+        border: none;
         color: #000;
         font-weight: bold;
-        font-size: 30px;
-        transition: 0.6s ease;
+        font-size: 1.2rem;
         user-select: none;
         background-color: #f1f1f1;
+        position: absolute;
       }
       .prev{
-        margin-right: 14px;
-        border-top-left-radius: 4px;
-        border-bottom-left-radius: 4px;
-      }
-      .next{
-        margin-left: 14px;
+        left: 0;
         border-top-right-radius: 4px;
         border-bottom-right-radius: 4px;
       }
-      .prev:hover,
-      .next:hover {
-        transform: scale(1.2);
+      .next{
+       right: 0;
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
       }
       .hide{
         background-color: gray;
         cursor: not-allowed;
       }
-
       .sub-slide{
         display: flex;
-        width: 100%;
-        height: 120px;
         position: absolute;
         bottom: 0;
         overflow: hidden;
@@ -89,21 +78,18 @@
         cursor: grab;
         scroll-behavior: auto;
       }
-      .sub-slide::-webkit-scrollbar {
-          display: none;
-        }
       .sub-container{
-        flex: 1;
         min-width: calc(100% / 4);
         height: 100%;
+        aspect-ratio: 16/9;
         cursor: pointer;
-        border: 2px solid transparent;
-        /* user-select: none; */
+        border: 1px solid transparent;
+        user-select: none;
       }
       .sub-img{
         width: 100%;
         height: 100%;
-        /* user-select: none; */
+        user-select: none;
       }
       .sub-style{
         border: 2px solid #f8a100;
@@ -111,15 +97,14 @@
     </style>
   </head>
   <body>
-    <h1>Javascript Blink Slider</h1>
     <div class="wrapper">
       <div id="container">
-        <button class="prev" id="prev">❮</button>
-        <img src="" alt="" id="img"/>
-        <button class="next" id="next">❯</button>
-      </div>
-      <div class="sub-slide">
-        
+          <button class="prev" id="prev">❮</button>
+          <img src="../images/1.jpg" alt="" id="img"/>
+          <button class="next" id="next">❯</button> 
+          <div class="sub-slide">
+            
+          </div>
       </div>
     </div>
 
@@ -219,31 +204,28 @@
       let scrollLeft;
       const slider = document.querySelector('.sub-slide');
 
-      const end = () => {
-        isDown = false;
-        slider.classList.remove('active');
-      }
-
-      const start = (e) => {
-        isDown = true;
-        slider.classList.add('active');
-        startX = e.pageX;
-        scrollLeft = slider.scrollLeft;	
-      }
-
-      const move = (e) => {
-        if(!isDown) return;
-        e.preventDefault();
-        const x = e.pageX;
-        const dist = (x - startX);
-        slider.scrollLeft = scrollLeft - dist;
-      }
-
       (() => {
-        slider.addEventListener('mousedown', start);
-        slider.addEventListener('mousemove', move);
-        slider.addEventListener('mouseleave', end);
-        slider.addEventListener('mouseup', end);
+        slider.addEventListener('mousedown', (e) => {
+          isDown = true;
+          slider.classList.add('active');
+          startX = e.pageX;
+          scrollLeft = slider.scrollLeft;
+        });
+
+        slider.addEventListener('mousemove', (e) => {
+          if(!isDown) return;
+          slider.scrollLeft = scrollLeft - (e.pageX - startX);
+        });
+
+        slider.addEventListener('mouseleave', (e) => {
+          isDown = false;
+          slider.classList.remove('active');
+        });
+        
+        slider.addEventListener('mouseup', (e) => {
+          isDown = false;
+          slider.classList.remove('active');
+        });
       })();
 
     </script>
