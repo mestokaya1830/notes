@@ -136,6 +136,7 @@
 
       const setSlider = (img) => {
         next.addEventListener('click', () => {
+          setMainSlideAnimation()
          imageIndex++
           if (imageIndex >= img.length-1){
             next.setAttribute('disabled', 'disabled')
@@ -150,9 +151,12 @@
 
           const subContainerWidth = document.querySelector('.sub-container').offsetWidth
           document.querySelector('.sub-slide').scrollLeft += subContainerWidth
+
+
           
         })
         prev.addEventListener('click', () => {
+          setMainSlideAnimation()
           imageIndex--
           if (imageIndex == 0) {
             prev.setAttribute('disabled', 'disabled')
@@ -228,6 +232,18 @@
         });
       })();
 
+
+      const setMainSlideAnimation = () => {
+        document.getElementById('img').animate([
+          {marginLeft: 2000+"px"},
+          {marginLeft: 0}
+        ],{
+          duration: 1000,
+          // fill: 'forwards',
+          delay: 10,
+          easing: "linear"
+        })
+      }
     </script>
   </body>
 </html>
