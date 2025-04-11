@@ -1,128 +1,91 @@
+
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        background-image: url('../images/1.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-      }
-      #wrapper {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 70%;
-        border-radius: 20px;
-        /* padding: 3%; */
-        background-color: #fff3;
-        backdrop-filter: blur(10px);
-        aspect-ratio: 16/9;
-      }
-      #slider{
-        display: flex;
-        height: 100%;
-        border-radius: 10px;
-        overflow: hidden;
-        scroll-behavior: smooth;
-        overflow: hidden;
-      }
-      .img {
-        aspect-ratio: 16/8;
-      }
-      .prev,
-      .next {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 10px;
-        cursor: pointer;
-        color: #000;
-        border: none;
-        font-weight: bold;
-        font-size: 30px;
-        transition: 0.6s ease;
-        user-select: none;
-        background-color: #fff3;
-        position: absolute;
-      }
-      .prev{
-        left: 0;
-        border-top-left-radius: 4px;
-        border-bottom-left-radius: 4px;
-      }
-      .next{
-        right: 0;
-        border-top-right-radius: 4px;
-        border-bottom-right-radius: 4px;
-      }
-      .prev:hover,
-      .next:hover {
-        transform: scale(1.2);
-      }
-    </style>
-  </head>
-  <body>
-    <div id="wrapper">
-      <button class="prev" id="prev">❮</button>
-      <div id="slider"></div>
-      <button class="next" id="next">❯</button>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body{
+      padding: 100px;
+      display: flex;
+      justify-content: center;
+      background-image: url('../images/1.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .wrapper{
+      display: flex;
+      align-items: center;
+      width: 80vw;
+      height: 80vh;
+      padding: 60px;
+      border-radius: 10px;
+      background-color: #fff3;
+      backdrop-filter: blur(10px);
+      position: relative;
+    }
+    .slider{
+      display: flex;
+      height: 100%;
+      overflow: hidden;
+      scroll-behavior: smooth;
+    }
+    img{
+      width: 100%;
+      /* aspect-ratio: 4/1; */
+      object-fit: cover;
+    }
+    #prev, #next{
+      position: absolute;
+      border: none;
+      padding: 14px 12px;
+      font-size: 1rem;
+      cursor: pointer;
+      background-color: #fff6;
+    }
+    #prev{
+      left: 0;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+    #next{
+      right: 0;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="slider" id="slider">
+      <img src="../images/mirza0.webp" alt="" class="img">
+      <img src="../images/mirza1.webp" alt="" class="img">
+      <img src="../images/mirza2.webp" alt="" class="img">
+      <img src="../images/mirza3.webp" alt="" class="img">
+      <img src="../images/mirza4.webp" alt="" class="img">
     </div>
+    <button id="prev">Prev</button>
+    <button id="next">Next</button>
+  </div>
 
-    <script>
-      let images = [
-        "../images/1.jpg",
-        "../images/2.jpg",
-        "../images/3.jpg",
-        "../images/4.jpg",
-      ];
+  <script>
+    let prev = document.getElementById('prev')
+    let next = document.getElementById('next')
+    let slider = document.getElementById('slider')
+    let imageWidht = document.querySelectorAll('.img')[0].width
 
-      const setSlider = (param) => {
-        let next = document.getElementById('next')
-        let prev = document.getElementById('prev')
-        prev.setAttribute('disabled','disabled')
-        prev.style.color = 'red'
-
-        param.forEach((item, index) => {
-          document.getElementById('slider').innerHTML += `
-          <img src="${item}" alt="" id="${index}" class="img"/>
-          `
-        });
-      
-        let index = 0
-        next.addEventListener('click', () => {
-          index++
-          if(index == images.length-1){
-            next.setAttribute('disabled','disabled')
-            next.style.color = 'red' 
-          }
-          document.getElementById('slider').scrollLeft += document.getElementsByClassName('img')[index].width
-          prev.removeAttribute('disabled')
-          prev.style.color = '#000'
-        })
-        prev.addEventListener('click', () => {
-          if(index > 1){
-            index--
-          } else {
-            prev.setAttribute('disabled','disabled')
-            prev.style.color = 'red'
-          }
-          document.getElementById('slider').scrollLeft -= document.getElementsByClassName('img')[index].width
-          index == 0 ? prev.setAttribute('disabled','disabled'): ''
-          next.removeAttribute('disabled')
-          next.style.color = '#000'
-        })
-      }
-      setSlider(images)
-     </script>
-  </body>
+    prev.addEventListener('click', () => {
+      slider.scrollLeft -= imageWidht
+    })
+    next.addEventListener('click', () => {
+      slider.scrollLeft += imageWidht
+    })
+  </script>
+</body>
 </html>
