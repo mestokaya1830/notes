@@ -23,35 +23,28 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        width: 70vw;
-        height: 80vh;
+        width: 70%;
         padding: 50px;
         background-color: #fff3;
         backdrop-filter: blur(10px);
         border-radius: 10px;
         overflow: hidden;
       }
-      .main-container {
+      #container {
         display: flex;
         align-items: center;
         width: 100%;
-        height:80%;
+        height: 100%;
         margin-bottom: 10px;
+        aspect-ratio: 16/7;
         position: relative;
-        overflow: hidden;
       }
-      .main-slider {
-        display: flex;
-        align-items: center;
-        width: auto;
-        height:100%;
-      }
-      .img {
+      #img {
         width: 100%;
         height: 100%;
       }
-      #prev,
-      #next {
+      .prev,
+      .next {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -65,12 +58,12 @@
         background-color: #fff3;
         position: absolute;
       }
-      #prev{
+      .prev{
         left: 0;
         border-top-right-radius: 4px;
         border-bottom-right-radius: 4px;
       }
-      #next{
+      .next{
        right: 0;
         border-top-left-radius: 4px;
         border-bottom-left-radius: 4px;
@@ -79,18 +72,18 @@
         background-color: gray;
         cursor: not-allowed;
       }
-      .sub-slider{
+      .sub-slide{
         display: flex;
         overflow: hidden;
       }
-      .sub-slider.active {
+      .sub-slide.active {
         cursor: grab;
         scroll-behavior: auto;
       }
       .sub-container{
         min-width: calc(100% / 4);
         height: 100%;
-        /* aspect-ratio: 16/9; */
+        aspect-ratio: 16/9;
         cursor: pointer;
         border: 1px solid transparent;
         user-select: none;
@@ -103,30 +96,17 @@
       .sub-style{
         border: 2px solid #f8a100;
       }
-      @media only screen and (max-width: 1200px){
-        body{
-          padding: 0;
-          height: 100vh;
-        }
-        .wrapper{
-          padding: 0;
-          width: 100vw;
-          height: 100vh;
-        }
-      }
     </style>
   </head>
   <body>
     <div class="wrapper">
-      <div class="main-container">
-        <div class="main-slider" id="main-slider">
-          <!-- main images here in javascript -->
-       </div>
-        <button id="prev">Prev</button>
-        <button id="next">Next</button>
+      <div id="container">
+        <button class="prev" id="prev">❮</button>
+        <img src="../images/1.jpg" alt="" id="img"/>
+        <button class="next" id="next">❯</button> 
       </div>
-      <div class="sub-slider" id="sub-slider">
-        <!-- sub images here in javascript -->
+      <div class="sub-slide">
+        
       </div>
     </div>
 
@@ -141,15 +121,12 @@
         "../images/sport3.jpg",
         "../images/sport4.jpg",
       ];
+
       
-      //load main images
-      images.forEach(item => {
-        document.getElementById('main-slider').innerHTML += `<img src="${item}" alt="" class="img" />` 
-      })
 
       //load sub images
       images.forEach(item => {
-        document.getElementById('sub-slider').innerHTML += `<div class="sub-container" draggable="false"><img src="${item}" alt="" draggable="false" class="sub-img" /></div>` 
+        document.querySelector('.sub-slide').innerHTML += `<div class="sub-container" draggable="false"><img src="${item}" alt="" draggable="false" class="sub-img" /></div>` 
       })
       document.querySelectorAll('.sub-img')[0].classList.add('sub-style')
 
@@ -160,12 +137,79 @@
       prev.classList.add('hide')
 
 
-    
+      const setSlider = (img) => {
+        next.addEventListener('click', () => {
+          setMainSlideAnimation()
+         imageIndex++
+          if (imageIndex >= img.length-1){
+            next.setAttribute('disabled', 'disabled')
+            next.classList.add('hide')
+          }
+          prev.removeAttribute('disabled')
+          prev.classList.remove('hide')
+          
+          setImage(imageIndex)
+          setSubimage(imageIndex)
+
+
+          const subContainerWidth = document.querySelector('.sub-container').offsetWidth
+          document.querySelector('.sub-slide').scrollLeft += subContainerWidth
+
+
+          
+        })
+        prev.addEventListener('click', () => {
+          setMainSlideAnimation()
+          imageIndex--
+          if (imageIndex == 0) {
+            prev.setAttribute('disabled', 'disabled')
+            prev.classList.add('hide')
+          }
+          next.removeAttribute('disabled')
+          next.classList.remove('hide')
+          setImage(imageIndex)
+          setSubimage(imageIndex)
+
+          const subContainerWidth = document.querySelector('.sub-container').offsetWidth
+          document.querySelector('.sub-slide').scrollLeft -= subContainerWidth
+        })
+  
+        function setImage(index) {
+          document.getElementById("img").src = img[index];
+        };
+        setImage(imageIndex);
+      }
+      setSlider(images)
+
+      const setSubimage = (subIndex) => {
+        //set sub style
+        Array.from(document.querySelectorAll('.sub-img')).forEach((item, index) => {
+          item.classList.remove('sub-style')
+          if(index == subIndex){
+            item.classList.add('sub-style')
+          }
+          
+          //set main slider on sub images
+          item.addEventListener('click', (e) => {
+            document.querySelectorAll('.sub-img').forEach(item2 => {
+              item2.classList.remove('sub-style')
+              imageIndex = index
+            })
+            item.classList.add('sub-style')
+            document.getElementById("img").src = item.getAttribute('src');
+          })
+
+        })
+
+      }
+      setSubimage(imageIndex)
+
+
       
       let isDown = false;
       let startX;
       let scrollLeft;
-      const slider = document.getElementById('sub-slider');
+      const slider = document.querySelector('.sub-slide');
 
       (() => {
         slider.addEventListener('mousedown', (e) => {
@@ -190,6 +234,18 @@
           slider.classList.remove('active');
         });
       })();
+
+      const setMainSlideAnimation = () => {
+        document.getElementById('img').animate([
+          {marginLeft: 2000+"px"},
+          {marginLeft: 0}
+        ],{
+          duration: 500,
+          // fill: 'forwards',
+          delay: 10,
+          easing: "linear"
+        })
+      }
     </script>
   </body>
 </html>

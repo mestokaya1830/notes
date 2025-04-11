@@ -12,9 +12,9 @@
       box-sizing: border-box;
     }
     body{
-      padding: 100px;
       display: flex;
       justify-content: center;
+      padding: 100px;
       background-image: url('../images/1.jpg');
       background-repeat: no-repeat;
       background-size: cover;
@@ -32,14 +32,17 @@
     }
     .slider{
       display: flex;
+      width: auto;
       height: 100%;
       overflow: hidden;
       scroll-behavior: smooth;
     }
     img{
       width: 100%;
-      /* aspect-ratio: 4/1; */
+      height: 120%;
+      aspect-ratio: 4/1;
       object-fit: cover;
+      /* if you want to see top of images set height 120% or heiger */
     }
     #prev, #next{
       position: absolute;
@@ -51,41 +54,83 @@
     }
     #prev{
       left: 0;
-      border-top-left-radius: 5px;
-      border-bottom-left-radius: 5px;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
     }
     #next{
       right: 0;
-      border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+    .hide{
+      background-color: gray;
+      cursor: not-allowed !important;
+    }
+    @media only screen and (max-width: 1200px) {
+      body {
+        padding: 0;
+        background-color: lightgreen;
+        height: 100vh;
+      }
+      .wrapper{width: 100vw;height: 100vh;}
     }
   </style>
 </head>
 <body>
   <div class="wrapper">
     <div class="slider" id="slider">
-      <img src="../images/mirza0.webp" alt="" class="img">
-      <img src="../images/mirza1.webp" alt="" class="img">
-      <img src="../images/mirza2.webp" alt="" class="img">
-      <img src="../images/mirza3.webp" alt="" class="img">
-      <img src="../images/mirza4.webp" alt="" class="img">
+      <!-- image here in javascript -->
     </div>
     <button id="prev">Prev</button>
     <button id="next">Next</button>
   </div>
 
   <script>
-    let prev = document.getElementById('prev')
-    let next = document.getElementById('next')
-    let slider = document.getElementById('slider')
-    let imageWidht = document.querySelectorAll('.img')[0].width
+    let images = [
+      "../images/mirza0.webp",
+      "../images/mirza1.webp",
+      "../images/mirza2.webp",
+      "../images/mirza3.webp",
+      "../images/mirza4.webp",
+    ];
+     //load images
+     images.forEach(item => {
+        document.getElementById('slider').innerHTML += `<img src="${item}" alt="" class="img" />` 
+      })
 
-    prev.addEventListener('click', () => {
-      slider.scrollLeft -= imageWidht
-    })
-    next.addEventListener('click', () => {
-      slider.scrollLeft += imageWidht
-    })
+      let prev = document.getElementById('prev')
+      let next = document.getElementById('next')
+
+      //on loading
+      prev.setAttribute('disabled', 'disabled')
+      prev.classList.add('hide')
+
+      let slider = document.getElementById('slider')
+      let imageWidht = document.querySelectorAll('.img')[0].width
+
+
+      prev.addEventListener('click', () => {
+        slider.scrollLeft -= imageWidht
+        next.removeAttribute('disabled', 'disabled')
+        next.classList.remove('hide')
+
+        if (slider.scrollLeft == imageWidht) {
+          prev.setAttribute('disabled', 'disabled')
+          prev.classList.add('hide')
+        }
+      })
+
+      next.addEventListener('click', () => {
+        slider.scrollLeft += imageWidht
+        prev.removeAttribute('disabled', 'disabled')
+        prev.classList.remove('hide')
+
+        if (slider.offsetWidth + slider.scrollLeft >= (slider.scrollWidth-imageWidht)) {
+          next.setAttribute('disabled', 'disabled')
+          next.classList.add('hide')
+        }
+      })
+
   </script>
 </body>
 </html>
