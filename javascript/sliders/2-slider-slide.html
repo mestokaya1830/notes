@@ -22,7 +22,7 @@
     .wrapper{
       display: flex;
       align-items: center;
-      width: 80vw;
+      width: 70vw;
       height: 80vh;
       padding: 60px;
       border-radius: 10px;
@@ -30,12 +30,19 @@
       backdrop-filter: blur(10px);
       position: relative;
     }
+    .container{
+      display: flex;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
     .slider{
       display: flex;
       width: auto;
       height: 100%;
-      overflow: hidden;
-      scroll-behavior: smooth;
+      left: 0;
+      position: relative;
+      transition: left 0.3s linear;
     }
     img{
       width: 100%;
@@ -78,8 +85,10 @@
 </head>
 <body>
   <div class="wrapper">
-    <div class="slider" id="slider">
-      <!-- image here in javascript -->
+    <div class="container">
+      <div class="slider" id="slider">
+        <!-- image here in javascript -->
+      </div>
     </div>
     <button id="prev">Prev</button>
     <button id="next">Next</button>
@@ -94,7 +103,7 @@
       "../images/mirza4.webp",
     ];
      //load images
-     images.forEach(item => {
+      images.forEach(item => {
         document.getElementById('slider').innerHTML += `<img src="${item}" alt="" class="img" />` 
       })
 
@@ -104,28 +113,34 @@
       //on loading
       prev.setAttribute('disabled', 'disabled')
       prev.classList.add('hide')
-
       let slider = document.getElementById('slider')
       let imageWidht = document.querySelectorAll('.img')[0].width
-
+      let imageIndex = 0
+      let currentPosition = 0
 
       prev.addEventListener('click', () => {
-        slider.scrollLeft -= imageWidht
+        imageIndex--
+        currentPosition += imageWidht
+        slider.style.left =  currentPosition + 'px'
+        
         next.removeAttribute('disabled', 'disabled')
         next.classList.remove('hide')
 
-        if (slider.scrollLeft == imageWidht) {
+        if (imageIndex == 0) {
           prev.setAttribute('disabled', 'disabled')
           prev.classList.add('hide')
         }
       })
 
       next.addEventListener('click', () => {
-        slider.scrollLeft += imageWidht
+        imageIndex++
+        currentPosition -= imageWidht
+        slider.style.left = currentPosition + 'px'
+    
         prev.removeAttribute('disabled', 'disabled')
         prev.classList.remove('hide')
 
-        if (slider.offsetWidth + slider.scrollLeft >= (slider.scrollWidth-imageWidht)) {
+        if (imageIndex == images.length - 1) {
           next.setAttribute('disabled', 'disabled')
           next.classList.add('hide')
         }

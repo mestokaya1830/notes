@@ -11,37 +11,42 @@
       }
       body{
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-top: 50px;
-        background-image: url('../images/4.jpg');
-        background-size: cover;
+        justify-content: center;
+        padding: 100px;
+        background-image: url('../images/3.jpg');
         background-repeat: no-repeat;
+        background-size: cover;
       }
       .wrapper{
         display: flex;
         flex-direction: column;
-        align-items: center;
         justify-content: space-between;
-        width: 70%;
+        width: 70vw;
+        height: 80vh;
         padding: 50px;
         background-color: #fff3;
         backdrop-filter: blur(10px);
         border-radius: 10px;
         overflow: hidden;
       }
-      #container {
+      .container{
         display: flex;
         align-items: center;
+        justify-content: center;
         width: 100%;
-        height: 100%;
+        height: 76%;
         margin-bottom: 10px;
-        aspect-ratio: 16/7;
         position: relative;
-      }
+     }
+     .slider{
+        display: flex;
+        width: auto;
+        height: 100%;
+     }
       #img {
         width: 100%;
         height: 100%;
+        object-fit: cover;
       }
       .prev,
       .next {
@@ -53,7 +58,7 @@
         border: none;
         color: #000;
         font-weight: bold;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         user-select: none;
         background-color: #fff3;
         position: absolute;
@@ -69,21 +74,16 @@
         border-bottom-left-radius: 4px;
       }
       .hide{
-        background-color: gray;
+        color: gray;
         cursor: not-allowed;
       }
-      .sub-slide{
+      .sub-slider{
         display: flex;
         overflow: hidden;
-      }
-      .sub-slide.active {
-        cursor: grab;
-        scroll-behavior: auto;
       }
       .sub-container{
         min-width: calc(100% / 4);
         height: 100%;
-        aspect-ratio: 16/9;
         cursor: pointer;
         border: 1px solid transparent;
         user-select: none;
@@ -91,55 +91,84 @@
       .sub-img{
         width: 100%;
         height: 100%;
+        object-fit: cover;
         user-select: none;
+        opacity: 0.3;
+      }
+      .sub-slider.active {
+        cursor: grab;
+        scroll-behavior: auto;
       }
       .sub-style{
-        border: 2px solid #f8a100;
+        opacity: 1;
+      }
+      @media only screen and (max-width: 1200px){
+        body{
+          padding: 0;
+          width: 100vw;
+          height: 100vh;
+        }
+        .wrapper{
+          width: 100vw;
+          height: 100vh;
+        }
+        .container{
+          height: 84vh;
+        }
+        .sub-slider{
+          height: 16vh;
+        }
+        .sub-img{
+          height: 100%;
+        }
       }
     </style>
   </head>
   <body>
     <div class="wrapper">
-      <div id="container">
+      <div class="container">
+        <div class="slider" id="slider"></div>
         <button class="prev" id="prev">❮</button>
         <img src="../images/1.jpg" alt="" id="img"/>
         <button class="next" id="next">❯</button> 
       </div>
-      <div class="sub-slide">
-        
+      <div class="sub-slider" id="sub-slider">
+        <!-- sub images here in javascript -->
       </div>
     </div>
 
     <script>
-      let images = [
-        "../images/img1.jpg",
-        "../images/img2.jpg",
-        "../images/img3.jpg",
-        "../images/img4.jpg",
-        "../images/sport1.jpg",
-        "../images/sport2.jpg",
-        "../images/sport3.jpg",
-        "../images/sport4.jpg",
+       let images = [
+        "../images/mirza0.webp",
+        "../images/mirza1.webp",
+        "../images/mirza2.webp",
+        "../images/mirza3.webp",
+        "../images/mirza4.webp",
+        "../images/1.jpg",
+        "../images/2.jpg",
+        "../images/3.jpg",
+        "../images/4.jpg",
       ];
 
       
 
       //load sub images
       images.forEach(item => {
-        document.querySelector('.sub-slide').innerHTML += `<div class="sub-container" draggable="false"><img src="${item}" alt="" draggable="false" class="sub-img" /></div>` 
+        document.getElementById('sub-slider').innerHTML += `<div class="sub-container" draggable="false" ><img src="${item}" alt="" draggable="false" class="sub-img" /> </div>` 
       })
       document.querySelectorAll('.sub-img')[0].classList.add('sub-style')
 
       let prev = document.getElementById('prev')
       let next = document.getElementById('next')
       let imageIndex = 0;
+
+       //on loading
       prev.setAttribute('disabled', 'disabled')
       prev.classList.add('hide')
 
 
       const setSlider = (img) => {
         next.addEventListener('click', () => {
-          setMainSlideAnimation()
          imageIndex++
           if (imageIndex >= img.length-1){
             next.setAttribute('disabled', 'disabled')
@@ -153,13 +182,10 @@
 
 
           const subContainerWidth = document.querySelector('.sub-container').offsetWidth
-          document.querySelector('.sub-slide').scrollLeft += subContainerWidth
-
-
+          document.getElementById('sub-slider').scrollLeft += subContainerWidth
           
         })
         prev.addEventListener('click', () => {
-          setMainSlideAnimation()
           imageIndex--
           if (imageIndex == 0) {
             prev.setAttribute('disabled', 'disabled')
@@ -171,7 +197,7 @@
           setSubimage(imageIndex)
 
           const subContainerWidth = document.querySelector('.sub-container').offsetWidth
-          document.querySelector('.sub-slide').scrollLeft -= subContainerWidth
+          document.getElementById('sub-slider').scrollLeft -= subContainerWidth
         })
   
         function setImage(index) {
@@ -209,7 +235,7 @@
       let isDown = false;
       let startX;
       let scrollLeft;
-      const slider = document.querySelector('.sub-slide');
+      const slider = document.getElementById('sub-slider');
 
       (() => {
         slider.addEventListener('mousedown', (e) => {
@@ -235,17 +261,6 @@
         });
       })();
 
-      const setMainSlideAnimation = () => {
-        document.getElementById('img').animate([
-          {marginLeft: 2000+"px"},
-          {marginLeft: 0}
-        ],{
-          duration: 500,
-          // fill: 'forwards',
-          delay: 10,
-          easing: "linear"
-        })
-      }
     </script>
   </body>
 </html>
