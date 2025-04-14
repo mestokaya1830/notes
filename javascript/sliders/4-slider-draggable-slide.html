@@ -218,10 +218,11 @@
           item.classList.remove('sub-style')
         })
           e.target.classList.add('sub-style')
+          
           let subImgWidth = document.querySelectorAll('.sub-img')[0].width
           slider.scrollLeft = (subImgWidth * index) - subImgWidth
           subPosition = -(index * imageWidht) 
-          mainSlider.style.left = subPosition+ 'px'
+          mainSlider.style.left = subPosition + 'px'
           currentPosition = subPosition
          
           imageIndex = index
