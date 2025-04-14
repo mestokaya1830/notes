@@ -93,7 +93,7 @@
         opacity: 0.3;
       }
       .sub-slider.active {
-        cursor: grab;
+        cursor: grabbing;
         scroll-behavior: auto;
       }
       .sub-style{
@@ -238,29 +238,29 @@
       let isDown = false;
       let startX;
       let scrollLeft;
-      const slider = document.getElementById('sub-slider');
+      const subSlider = document.getElementById('sub-slider');
 
       (() => {
-        slider.addEventListener('mousedown', (e) => {
+        subSlider.addEventListener('mousedown', (e) => {
           isDown = true;
-          slider.classList.add('active');
+          subSlider.classList.add('active');
           startX = e.pageX;
-          scrollLeft = slider.scrollLeft;
+          scrollLeft = subSlider.scrollLeft;
         });
 
-        slider.addEventListener('mousemove', (e) => {
+        subSlider.addEventListener('mousemove', (e) => {
           if(!isDown) return;
-          slider.scrollLeft = scrollLeft - (e.pageX - startX);
+          subSlider.scrollLeft = scrollLeft - (e.pageX - startX);
         });
 
-        slider.addEventListener('mouseleave', (e) => {
+        subSlider.addEventListener('mouseleave', (e) => {
           isDown = false;
-          slider.classList.remove('active');
+          subSlider.classList.remove('active');
         });
         
-        slider.addEventListener('mouseup', (e) => {
+        subSlider.addEventListener('mouseup', (e) => {
           isDown = false;
-          slider.classList.remove('active');
+          subSlider.classList.remove('active');
         });
       })();
 
