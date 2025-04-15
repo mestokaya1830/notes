@@ -74,17 +74,14 @@
 
       checkBoxes(); //load first time
       window.addEventListener("scroll", checkBoxes);
-
       function checkBoxes() {
         //set box top position on window
         const triggerBottom = (window.innerHeight / 5) * 4;
-
         //set box top position on window default
         // const triggerBottom = window.innerHeight;
 
         boxes.forEach((box) => {
           const boxTop = box.getBoundingClientRect().top;
-
           if (boxTop < triggerBottom) {
             box.classList.add("show");
           } else {

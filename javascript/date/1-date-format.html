@@ -20,8 +20,11 @@
       console.log(`Now---------------- ${Date.now()}`);
       console.log(`Year--------------- ${d.getFullYear()}`);
       console.log(`Month-------------- ${d.getMonth() + 1}`);
-      console.log(`DayOfWeek----------- ${d.getDay()}`);
-      console.log(`Day---------------- ${d.getDate()}`);
+      console.log(`Month As String-------------- ${d.toLocaleDateString('en-EN',{month:'long'})}`);
+      console.log(`Day As String---------------- ${d.toLocaleDateString('en-EN', {weekday:'long'})}`);
+      console.log(`Day-Of-Week----------- ${d.getDay()}`);
+      console.log(`Day-Of-Month----------- ${d.getDate()}`);
+      console.log(`Days-In-Month----------- ${new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate()}`);
 
       //country format
       const fr = Intl.DateTimeFormat("tr-TR");

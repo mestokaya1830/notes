@@ -63,8 +63,17 @@ button{
   cursor: pointer;
   background-color: #fff;
   box-shadow: 0 0 3px #cbd4c2;
+  position: relative;
 }
-
+.day-state{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  background-color: rgba(255, 0, 0, 0.24);
+  width: 100%;
+  height: 0%;
+}
 #event-model, #delete-model{
   position: fixed;
   top: 0;
@@ -143,7 +152,7 @@ button{
 }
 
 .weekend{
-  background-color: red;
+  background-color: #ddd;
   cursor: not-allowed;
 }
 .eventDay{

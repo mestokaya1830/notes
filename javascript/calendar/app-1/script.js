@@ -49,6 +49,7 @@ const load = () => {
     //create days of month
     const daySquare = document.createElement("div");
     daySquare.classList.add("day");
+   
 
     if (i > paddingDays) {
       daySquare.innerText = i - paddingDays;
@@ -61,27 +62,33 @@ const load = () => {
       if (addEventDay) {
         let count = 0
         events.forEach((item) => {
+          
           if (item.date == addEventDay.date) {
-            const eventDiv = document.createElement("div");
-            const eventHour = document.createElement("span");
-            const eventCount = document.createElement("span");
-            eventHour.innerText = item.bookingHour;
-            eventDiv.classList.add("event");
-            eventHour.classList.add("hour");
-            eventDiv.innerText = item.bookingname;
-            eventDiv.innerText = count = count + 1
-            eventDiv.name = item.bookingname;
-            eventDiv.appendChild(eventHour);
-            daySquare.appendChild(eventDiv);
-            daySquare.appendChild(eventCount);
+            // const eventDiv = document.createElement("div");
+            // const eventHour = document.createElement("span");
+            // const eventCount = document.createElement("span");
+            // eventHour.innerText = item.bookingHour;
+            // eventDiv.classList.add("event");
+            // eventHour.classList.add("hour");
+            // eventDiv.innerText = item.bookingname;
+            // eventDiv.innerText = count = count + 1
+            // eventDiv.name = item.bookingname;
+            // eventDiv.appendChild(eventHour);
+            // daySquare.appendChild(eventDiv);
+            // daySquare.appendChild(eventCount);
+            
           }
         });
       }
-      daySquare.addEventListener("click", (e) => openModel(dayString));
+      daySquare.addEventListener("click", (e) => {
+        openModel(dayString)
+        
+      });
 
       //filter weekend
       const wd = new Date(dayString);
       if (wd.getDay() == 0 || wd.getDay() == 6) {
+        
         daySquare.classList.add("weekend");
         daySquare.addEventListener("click", () => {
           document.getElementById("event-model").style.display = "none";
@@ -90,6 +97,12 @@ const load = () => {
           document.getElementById("current-day").style.backgroundColor =
             "green";
         }
+      }
+      if(wd.getDay() > 0 && wd.getDay() < 6){
+        //day state overlay
+        const dayState = document.createElement("div");
+        dayState.classList.add("day-state");
+        daySquare.appendChild(dayState)
       }
     } else {
       daySquare.classList.add("padding");
@@ -118,6 +131,7 @@ const openModel = (date) => {
     hoursTable.innerText = item;
     hoursTable.classList.add("hoursTable");
     el.appendChild(hoursTable);
+
   });
   calendar.appendChild(el);
 
@@ -130,7 +144,9 @@ const openModel = (date) => {
         bookingHour: item.innerText
       });
       localStorage.setItem("events", JSON.stringify(events));
-      load();
+      document.querySelectorAll('.day-state')[5].style.height +=  events.length * 10 + '%'
+    alert('')
+      // load();
     })
   })
 };

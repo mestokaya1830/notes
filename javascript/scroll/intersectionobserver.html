@@ -42,6 +42,7 @@
         top: 0;
         left: 0;
         z-index: 1;
+        object-fit: cover;
       }
       .img1{
         height: 0;
@@ -198,7 +199,7 @@
         of Lorem Ipsum.
       </p>
       <div class="container1 img-container">
-        <img src="./1.jpg" alt="" id="img1" class="images img1" />
+        <img src="../images/1.jpg" alt="" id="img1" class="images img1" />
       </div>
       <p>
         Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -256,7 +257,7 @@
         of Lorem Ipsum.
       </p>
       <div class="container2 img-container">
-        <img src="./1.jpg" alt="" id="img2" class="images img2" />
+        <img src="../images/2.jpg" alt="" id="img2" class="images img2" />
       </div>
       <p>
         Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -358,7 +359,7 @@
         of Lorem Ipsum.
       </p>
       <div class="container3 img-container">
-        <img src="./1.jpg" alt="" id="img3" class="images img3" />
+        <img src="../images/3.jpg" alt="" id="img3" class="images img3" />
       </div>
 
       <p>
@@ -439,7 +440,7 @@
         of Lorem Ipsum.
       </p>
       <div class="container4 img-container">
-        <img src="./1.jpg" alt="" id="img4" class="images img4" />
+        <img src="../images/4.jpg" alt="" id="img4" class="images img4" />
       </div>
     </div>
     <script>
@@ -455,10 +456,10 @@
         }
       });
       const observerCallback = (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.children[0].classList.remove(entry.target.children[0].getAttribute('id'))
-            entry.target.children[0].classList.add(`${entry.target.children[0].getAttribute('id')}-show`)
+        entries.forEach((item) => {
+          if (item.isIntersecting) {
+            item.target.children[0].classList.remove(item.target.children[0].getAttribute('id'))
+            item.target.children[0].classList.add(`${item.target.children[0].getAttribute('id')}-show`)
           }
         });
       };
