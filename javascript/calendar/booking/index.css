@@ -12,6 +12,7 @@ body{
 #container{
   width: 70vw;
   height: 80vh;
+  position: relative;
 }
 #calendar{
   display: flex;
@@ -65,6 +66,33 @@ body{
 }
 #current-day{
   background-color: lightcyan;
+}
+#event-panel{
+  display: flex;
+  position: absolute;
+  left: 0; 
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto; 
+  z-index: 10;
+  width: 60%;
+  aspect-ratio: 16/10;
+  background-color: #93cde5;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 10px;
+  display: none;
+}
+#event-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+#eventCloseBtn{
+  cursor: pointer;
+  font-family: 30px;
 }
 @media only screen and (max-width: 375px){
   #header{
