@@ -95,6 +95,7 @@
   </div>
 
   <script>
+    //images as array----------------
     let images = [
       "../images/mirza0.webp",
       "../images/mirza1.webp",
@@ -102,22 +103,23 @@
       "../images/mirza3.webp",
       "../images/mirza4.webp",
     ];
-     //load images
+    let slider = document.getElementById('slider')
+    let imageWidht = document.querySelectorAll('.img')[0].width
+    let imageIndex = 0
+    let currentPosition = 0
+    let prev = document.getElementById('prev')
+    let next = document.getElementById('next')
+
+     //on loading----------------
+     //load images-------------------
       images.forEach(item => {
         document.getElementById('slider').innerHTML += `<img src="${item}" alt="" class="img" />` 
       })
 
-      let prev = document.getElementById('prev')
-      let next = document.getElementById('next')
-
-      //on loading
       prev.setAttribute('disabled', 'disabled')
       prev.classList.add('hide')
-      let slider = document.getElementById('slider')
-      let imageWidht = document.querySelectorAll('.img')[0].width
-      let imageIndex = 0
-      let currentPosition = 0
-
+    
+      //prev button for image loading according to imageIndex and navigation buttons style-----------------
       prev.addEventListener('click', () => {
         imageIndex--
         currentPosition += imageWidht
@@ -131,7 +133,8 @@
           prev.classList.add('hide')
         }
       })
-
+      
+      //next button for image loading according to imageIndex and navigation buttons style-----------------
       next.addEventListener('click', () => {
         imageIndex++
         currentPosition -= imageWidht

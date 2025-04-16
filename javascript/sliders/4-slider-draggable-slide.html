@@ -141,6 +141,7 @@
     </div>
 
     <script>
+      //set images as array------------------------
       let images = [
         "../images/img1.jpg",
         "../images/img2.jpg",
@@ -151,36 +152,35 @@
         "../images/sport3.jpg",
         "../images/sport4.jpg",
       ];
-      
-      //load main images
-      images.forEach((item, index) => {
-        document.getElementById('slider').innerHTML += `<img src="${item}" alt="" class="img" />` 
-      })
-
-      //load sub images
-      images.forEach(item => {
-        document.getElementById('sub-slider').innerHTML += `<div class="sub-container" draggable="false"><img src="${item}" alt="" draggable="false" class="sub-img" /></div>` 
-      })
-
-
       let prev = document.getElementById('prev')
       let next = document.getElementById('next')
       let mainSlider = document.getElementById('slider')
       let imageWidht = document.querySelectorAll('.img')[0].width
       let imageIndex = 0
+      let mainPosition = 0
+      let subPosition = 0
+      
+      //on loading--------------------------------
+      //load main images---------------
+      images.forEach((item, index) => {
+        document.getElementById('slider').innerHTML += `<img src="${item}" alt="" class="img" />` 
+      })
 
+      //load sub images-----------------
+      images.forEach(item => {
+        document.getElementById('sub-slider').innerHTML += `<div class="sub-container" draggable="false"><img src="${item}" alt="" draggable="false" class="sub-img" /></div>` 
+      })
 
-      //on loading
       document.querySelectorAll('.sub-img')[0].classList.add('sub-style')
       prev.setAttribute('disabled', 'disabled')
       prev.classList.add('btnHide')
-      let currentPosition = 0
+      
 
-      //main slider
+      //prev button for image loading according to imageIndex and navigation buttons style-----------------
       prev.addEventListener('click', () => {
         imageIndex--
-        currentPosition = (currentPosition += imageWidht)
-        mainSlider.style.left = currentPosition + 'px'
+        mainPosition = (mainPosition += imageWidht)
+        mainSlider.style.left = mainPosition + 'px'
         slider.scrollLeft -= document.querySelectorAll('.sub-img')[0].width
         next.removeAttribute('disabled', 'disabled')
         next.classList.remove('btnHide')
@@ -188,15 +188,15 @@
           prev.setAttribute('disabled', 'disabled')
           prev.classList.add('btnHide')
         }
-        //sub images
+        //sub images--------------------
         sliderTrigger(imageIndex)
       })
 
-      
+      //next button for image loading according to imageIndex and navigation buttons style-----------------
       next.addEventListener('click', () => {
         imageIndex++
-        currentPosition = (currentPosition -= imageWidht) 
-        mainSlider.style.left = currentPosition + 'px'
+        mainPosition = (mainPosition -= imageWidht) 
+        mainSlider.style.left = mainPosition + 'px'
         slider.scrollLeft += document.querySelectorAll('.sub-img')[0].width
         prev.removeAttribute('disabled', 'disabled')
         prev.classList.remove('btnHide')
@@ -210,20 +210,18 @@
       })
 
 
-      //sub slider
+      //handle sub slider on main slider------------------------------
       document.querySelectorAll('.sub-img').forEach((item, index) => {
-        let subPosition = 0
         item.addEventListener('click', (e) => {
           document.querySelectorAll('.sub-img').forEach(item => {
           item.classList.remove('sub-style')
         })
           e.target.classList.add('sub-style')
-          
           let subImgWidth = document.querySelectorAll('.sub-img')[0].width
           slider.scrollLeft = (subImgWidth * index) - subImgWidth
           subPosition = -(index * imageWidht) 
           mainSlider.style.left = subPosition + 'px'
-          currentPosition = subPosition
+          mainPosition = subPosition
          
           imageIndex = index
           if (imageIndex == 0) {
@@ -251,7 +249,7 @@
         document.querySelectorAll('.sub-img')[imgIndex].classList.add('sub-style')
       }
 
-      //sub slider dragging
+      //sub slider scrollleft handle------------------------------
       let isDown = false;
       let startX;
       let scrollLeft;

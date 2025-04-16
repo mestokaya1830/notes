@@ -144,22 +144,20 @@
         "../images/4.jpg",
       ];
 
-      
-
-      //load sub images
-      images.forEach(item => {
-        document.getElementById('sub-slider').innerHTML += `<div class="sub-container" draggable="false" ><img src="${item}" alt="" draggable="false" class="sub-img" /> </div>` 
-      })
-      document.querySelectorAll('.sub-img')[0].classList.add('sub-style')
-
       let prev = document.getElementById('prev')
       let next = document.getElementById('next')
       let imageIndex = 0;
 
-       //on loading
+      //on loading-------------------
+      //load sub images-----------------
+      images.forEach(item => {
+        document.getElementById('sub-slider').innerHTML += `<div class="sub-container" draggable="false" ><img src="${item}" alt="" draggable="false" class="sub-img" /> </div>` 
+      })
+      document.querySelectorAll('.sub-img')[0].classList.add('sub-style')
       prev.setAttribute('disabled', 'disabled')
       prev.classList.add('btnHide')
 
+       //prev button for image loading according to imageIndex and navigation buttons style-----------------
       prev.addEventListener('click', () => {
         imageIndex--
         if (imageIndex == 0) {
@@ -175,6 +173,7 @@
         document.getElementById('sub-slider').scrollLeft -= subContainerWidth
       })
 
+      //next button for image loading according to imageIndex and navigation buttons style-----------------
       next.addEventListener('click', () => {
         imageIndex++
         if (imageIndex >= images.length - 1){
@@ -192,27 +191,28 @@
 
        
 
-      const setSubimage = (subIndex) => {
-        //set sub style
-        Array.from(document.querySelectorAll('.sub-img')).forEach((item, index) => {
+      //handle sub slider on main slider------------------------------
+      const setSubimage = (mainImageIndex) => {
+        //select all sub images---------------
+        Array.from(document.querySelectorAll('.sub-img')).forEach((item, subImageIndex) => {
             item.classList.remove('sub-style')
-            if(index == subIndex){
+            if(mainImageIndex == subImageIndex){
               item.classList.add('sub-style')
             }
           
-          //set main slider on sub images
+          //handle main slider on sub slider-----------------
           item.addEventListener('click', (e) => {
             document.querySelectorAll('.sub-img').forEach(item2 => {
               item2.classList.remove('sub-style')
-              imageIndex = index
+              imageIndex = subImageIndex
             })
             item.classList.add('sub-style')
             document.getElementById("img").src = item.getAttribute('src');
 
             let subImgWidth = document.querySelectorAll('.sub-img')[0].width
-            document.getElementById('sub-slider').scrollLeft = (subImgWidth * index) - subImgWidth
+            document.getElementById('sub-slider').scrollLeft = (subImgWidth * subImageIndex) - subImgWidth
 
-            imageIndex = index
+            imageIndex = subImageIndex
           if (imageIndex == 0) {
             prev.setAttribute('disabled', 'disabled')
             prev.classList.add('btnHide')
@@ -228,13 +228,12 @@
             next.classList.remove('btnHide')
           }
           })
-
         })
 
       }
       setSubimage(imageIndex)
 
-
+      //sub slider scrollleft handle-----------------------------
       let isDown = false;
       let startX;
       let scrollLeft;
