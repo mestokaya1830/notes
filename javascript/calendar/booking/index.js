@@ -51,9 +51,6 @@ const load = () => {
     days.classList.add("days");
     calendar.appendChild(days);
 
-    //create booking status section in days---------
-    const daysBookingStatus = document.createElement("div");
-    daysBookingStatus.classList.add("days-booking-status");
 
     if (i > paddingDays){
       //add days numbers in days---------
@@ -67,10 +64,7 @@ const load = () => {
         days.classList.add("weekend");
       } else {
         //when not weekend---------
-        //add booking status section-------------
-        //days.appendChild(daysBookingStatus)
-
-        //when not weekend then get current day------------
+        //get current day------------
         if (i - paddingDays === day && monthNumber === 0) {
           days.id = "current-day";
         }
