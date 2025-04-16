@@ -75,7 +75,7 @@ body{
 #current-day{
   background-color: lightcyan;
 }
-.event-panel{
+.booking-panel{
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -92,13 +92,19 @@ body{
   border-radius: 10px;
   padding: 10px;
 }
-#event-header{
+#booking-header{
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px;
 }
-#eventCloseBtn{
+.add-booking{
+  background-color: #247ba0;
+}
+.cancel-booking{
+  background-color: red;
+}
+#panelCloseBtn{
   cursor: pointer;
   font-family: 30px;
 }

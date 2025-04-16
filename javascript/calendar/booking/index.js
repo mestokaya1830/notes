@@ -10,7 +10,7 @@ const weekdays = [
 ];
 //for months navigation-------------
 let monthNumber = 0
-let events = []
+let bookings = []
 const load = () => {
   const dt = new Date();
 
@@ -51,7 +51,6 @@ const load = () => {
     days.classList.add("days");
     calendar.appendChild(days);
 
-
     if (i > paddingDays){
       //add days numbers in days---------
       days.innerText = i - paddingDays;
@@ -73,9 +72,6 @@ const load = () => {
           eventPanel(dates)
         })
       }
-      
-      // const addEventDay = events.find((item) => item.date === dayString);
-      // days.appendChild(daysBookingStatus);
     } else {
       days.classList.add("padding-days");
     }
@@ -83,44 +79,45 @@ const load = () => {
   }
 }
 
-//events panel-----------------------
+//booking panel-----------------------
 const eventPanel = (dates) => {
-  events = localStorage.getItem("events") ? JSON.parse(localStorage.getItem("events")) : [];
-   //create event panel---------------------
+  bookings = localStorage.getItem("bookings") ? JSON.parse(localStorage.getItem("bookings")) : [];
+   //create booking panel---------------------
   let el = document.createElement('div')
-  el.classList.add('event-panel')
+  el.classList.add('booking-panel')
   el.setAttribute('id', dates)
   el.innerHTML = `
-    <header id="event-header">
-      <h2>Booking Hours</h2>
-      <h2 id="eventCloseBtn">X</h2>
+    <header id="booking-header">
+      <h2>Bookings</h2>
+      <h2>${dates}</h2>
+      <h2 id="panelCloseBtn">X</h2>
     </header>
-    <div class="event-panel-container">
-      <button class="add-events">Add Event 1</button>
-      <button class="add-events">Add Event 2</button>
-      <button class="add-events">Add Event 3</button>
-      <button class="add-events">Add Event 4</button>
-      <button class="add-events">Add Event 5</button>
+    <div class="booking-panel-container">
+     <div class="booking-list">
+      <input type="text" placeholder="Fullname.." id="booking-name" class="booking-name" />
+       <button class="add-booking">Add Booking</button>
+       <button class="cancel-booking">Add Booking</button>
+     </div>
     </div>
   `
   calendar.appendChild(el)
-  //close event panel-------------------
-  document.getElementById('eventCloseBtn').addEventListener('click', () => {
+  //close panel-------------------
+  document.getElementById('panelCloseBtn').addEventListener('click', () => {
     calendar.removeChild(el)
   })
 
-  //select all events triggers--------------------------
-  if(document.querySelectorAll('.add-events')){
-    document.querySelectorAll('.add-events').forEach(item => {
-      //add event in events array-----------------------
+  //select all bookings triggers--------------------------
+  if(document.querySelectorAll('.add-bookings')){
+    document.querySelectorAll('.add-bookings').forEach(item => {
+      //add event in bookings array-----------------------
       item.addEventListener('click', (e) => {
-        events.push({
+        bookings.push({
           date: dates,
           event: e.target.innerText
         })
        
-        //save events on loaclstorage---------------------
-        localStorage.setItem('events', JSON.stringify(events))
+        //save bookings on loaclstorage---------------------
+        localStorage.setItem('bookings', JSON.stringify(bookings))
       })
     })
   }
