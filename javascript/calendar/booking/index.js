@@ -76,11 +76,6 @@ const load = () => {
         }
         //open event panel on days------------
         days.addEventListener('click', (e) => {
-          let el = document.createElement('div')
-          el.classList.add('event-panel')
-          el.setAttribute('id', dates)
-          calendar.appendChild(el)
-
           eventPanel(dates)
         })
       }
@@ -97,7 +92,11 @@ const load = () => {
 //events panel-----------------------
 const eventPanel = (dates) => {
   events = localStorage.getItem("events") ? JSON.parse(localStorage.getItem("events")) : [];
-  document.getElementById(dates).innerHTML = `
+   //create event panel---------------------
+  let el = document.createElement('div')
+  el.classList.add('event-panel')
+  el.setAttribute('id', dates)
+  el.innerHTML = `
     <header id="event-header">
       <h2>Booking Hours</h2>
       <h2 id="eventCloseBtn">X</h2>
@@ -106,15 +105,14 @@ const eventPanel = (dates) => {
       <button class="add-events">Add Event 1</button>
       <button class="add-events">Add Event 2</button>
       <button class="add-events">Add Event 3</button>
-      <button class="add-events">Add Event 3</button>
-      <button class="add-events">Add Event 3</button>
+      <button class="add-events">Add Event 4</button>
+      <button class="add-events">Add Event 5</button>
     </div>
   `
-  //open event panel---------------------
-  document.querySelector('.event-panel').style.display = 'block'
+  calendar.appendChild(el)
   //close event panel-------------------
   document.getElementById('eventCloseBtn').addEventListener('click', () => {
-    document.querySelector('.event-panel').style.display = 'none'
+    calendar.removeChild(el)
   })
 
   //select all events triggers--------------------------
