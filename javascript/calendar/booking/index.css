@@ -78,32 +78,79 @@ body{
 .booking-panel{
   display: flex;
   flex-direction: column;
+  align-items: center;
   position: absolute;
   left: 0; 
   right: 0;
-  top: 0;
-  bottom: 0;
+  top: -100px;
   margin: auto; 
   z-index: 10;
-  width: 60%;
+  width: 80%;
   aspect-ratio: 16/10;
-  background-color: #9acee4;
-  border: 1px solid #eee;
+  background-color: #dde7e9;
+  box-shadow: 1px 1px 4px #999;
   border-radius: 10px;
-  padding: 10px;
+  padding: 20px;
 }
 #booking-header{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   padding: 10px;
+}
+.booking-panel-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.booking-list{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width:100%;
+  padding:10px;
+  background-color: #fff3;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 2px 0;
+}
+.booking-hours{
+  font-size: 20px;
+  padding: 0 10px;
+}
+.booking-name, .booking-content{
+  height: 36px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 0 8px;
+  font-size: 16px;
+  flex: 1;
+  margin: 0 5px;
+}
+.add-booking, .cancel-booking{
+  padding: 8px 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  color: #eee;
+  font-weight: 400;
+  cursor: pointer;
+  margin: 0 10px;
 }
 .add-booking{
   background-color: #247ba0;
 }
 .cancel-booking{
   background-color: red;
+  padding: 8px 16px;
+  font-size: 16px;
 }
+button[data-state = "false"]{
+  display:none;
+}
+
 #panelCloseBtn{
   cursor: pointer;
   font-family: 30px;

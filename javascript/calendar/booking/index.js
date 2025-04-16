@@ -94,9 +94,25 @@ const eventPanel = (dates) => {
     </header>
     <div class="booking-panel-container">
      <div class="booking-list">
+      <span class="booking-hours">8:00</span>
       <input type="text" placeholder="Fullname.." id="booking-name" class="booking-name" />
-       <button class="add-booking">Add Booking</button>
-       <button class="cancel-booking">Add Booking</button>
+      <input type="text" placeholder="Content.." id="booking-content" class="booking-content" />
+       <button class="add-booking" data-state="true">Add</button>
+       <button class="cancel-booking" data-state="false">Cancel</button>
+     </div>
+     <div class="booking-list">
+      <span class="booking-hours">8:30</span>
+      <input type="text" placeholder="Fullname.." id="booking-name" class="booking-name" />
+       <input type="text" placeholder="Content.." id="booking-content" class="booking-content" />
+       <button class="add-booking" data-state="true">Add</button>
+       <button class="cancel-booking" data-state="false">Cancel</button>
+     </div>
+     <div class="booking-list">
+      <span class="booking-hours">9:00</span>
+      <input type="text" placeholder="Fullname.." id="booking-name" class="booking-name" />
+       <input type="text" placeholder="Content.." id="booking-content" class="booking-content" />
+      <button class="add-booking" data-state="true">Add</button>
+       <button class="cancel-booking" data-state="false">Cancel</button>
      </div>
     </div>
   `
