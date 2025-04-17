@@ -46,9 +46,11 @@ const load = () => {
 
   //calculate days-and-paddings (with firstDayOfMonth and daysInMonth)--------
   for (let i = 1; i <= paddingDays + daysInMonth; i++){
+    const dates = `${month + 1}/${i - paddingDays}/${year}`;
     //create and add days in calendar---------
     const days = document.createElement("div");
     days.classList.add("days");
+    days.setAttribute('id', dates)
     calendar.appendChild(days);
 
     if (i > paddingDays){
@@ -56,7 +58,7 @@ const load = () => {
       days.innerText = i - paddingDays;
 
       //filter active-days and weekand-----------
-      const dates = `${month + 1}/${i - paddingDays}/${year}`;
+      
       const we = new Date(dates);
       //when weekend---------
       if (we.getDay() == 0 || we.getDay() == 6) {
@@ -67,6 +69,15 @@ const load = () => {
         if (i - paddingDays === day && monthNumber === 0) {
           days.id = "current-day";
         }
+
+        //get bookings
+        bookings = localStorage.getItem("bookings") ? JSON.parse(localStorage.getItem("bookings")) : [];
+         bookings.forEach(item => {
+          if(item.date === days.id){
+            days.innerHTML += `<div id="${item.id}">${item.hour}</div>`
+          }
+         })
+        
         //open event panel on days------------
         days.addEventListener('click', (e) => {
           eventPanel(dates)
@@ -79,13 +90,21 @@ const load = () => {
   }
 }
 
-//booking panel-----------------------
+// //get bookings
+// const getBookings = () => {
+  
+//   bookings = localStorage.getItem("bookings") ? JSON.parse(localStorage.getItem("bookings")) : [];
+//   document.querySelectorAll('.days').forEach((item , index) => {
+//     let result = bookings.filter(item2 => item2.date == item.id )
+//     item.innerText = result
+//   })
+// }
+//adding booking panel-----------------------
 const eventPanel = (dates) => {
   bookings = localStorage.getItem("bookings") ? JSON.parse(localStorage.getItem("bookings")) : [];
    //create booking panel---------------------
   let el = document.createElement('div')
   el.classList.add('booking-panel')
-  el.setAttribute('id', dates)
   el.innerHTML = `
     <header id="booking-header">
       <h2>Bookings</h2>
@@ -123,15 +142,18 @@ const eventPanel = (dates) => {
   })
 
   //select all bookings triggers--------------------------
-  if(document.querySelectorAll('.add-bookings')){
-    document.querySelectorAll('.add-bookings').forEach(item => {
-      //add event in bookings array-----------------------
+  if(document.querySelectorAll('.add-booking')){
+    document.querySelectorAll('.add-booking').forEach(item => {
+      //add booking in bookings array-----------------------
       item.addEventListener('click', (e) => {
+        let id = Math.floor(Math .random() * 99999999)
         bookings.push({
+          id: id,
+          hour: item.parentNode.children[0].innerText,
+          fullname: item.parentNode.children[1].value,
           date: dates,
-          event: e.target.innerText
+          content: item.parentNode.children[2].value
         })
-       
         //save bookings on loaclstorage---------------------
         localStorage.setItem('bookings', JSON.stringify(bookings))
       })
