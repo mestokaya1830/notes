@@ -69,7 +69,6 @@ const load = () => {
         if (i - paddingDays === day && monthNumber === 0) {
           days.id = "current-day";
         }
-
         //get bookings
         bookings = localStorage.getItem("bookings") ? JSON.parse(localStorage.getItem("bookings")) : [];
          bookings.forEach(item => {
@@ -90,15 +89,7 @@ const load = () => {
   }
 }
 
-// //get bookings
-// const getBookings = () => {
-  
-//   bookings = localStorage.getItem("bookings") ? JSON.parse(localStorage.getItem("bookings")) : [];
-//   document.querySelectorAll('.days').forEach((item , index) => {
-//     let result = bookings.filter(item2 => item2.date == item.id )
-//     item.innerText = result
-//   })
-// }
+
 //adding booking panel-----------------------
 const eventPanel = (dates) => {
   bookings = localStorage.getItem("bookings") ? JSON.parse(localStorage.getItem("bookings")) : [];
@@ -111,31 +102,56 @@ const eventPanel = (dates) => {
       <h2>${dates}</h2>
       <h2 id="panelCloseBtn">X</h2>
     </header>
-    <div class="booking-panel-container">
-     <div class="booking-list">
-      <span class="booking-hours">8:00</span>
-      <input type="text" placeholder="Fullname.." id="booking-name" class="booking-name" />
-      <input type="text" placeholder="Content.." id="booking-content" class="booking-content" />
-       <button class="add-booking" data-state="true">Add</button>
-       <button class="cancel-booking" data-state="false">Cancel</button>
-     </div>
-     <div class="booking-list">
-      <span class="booking-hours">8:30</span>
-      <input type="text" placeholder="Fullname.." id="booking-name" class="booking-name" />
-       <input type="text" placeholder="Content.." id="booking-content" class="booking-content" />
-       <button class="add-booking" data-state="true">Add</button>
-       <button class="cancel-booking" data-state="false">Cancel</button>
-     </div>
-     <div class="booking-list">
-      <span class="booking-hours">9:00</span>
-      <input type="text" placeholder="Fullname.." id="booking-name" class="booking-name" />
-       <input type="text" placeholder="Content.." id="booking-content" class="booking-content" />
-      <button class="add-booking" data-state="true">Add</button>
-       <button class="cancel-booking" data-state="false">Cancel</button>
-     </div>
+    <div class="booking-panel-container" id="booking-panel-container">
+    
     </div>
   `
   calendar.appendChild(el)
+    const hours = [
+      "8:00",
+      "8:30",
+      "9:00",
+      "9:30",
+      "10:00",
+      "10:30",
+      "11:00",
+      "11:30",
+      "13:00",
+      "13:30",
+      "14:00",
+      "14:30",
+      "15:00",
+      "15:30",
+      "16:00",
+      "16:30",
+      "17:00",
+    ];
+    hours.forEach(item => {
+      document.getElementById('booking-panel-container').innerHTML += ` <div class="booking-list">
+          <span class="booking-hours" data-id="${item}">${item}</span>
+          <input type="text" placeholder="Fullname.." id="booking-name" class="booking-name" />
+          <input type="text" placeholder="Content.." id="booking-content" class="booking-content" />
+           <button class="add-booking">Add</button>
+         </div>`
+    })
+  
+    bookings.forEach(item => {
+      if(item.date == dates){
+        document.querySelectorAll(`[data-id = "${item.hour}"]`).forEach(item2 => {
+          item2.parentNode.children[1].value = item.fullname
+          item2.parentNode.children[2].value = item.content
+
+          item2.parentNode.children[1].setAttribute('disabled', 'disabled')
+          item2.parentNode.children[2].setAttribute('disabled', 'disabled')
+          item2.parentNode.children[1].classList.add('disabled')
+          item2.parentNode.children[2].classList.add('disabled')
+
+          item2.parentNode.children[3].classList.remove('add-booking')
+          item2.parentNode.children[3].classList.add('cancel-booking')
+          item2.parentNode.children[3].innerText = 'Cancel'
+        })
+      }
+    })
   //close panel-------------------
   document.getElementById('panelCloseBtn').addEventListener('click', () => {
     calendar.removeChild(el)
@@ -152,8 +168,9 @@ const eventPanel = (dates) => {
           hour: item.parentNode.children[0].innerText,
           fullname: item.parentNode.children[1].value,
           date: dates,
-          content: item.parentNode.children[2].value
+          content: item.parentNode.children[2].value,
         })
+
         //save bookings on loaclstorage---------------------
         localStorage.setItem('bookings', JSON.stringify(bookings))
       })

@@ -91,6 +91,7 @@ body{
   box-shadow: 1px 1px 4px #999;
   border-radius: 10px;
   padding: 20px;
+  overflow-y: scroll;
 }
 #booking-header{
   display: flex;
@@ -130,7 +131,10 @@ body{
   margin: 0 5px;
 }
 .add-booking, .cancel-booking{
-  padding: 8px 16px;
+  width: 120px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
   font-size: 16px;
   border: none;
   border-radius: 5px;
@@ -138,24 +142,29 @@ body{
   font-weight: 400;
   cursor: pointer;
   margin: 0 10px;
-}
-.add-booking{
   background-color: #247ba0;
 }
 .cancel-booking{
-  background-color: red;
-  padding: 8px 16px;
-  font-size: 16px;
+  background-color: darkred;
 }
-button[data-state = "false"]{
-  display:none;
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
-
 #panelCloseBtn{
   cursor: pointer;
   font-family: 30px;
 }
-
+.hours-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+.hours{
+  padding: 4px;
+  margin: 4px;
+  background: #000;
+  color: #fff;
+}
 @media only screen and (max-width: 440px){
   #header{
     flex-direction: column;

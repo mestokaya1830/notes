@@ -186,7 +186,7 @@
         document.getElementById("img").src = images[imageIndex];
         document.getElementById('sub-slider').scrollLeft += document.querySelector('.sub-container').offsetWidth
         setSubimage(imageIndex)
-        
+      
       })
 
        
@@ -210,10 +210,10 @@
             document.getElementById("img").src = item.getAttribute('src');
 
             let subImgWidth = document.querySelectorAll('.sub-img')[0].width
-            document.getElementById('sub-slider').scrollLeft = (subImgWidth * subImageIndex) - subImgWidth
-
+            document.getElementById('sub-slider').scrollLeft = (subImgWidth * subImageIndex) - (subImgWidth * 1.5)
+          
+            if (imageIndex == 0) {
             imageIndex = subImageIndex
-          if (imageIndex == 0) {
             prev.setAttribute('disabled', 'disabled')
             prev.classList.add('btnHide')
           } else {
