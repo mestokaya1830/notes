@@ -85,7 +85,6 @@ const load = () => {
     } else {
       days.classList.add("padding-days");
     }
-    
   }
 }
 
@@ -135,64 +134,11 @@ const eventPanel = (dates) => {
          </div>`
     })
   
-    bookings.forEach(item => {
-      if(item.date == dates){
-        document.querySelectorAll(`[data-id = "${item.hour}"]`).forEach(item2 => {
-          item2.parentNode.children[1].value = item.fullname
-          item2.parentNode.children[2].value = item.content
-
-          item2.parentNode.children[1].setAttribute('disabled', 'disabled')
-          item2.parentNode.children[2].setAttribute('disabled', 'disabled')
-          item2.parentNode.children[1].classList.add('disabled')
-          item2.parentNode.children[2].classList.add('disabled')
-
-          item2.parentNode.children[3].classList.remove('add-booking')
-          item2.parentNode.children[3].classList.add('cancel-booking')
-          item2.parentNode.children[3].setAttribute('id', item.id)
-          item2.parentNode.children[3].innerText = 'Cancel'
-        })
-      }
-    })
   //close panel-------------------
   document.getElementById('panelCloseBtn').addEventListener('click', () => {
     calendar.removeChild(el)
   })
-
-  //select all bookings buttons--------------------------
-  if(document.querySelectorAll('.add-booking')){
-    document.querySelectorAll('.add-booking').forEach(item => {
-      //add booking in bookings array-----------------------
-      item.addEventListener('click', (e) => {
-        let id = Math.floor(Math .random() * 99999999)
-        bookings.push({
-          id: id,
-          hour: item.parentNode.children[0].innerText,
-          fullname: item.parentNode.children[1].value,
-          date: dates,
-          content: item.parentNode.children[2].value,
-        })
-
-        //save bookings on loaclstorage---------------------
-        localStorage.setItem('bookings', JSON.stringify(bookings))
-      })
-    })
-  }
-  //select all cancel buttons--------------------------
-  if(document.querySelectorAll('.cancel-booking')){
-    document.querySelectorAll('.cancel-booking').forEach(item => {
-      //cancel booking in bookings array-----------------------
-      item.addEventListener('click', (e) => {
-        bookings.forEach((item2, index) => {
-          if(item2.id == e.target.id){
-            bookings.splice(index, 1)
-          }
-        })
-        localStorage.setItem('bookings', JSON.stringify(bookings))
-      })
-    })
-  }
 }
-
 
 const navigationButton = () => {
   document.getElementById("back").addEventListener("click", (e) => {
