@@ -148,6 +148,7 @@ const eventPanel = (dates) => {
 
           item2.parentNode.children[3].classList.remove('add-booking')
           item2.parentNode.children[3].classList.add('cancel-booking')
+          item2.parentNode.children[3].setAttribute('id', item.id)
           item2.parentNode.children[3].innerText = 'Cancel'
         })
       }
@@ -157,7 +158,7 @@ const eventPanel = (dates) => {
     calendar.removeChild(el)
   })
 
-  //select all bookings triggers--------------------------
+  //select all bookings buttons--------------------------
   if(document.querySelectorAll('.add-booking')){
     document.querySelectorAll('.add-booking').forEach(item => {
       //add booking in bookings array-----------------------
@@ -172,6 +173,20 @@ const eventPanel = (dates) => {
         })
 
         //save bookings on loaclstorage---------------------
+        localStorage.setItem('bookings', JSON.stringify(bookings))
+      })
+    })
+  }
+  //select all cancel buttons--------------------------
+  if(document.querySelectorAll('.cancel-booking')){
+    document.querySelectorAll('.cancel-booking').forEach(item => {
+      //cancel booking in bookings array-----------------------
+      item.addEventListener('click', (e) => {
+        bookings.forEach((item2, index) => {
+          if(item2.id == e.target.id){
+            bookings.splice(index, 1)
+          }
+        })
         localStorage.setItem('bookings', JSON.stringify(bookings))
       })
     })
