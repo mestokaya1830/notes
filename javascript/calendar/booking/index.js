@@ -71,6 +71,7 @@ const load = () => {
         }
         //get bookings
         bookings = localStorage.getItem("bookings") ? JSON.parse(localStorage.getItem("bookings")) : [];
+        //add hours in days
          bookings.forEach(item => {
           if(item.date === days.id){
             days.innerHTML += `<div id="${item.id}">${item.hour}</div>`
@@ -106,33 +107,33 @@ const eventPanel = (dates) => {
     </div>
   `
   calendar.appendChild(el)
-    const hours = [
-      "8:00",
-      "8:30",
-      "9:00",
-      "9:30",
-      "10:00",
-      "10:30",
-      "11:00",
-      "11:30",
-      "13:00",
-      "13:30",
-      "14:00",
-      "14:30",
-      "15:00",
-      "15:30",
-      "16:00",
-      "16:30",
-      "17:00",
-    ];
-    hours.forEach(item => {
-      document.getElementById('booking-panel-container').innerHTML += ` <div class="booking-list">
-          <span class="booking-hours" data-id="${item}">${item}</span>
-          <input type="text" placeholder="Fullname.." id="booking-name" class="booking-name" />
-          <input type="text" placeholder="Content.." id="booking-content" class="booking-content" />
-           <button class="add-booking">Add</button>
-         </div>`
-    })
+  //   const hours = [
+  //     "8:00",
+  //     "8:30",
+  //     "9:00",
+  //     "9:30",
+  //     "10:00",
+  //     "10:30",
+  //     "11:00",
+  //     "11:30",
+  //     "13:00",
+  //     "13:30",
+  //     "14:00",
+  //     "14:30",
+  //     "15:00",
+  //     "15:30",
+  //     "16:00",
+  //     "16:30",
+  //     "17:00",
+  //   ];
+  //   hours.forEach(item => {
+  //     document.getElementById('booking-panel-container').innerHTML += ` <div class="booking-list">
+  //         <span class="booking-hours" data-id="${item}">${item}</span>
+  //         <input type="text" placeholder="Fullname.." id="booking-name" class="booking-name" />
+  //         <input type="text" placeholder="Content.." id="booking-content" class="booking-content" />
+  //          <button class="add-booking">Add</button>
+  //        </div>`
+  //   })
   
   //close panel-------------------
   document.getElementById('panelCloseBtn').addEventListener('click', () => {
