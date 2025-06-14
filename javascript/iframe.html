@@ -21,20 +21,26 @@
 </head>
 
 <body>
-  <iframe src="" frameborder="0" id="fr"></iframe>
+  <iframe src="https://ins-bau.de/" frameborder="0" id="fr"></iframe>
 
   <script>
     let links = [
-      'https://gaziantepbilisim.com.tr',
-      'https://gaziantebiz.com/',
-      'https://gazikonut.com'
+      'https://ins-bau.de/',
+      'https://mr-mirza.ch/',
+      'https://gaziantepbilisim.gen.tr/',
+      'https://developer.mozilla.org/en-US/docs/Web/API' //not load
     ]
+   
     let index = 0
-    setInterval(() => {
-      document.getElementById('fr').src = links[index]
-      index++
-      if (index >= links.length-1) index = 0
-    }, 5000);
+    const iframe = document.getElementById('fr');
+
+    iframe.addEventListener('load', () => {
+      setTimeout(() => {
+        index++;
+        if (index >= links.length) index = 0;
+        iframe.src = links[index];
+      }, 5000)
+    });
   </script>
 </body>
 
