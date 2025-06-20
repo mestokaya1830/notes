@@ -12,17 +12,15 @@
   <h2 style="margin:20px 0; text-align: center;">Alarm</h2>
   <p style="text-align: center;">Look at the Console</p>
   <script>
-    const setAlarm = (wakeTime, timer) => {
-      let d = new Date()
-      if (Date.now() >= wakeTime && timer) {
-        return 'Wakeup please!'
-      } else {
+    let alarmLoop;
+    const setAlarm = (wakeTime) => {
+      if (Date.now() >= wakeTime) {
         clearInterval(alarmLoop)
-        return 'Early to wakeup Keep sleep!'
+        console.log('Wakeup please!') 
       }
     }
-    const alarmLoop = setInterval(() => {
-      console.log(setAlarm(new Date('04/20/2023 23:04:00'), true))
+    alarmLoop = setInterval(() => {
+      setAlarm(new Date('06/20/2025 19:38:00'))
     })
 
   </script>
